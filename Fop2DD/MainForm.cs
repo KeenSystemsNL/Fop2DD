@@ -60,11 +60,29 @@ namespace Fop2DD
         {
             //_client.MessageReceived += _client_MessageReceived;
             //_client.MessageSent += _client_MessageSent;
-            _client.Connected += (s) => { this.SetTrayStatus("Connected", "online"); _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text); };
-            _client.Disconnected += (s) => { this.SetTrayStatus("Disconnected", "offline"); if (_autoreconnect) this.Connect(); };
             _client.ConnectionError += (s, ce) => { this.SetTrayStatus("Connection error: " + ce.Exception.Message, "error"); };
-            _client.AuthenticationFailed += (s) => { this.SetTrayStatus("Logon failed", "authfailure"); };
-            _client.AuthenticationSucceeded += (s) => { this.SetTrayStatus("Online", "online"); _autoreconnect = true; };
+            _client.ConnectionStateChanged += (s, ce) =>
+            {
+                if (ce.ConnectionState == ConnectionState.Connected)
+                {
+                    this.SetTrayStatus("Connected", "online");
+                    _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text);
+                }
+                else
+                {
+                    this.SetTrayStatus("Disconnected", "offline"); 
+                    if (_autoreconnect) 
+                        this.Connect();
+                }
+            };
+            _client.AuthenticationResultReceived += (s, ae) => {
+                if (ae.Result==AuthenticationStatus.Success) {
+                    this.SetTrayStatus("Online", "online"); 
+                    _autoreconnect = true;
+                } else {
+                    this.SetTrayStatus("Logon failed", "authfailure");
+                }
+            };
         }
 
         private void Connect()
@@ -116,7 +134,7 @@ namespace Fop2DD
         //{
         //    _client.Authenticate("TESTA", "101", "1234");
         //}
-        
+
         //private void button5_Click(object sender, EventArgs e)
         //{
         //    _client.Dial("0492390112");

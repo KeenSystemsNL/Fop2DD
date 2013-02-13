@@ -31,9 +31,7 @@ namespace Fop2ClientLib
 
         public event DataSentEventHandler DataSent;
 
-        public event DisconnectedEventHandler Disconnected;
-
-        public event ConnectedEventHandler Connected;
+        public event ConnectionStateChangedEventHandler ConnectionStateChanged;
 
         public event ConnectionErrorEventHandler ConnectionError;
 
@@ -82,7 +80,7 @@ namespace Fop2ClientLib
                 }
                 catch { }
 
-                RaiseEvent(() => { if (this.Disconnected != null) Disconnected(this); });
+                RaiseEvent(() => { if (this.ConnectionStateChanged != null) ConnectionStateChanged(this, new ConnectionStateChangedEventArgs(ConnectionState.Disconnected)); });
             }
         }
 
@@ -96,7 +94,7 @@ namespace Fop2ClientLib
                 _client.EndConnect(result);
                 networkStream = _client.GetStream();
 
-                RaiseEvent(() => { if (this.Connected != null) Connected(this); });
+                RaiseEvent(() => { if (this.ConnectionStateChanged != null) ConnectionStateChanged(this, new ConnectionStateChangedEventArgs(ConnectionState.Connected)); });
             }
             catch (SocketException ex)
             {
