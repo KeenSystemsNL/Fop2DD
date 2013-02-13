@@ -17,9 +17,16 @@ namespace Fop2DD
         private HotKeyManager _hotkeymanager;
         private PhonenumberGrabber _phonenumbergrabber;
 
+        private bool _autoreconnect;
+        private bool _isclosing;
+
         public MainForm()
         {
             InitializeComponent();
+
+            _autoreconnect = false;
+            _isclosing = false;
+
             _client = new Fop2FatClient();
 
             _hotkeymanager = new HotKeyManager();
@@ -38,19 +45,42 @@ namespace Fop2DD
             Trace.WriteLine(string.Join("\r\n", numbers));
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        //private void _client_MessageSent(object sender, MessageSentEventArgs e)
+        //{
+        //    Trace.WriteLine("Sent: " + e.Message);
+        //}
+
+        //private void _client_MessageReceived(object sender, MessageReceivedEventArgs e)
+        //{
+        //    Trace.WriteLine(string.Format("Received:\r\n\tBtn : [{0}]\r\n\tCmd : [{1}]\r\n\tData: [{2}]\r\n\tSlot: [{3}]", e.Message.Button, e.Message.Command, e.Message.Data, e.Message.Slot));
+        //}
+
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            _client.MessageReceived += _client_MessageReceived;
-            _client.MessageSent += _client_MessageSent;
-            _client.Connected += (s) => { this.SetTrayStatus("Connected", "online"); };
-            _client.Disconnected += (s) => { this.SetTrayStatus("Disconnected", "offline"); };
+            //_client.MessageReceived += _client_MessageReceived;
+            //_client.MessageSent += _client_MessageSent;
+            _client.Connected += (s) => { this.SetTrayStatus("Connected", "online"); _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text); };
+            _client.Disconnected += (s) => { this.SetTrayStatus("Disconnected", "offline"); if (_autoreconnect) this.Connect(); };
             _client.ConnectionError += (s, ce) => { this.SetTrayStatus("Connection error: " + ce.Exception.Message, "error"); };
             _client.AuthenticationFailed += (s) => { this.SetTrayStatus("Logon failed", "authfailure"); };
-            _client.AuthenticationSucceeded += (s) => { this.SetTrayStatus("Online", "online"); };
+            _client.AuthenticationSucceeded += (s) => { this.SetTrayStatus("Online", "online"); _autoreconnect = true; };
+        }
 
-            //_client.Heartbeat += (s, hea) => { Trace.WriteLine("Heartbeat"); };
+        private void Connect()
+        {
+            _autoreconnect = false;
 
-            textBox1.Text = _client.HeartbeatInterval.Seconds.ToString();
+            var ipendpoint = string.Format("{0}:{1}", this.hostTextBox.Text, this.portTextBox.Text);
+            var pinginterval = TimeSpan.FromSeconds(int.Parse(pingIntervalTextBox.Text));
+
+            if (_client.IsConnected)
+                _client.Disconnect();
+
+            _client.HeartbeatInterval = pinginterval;
+            _client.Connect(ipendpoint);
+
+            this.SetTrayStatus(string.Format("Connecting to {0}", ipendpoint));
         }
 
         private void SetTrayStatus(string status)
@@ -60,65 +90,76 @@ namespace Fop2DD
 
         private void SetTrayStatus(string status, string icon)
         {
-            toolStripStatusLabel.Text = status;
-            
-            //Max length for notifyicon tooltip is 63 chars
-            var tooltip = (status ?? string.Empty);
-            NotifyIcon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip; ;
-            if (icon != null)
-                NotifyIcon.Icon = Iconhandler.LoadIcon(icon);
+            if (!_isclosing)
+            {
+                toolStripStatusLabel.Text = status;
+
+                //Max length for notifyicon tooltip is 63 chars
+                var tooltip = (status ?? string.Empty);
+                NotifyIcon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip; ;
+                if (icon != null)
+                    NotifyIcon.Icon = Iconhandler.LoadIcon(icon);
+            }
         }
 
-        void _client_MessageSent(object sender, MessageSentEventArgs e)
+        private void connectButton_Click(object sender, EventArgs e)
         {
-            Trace.WriteLine("Sent: " + e.Message);
+            this.Connect();
         }
 
-        void _client_MessageReceived(object sender, MessageReceivedEventArgs e)
-        {
-            Trace.WriteLine(string.Format("Received:\r\n\tBtn : [{0}]\r\n\tCmd : [{1}]\r\n\tData: [{2}]\r\n\tSlot: [{3}]", e.Message.Button, e.Message.Command, e.Message.Data, e.Message.Slot));
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    _client.Disconnect();
+        //}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var ipendpoint = "192.168.10.5:4445"; 
-            _client.Connect(ipendpoint);
-            this.SetTrayStatus(string.Format("Connecting to {0}", ipendpoint));
-        }
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    _client.Authenticate("TESTA", "101", "1234");
+        //}
+        
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    _client.Dial("0492390112");
+        //}
 
-        private void button2_Click(object sender, EventArgs e)
+        //private void button6_Click(object sender, EventArgs e)
+        //{
+        //    this.NotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+        //    this.NotifyIcon.BalloonTipText = "Lorem ipsum dolor sit amet ipsum dolor sit amet, consectetur adipiscing elit. Ut convallis, erat eu fringilla accumsan, enim ante porta libero, id vulputate enim enim ornare ante. Etiam in lorem nulla. Donec tincidunt interdum urna sit amet condimentum. Aliquam erat volutpat.";
+        //    this.NotifyIcon.BalloonTipTitle = "Lorem ipsum dolor sit amet";
+        //    this.NotifyIcon.Visible = true;
+        //    this.NotifyIcon.ShowBalloonTip(30 * 1000);
+        //    this.NotifyIcon.BalloonTipClicked += (s, ea) => { Trace.Write("Balloon clicked"); };
+        //}
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _isclosing = true;
+            _autoreconnect = false;
             _client.Disconnect();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            _client.Authenticate("TESTA", "101", "1234");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            _client.HeartbeatInterval = TimeSpan.FromSeconds(int.Parse(textBox1.Text));
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            _client.Dial("0492390112");
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.NotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-            this.NotifyIcon.BalloonTipText = "Lorem ipsum dolor sit amet ipsum dolor sit amet, consectetur adipiscing elit. Ut convallis, erat eu fringilla accumsan, enim ante porta libero, id vulputate enim enim ornare ante. Etiam in lorem nulla. Donec tincidunt interdum urna sit amet condimentum. Aliquam erat volutpat.";
-            this.NotifyIcon.BalloonTipTitle = "Lorem ipsum dolor sit amet";
-            this.NotifyIcon.Visible = true;
-            this.NotifyIcon.ShowBalloonTip(30 * 1000);
-            this.NotifyIcon.BalloonTipClicked += (s, ea) => { Trace.Write("Balloon clicked"); };
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _hotkeymanager.Dispose();
+        }
+
+        private void showAdvancedLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (advancedConnection.Visible)
+            {
+                showAdvancedLabel.Text = showAdvancedLabel.Text.Replace("▾", "▸");
+            }
+            else
+            {
+                showAdvancedLabel.Text = showAdvancedLabel.Text.Replace("▸", "▾");
+            }
+            advancedConnection.Visible = !advancedConnection.Visible;
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 
