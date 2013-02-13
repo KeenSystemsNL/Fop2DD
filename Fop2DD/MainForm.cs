@@ -18,15 +18,13 @@ namespace Fop2DD
         private PhonenumberGrabber _phonenumbergrabber;
 
         private bool _autoreconnect;
-        private bool _isclosing;
 
         public MainForm()
         {
             InitializeComponent();
 
             _autoreconnect = false;
-            _isclosing = false;
-
+            
             _client = new Fop2FatClient();
 
             _hotkeymanager = new HotKeyManager();
@@ -41,48 +39,49 @@ namespace Fop2DD
         private void hotkeymanager_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             var numbers = _phonenumbergrabber.TryGrabPhonenumbersFromSelection(6);
-            //_client.Dial(numbers.First());
+            //TODO: When numers.length == 1 => Dial number
+            //      When numbers.length >1 => Show dialog to select which number to dial
             Trace.WriteLine(string.Join("\r\n", numbers));
         }
 
-        //private void _client_MessageSent(object sender, MessageSentEventArgs e)
-        //{
-        //    Trace.WriteLine("Sent: " + e.Message);
-        //}
-
-        //private void _client_MessageReceived(object sender, MessageReceivedEventArgs e)
-        //{
-        //    Trace.WriteLine(string.Format("Received:\r\n\tBtn : [{0}]\r\n\tCmd : [{1}]\r\n\tData: [{2}]\r\n\tSlot: [{3}]", e.Message.Button, e.Message.Command, e.Message.Data, e.Message.Slot));
-        //}
-
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //_client.MessageReceived += _client_MessageReceived;
-            //_client.MessageSent += _client_MessageSent;
-            _client.ConnectionError += (s, ce) => { this.SetTrayStatus("Connection error: " + ce.Exception.Message, "error"); };
-            _client.ConnectionStateChanged += (s, ce) =>
+            _client.ConnectionError += _client_ConnectionError;
+            _client.ConnectionStateChanged += _client_ConnectionStateChanged;
+            _client.AuthenticationResultReceived += _client_AuthenticationResultReceived;
+        }
+
+        private void _client_ConnectionError(object sender, ConnectionErrorEventArgs e)
+        {
+            this.SetTrayStatus("Connection error: " + e.Exception.Message, "error");
+        }
+
+        private void _client_AuthenticationResultReceived(object sender, AuthenticationResultReceivedEventArgs e)
+        {
+            if (e.Result == AuthenticationStatus.Success)
             {
-                if (ce.ConnectionState == ConnectionState.Connected)
-                {
-                    this.SetTrayStatus("Connected", "online");
-                    _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text);
-                }
-                else
-                {
-                    this.SetTrayStatus("Disconnected", "offline"); 
-                    if (_autoreconnect) 
-                        this.Connect();
-                }
-            };
-            _client.AuthenticationResultReceived += (s, ae) => {
-                if (ae.Result==AuthenticationStatus.Success) {
-                    this.SetTrayStatus("Online", "online"); 
-                    _autoreconnect = true;
-                } else {
-                    this.SetTrayStatus("Logon failed", "authfailure");
-                }
-            };
+                this.SetTrayStatus("Online", "online");
+                _autoreconnect = true;
+            }
+            else
+            {
+                this.SetTrayStatus("Logon failed", "authfailure");
+            }
+        }
+
+        private void _client_ConnectionStateChanged(object sender, ConnectionStateChangedEventArgs e)
+        {
+            if (e.ConnectionState == ConnectionState.Connected)
+            {
+                this.SetTrayStatus("Connected", "online");
+                _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text);
+            }
+            else
+            {
+                this.SetTrayStatus("Disconnected", "offline");
+                if (_autoreconnect)
+                    this.Connect();
+            }
         }
 
         private void Connect()
@@ -108,16 +107,13 @@ namespace Fop2DD
 
         private void SetTrayStatus(string status, string icon)
         {
-            if (!_isclosing)
-            {
-                toolStripStatusLabel.Text = status;
+            toolStripStatusLabel.Text = status;
 
-                //Max length for notifyicon tooltip is 63 chars
-                var tooltip = (status ?? string.Empty);
-                NotifyIcon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip; ;
-                if (icon != null)
-                    NotifyIcon.Icon = Iconhandler.LoadIcon(icon);
-            }
+            //Max length for notifyicon tooltip is 63 chars
+            var tooltip = (status ?? string.Empty);
+            NotifyIcon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip; ;
+            if (icon != null)
+                NotifyIcon.Icon = Iconhandler.LoadIcon(icon);
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -125,34 +121,26 @@ namespace Fop2DD
             this.Connect();
         }
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    _client.Disconnect();
-        //}
+        public void NotifyPopup(string title, string text)
+        {
+            this.NotifyPopup(title, text, TimeSpan.FromSeconds(30));
+        }
 
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    _client.Authenticate("TESTA", "101", "1234");
-        //}
-
-        //private void button5_Click(object sender, EventArgs e)
-        //{
-        //    _client.Dial("0492390112");
-        //}
-
-        //private void button6_Click(object sender, EventArgs e)
-        //{
-        //    this.NotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-        //    this.NotifyIcon.BalloonTipText = "Lorem ipsum dolor sit amet ipsum dolor sit amet, consectetur adipiscing elit. Ut convallis, erat eu fringilla accumsan, enim ante porta libero, id vulputate enim enim ornare ante. Etiam in lorem nulla. Donec tincidunt interdum urna sit amet condimentum. Aliquam erat volutpat.";
-        //    this.NotifyIcon.BalloonTipTitle = "Lorem ipsum dolor sit amet";
-        //    this.NotifyIcon.Visible = true;
-        //    this.NotifyIcon.ShowBalloonTip(30 * 1000);
-        //    this.NotifyIcon.BalloonTipClicked += (s, ea) => { Trace.Write("Balloon clicked"); };
-        //}
+        public void NotifyPopup(string title, string text, TimeSpan duration)
+        {
+            this.NotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+            this.NotifyIcon.BalloonTipTitle = title;
+            this.NotifyIcon.BalloonTipText = text;
+            this.NotifyIcon.ShowBalloonTip((int)duration.TotalMilliseconds);
+        }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _isclosing = true;
+            //Un"bind" the events so they won't cause trouble when being raised while we're busy closing and cleaning up.
+            _client.ConnectionError -= _client_ConnectionError;
+            _client.ConnectionStateChanged -= _client_ConnectionStateChanged;
+            _client.AuthenticationResultReceived -= _client_AuthenticationResultReceived;
+
             _autoreconnect = false;
             _client.Disconnect();
         }
@@ -178,6 +166,11 @@ namespace Fop2DD
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)
+        {
+            Trace.WriteLine("Balloon clicked!");
         }
     }
 
