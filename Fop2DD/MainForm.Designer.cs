@@ -161,7 +161,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(526, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(557, 17);
             this.toolStripStatusLabel.Spring = true;
             this.toolStripStatusLabel.Text = "-";
             // 
