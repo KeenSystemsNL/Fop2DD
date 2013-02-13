@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D70FA601-B5B7-491A-A7D7-A3256D02F5EE}"
 	ProjectSection(SolutionItems) = preProject
 		Fop2ClientLib\Fop2Client.shfbproj = Fop2ClientLib\Fop2Client.shfbproj
+		README.txt = README.txt
 	EndProjectSection
 EndProject
 Global
