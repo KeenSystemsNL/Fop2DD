@@ -60,6 +60,11 @@ namespace Fop2ClientLib
         /// Occurs at the specified interval (<see cref="HeartbeatInterval"/>).
         /// </summary>
         public event HeartbeatEventHandler Heartbeat;
+
+        /// <summary>
+        /// Occurs when the client successfully authenticated.
+        /// </summary>
+        public event ConnectionErrorEventHandler ConnectionError;
         #endregion
 
         #region Private variables
@@ -201,9 +206,10 @@ namespace Fop2ClientLib
             _client = new AsyncClient(encoding);
             _client.Connected += (s) => { if (this.Connected != null) this.Connected(this); };  //Raise Connected event to subscribers
             _client.Disconnected += (s) => { _pingtimer.Enabled = false; this.ResetState(); if (this.Disconnected != null) this.Disconnected(this); };  //Disable heartbeat, reset state and raise disconnected event to subscribers
+            _client.ConnectionError += (s, e) => { if (this.ConnectionError != null) this.ConnectionError(this, e); };  //Raise ConnectionError event to subscribers
             _client.DataSent += client_DataSent;
             _client.DataReceived += client_DataReceived;
-
+            
             //Register (temporary) URI parser
             //HACK: we're using a GenericUriParser to quickly parse a host:port IPEndpoint (see Connect(hostnameandport) overload) with a pretty uncommon scheme :P
             if (!_uriparserregistered)
