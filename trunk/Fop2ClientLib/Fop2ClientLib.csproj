@@ -53,7 +53,9 @@
   <ItemGroup>
     <Compile Include="Fop2Client\AsyncClient\AsyncClient.cs" />
     <Compile Include="Fop2Client\AsyncClient\DataEventArgs.cs" />
+    <Compile Include="Fop2Client\AuthenticationResultReceivedEventArgs.cs" />
     <Compile Include="Fop2Client\ConnectionErrorEventArgs.cs" />
+    <Compile Include="Fop2Client\ConnectionStateChangedEventArgs.cs" />
     <Compile Include="Fop2Client\Fop2Client.cs" />
     <Compile Include="Fop2Client\Fop2FatClient.cs" />
     <Compile Include="Fop2Message.cs" />

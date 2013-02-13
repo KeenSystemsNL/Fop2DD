@@ -4,16 +4,11 @@ using System.Net;
 namespace Fop2ClientLib
 {
     /// <summary>
-    /// Represents the method that will handle the <see cref="IFop2Client.Disconnected"/> event.
+    /// Represents the method that will handle the <see cref="IFop2Client.ConnectionStateChanged"/> event.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    public delegate void DisconnectedEventHandler(object sender);
-
-    /// <summary>
-    /// Represents the method that will handle the <see cref="IFop2Client.Connected"/> event.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    public delegate void ConnectedEventHandler(object sender);
+    /// <param name="e">A <see cref="ConnectionStateChangedEventArgs"/> containing information about the connectionstate change.</param>
+    public delegate void ConnectionStateChangedEventHandler(object sender, ConnectionStateChangedEventArgs e);
 
     /// <summary>
     /// Represents the method that will handle the <see cref="IFop2Client.MessageSent"/> event.
@@ -30,16 +25,11 @@ namespace Fop2ClientLib
     public delegate void MessageReceivedEventHandler(object sender, MessageReceivedEventArgs e);
 
     /// <summary>
-    /// Represents the method that will handle the <see cref="IFop2Client.AuthenticationFailed"/> event.
+    /// Represents the method that will handle the <see cref="IFop2Client.AuthenticationResultReceived"/> event.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    public delegate void AuthenticationFailedEventHandler(object sender);
-
-    /// <summary>
-    /// Represents the method that will handle the <see cref="IFop2Client.AuthenticationSucceeded"/> event.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    public delegate void AuthenticationSucceededEventHandler(object sender);
+    /// <param name="e">An <see cref="AuthenticationResultReceivedEventArgs"/> containing information about the received authentication status.</param>
+    public delegate void AuthenticationResultReceivedEventHandler(object sender, AuthenticationResultReceivedEventArgs e);
 
     /// <summary>
     /// Represents the method that will handle the <see cref="IFop2Client.Heartbeat"/> event.
@@ -57,10 +47,8 @@ namespace Fop2ClientLib
 
     interface IFop2Client
     {
-        event AuthenticationFailedEventHandler AuthenticationFailed;
-        event AuthenticationSucceededEventHandler AuthenticationSucceeded;
-        event ConnectedEventHandler Connected;
-        event DisconnectedEventHandler Disconnected;
+        event AuthenticationResultReceivedEventHandler AuthenticationResultReceived;
+        event ConnectionStateChangedEventHandler ConnectionStateChanged;
         event HeartbeatEventHandler Heartbeat;
         event MessageReceivedEventHandler MessageReceived;
         event MessageSentEventHandler MessageSent;

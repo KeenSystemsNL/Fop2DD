@@ -2,11 +2,17 @@
 
 namespace Fop2ClientLib
 {
+    /// <summary>
+    /// Base class for MessageReceived/Sent events
+    /// </summary>
+    public abstract class MessageEventArgs : EventArgs
+    {
+    }
 
     /// <summary>
     /// Provides data for the <see cref="IFop2Client.MessageReceived"/> event.
     /// </summary>
-    public class MessageReceivedEventArgs : EventArgs
+    public class MessageReceivedEventArgs : MessageEventArgs
     {
         /// <summary>
         /// Gets the message that was received by a client.
@@ -26,7 +32,7 @@ namespace Fop2ClientLib
     /// <summary>
     /// Provides data for the <see cref="IFop2Client.MessageSent"/> event.
     /// </summary>
-    public class MessageSentEventArgs : EventArgs
+    public class MessageSentEventArgs : MessageEventArgs
     {
         /// <summary>
         /// Gets the message that was sent by a client.

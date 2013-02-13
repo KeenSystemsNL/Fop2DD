@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -27,14 +26,9 @@ namespace Fop2ClientLib
     {
         #region Events
         /// <summary>
-        /// Occurs when the client is disconnected from the host.
+        /// Occurs when the clients connection state changes.
         /// </summary>
-        public event DisconnectedEventHandler Disconnected;
-
-        /// <summary>
-        /// Occurs when the client is connected to the host.
-        /// </summary>
-        public event ConnectedEventHandler Connected;
+        public event ConnectionStateChangedEventHandler ConnectionStateChanged;
 
         /// <summary>
         /// Occurs when the client has sent a message to the host.
@@ -47,14 +41,9 @@ namespace Fop2ClientLib
         public event MessageReceivedEventHandler MessageReceived;
 
         /// <summary>
-        /// Occurs when the client could not successfully authenticate.
+        /// Occurs when the client received and authenticaiton result.
         /// </summary>
-        public event AuthenticationFailedEventHandler AuthenticationFailed;
-
-        /// <summary>
-        /// Occurs when the client successfully authenticated.
-        /// </summary>
-        public event AuthenticationSucceededEventHandler AuthenticationSucceeded;
+        public event AuthenticationResultReceivedEventHandler AuthenticationResultReceived;
 
         /// <summary>
         /// Occurs at the specified interval (<see cref="HeartbeatInterval"/>).
@@ -204,8 +193,7 @@ namespace Fop2ClientLib
 
             //Initialize new Async client and subscribe to events
             _client = new AsyncClient(encoding);
-            _client.Connected += (s) => { if (this.Connected != null) this.Connected(this); };  //Raise Connected event to subscribers
-            _client.Disconnected += (s) => { _pingtimer.Enabled = false; this.ResetState(); if (this.Disconnected != null) this.Disconnected(this); };  //Disable heartbeat, reset state and raise disconnected event to subscribers
+            _client.ConnectionStateChanged += (s, e) => { if (this.ConnectionStateChanged != null) this.ConnectionStateChanged(this, e); };
             _client.ConnectionError += (s, e) => { if (this.ConnectionError != null) this.ConnectionError(this, e); };  //Raise ConnectionError event to subscribers
             _client.DataSent += client_DataSent;
             _client.DataReceived += client_DataReceived;
@@ -397,6 +385,8 @@ namespace Fop2ClientLib
         /// <param name="parsedmessage">The message to determine the auth result from.</param>
         private void CheckAuthResult(Fop2Message parsedmessage)
         {
+            AuthenticationStatus status = AuthenticationStatus.Failed;
+ 
             //We're checking already, do not check again
             _checkauthresult = false;
             //Check the actual result
@@ -405,9 +395,9 @@ namespace Fop2ClientLib
                 //Nope, authentication failed
                 this.ResetState();
 
-                //Notify subscribers authentication failed
-                if (this.AuthenticationFailed != null)
-                    this.AuthenticationFailed(this);
+                
+                if (this.AuthenticationResultReceived != null)
+                    this.AuthenticationResultReceived(this, new AuthenticationResultReceivedEventArgs(AuthenticationStatus.Failed));
             }
             else
             {
@@ -421,10 +411,13 @@ namespace Fop2ClientLib
                 //Start heartbeat
                 _pingtimer.Enabled = true;
 
-                //Notify subscribers authentication succeeded
-                if (this.AuthenticationSucceeded != null)
-                    this.AuthenticationSucceeded(this);
+                status = AuthenticationStatus.Success;
             }
+
+            //Notify subscribers about the authentication status
+            if (this.AuthenticationResultReceived != null)
+                this.AuthenticationResultReceived(this, new AuthenticationResultReceivedEventArgs(status));
+
         }
 
         /// <summary>
