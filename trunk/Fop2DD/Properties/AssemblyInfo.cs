@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Fop2DDClient")]
+[assembly: AssemblyTitle("Fop2DD")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Fop2DDClient")]
+[assembly: AssemblyProduct("Fop2DD")]
 [assembly: AssemblyCopyright("Copyright © 2013 KeenSystems")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -7,10 +7,13 @@
     <owners>KeenSystems, RobIII</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.Net library for building FOP2 clients</description>
+    <projectUrl>https://fop2dd.codeplex.com</projectUrl>
     <iconUrl>http://riii.nl/fop2clientliblogo</iconUrl>
+    <licenseUrl>https://fop2dd.codeplex.com/license</licenseUrl>
     <releaseNotes>Initial release.</releaseNotes>
+    <tags>FOP2 Flash Operator Panel</tags>
     <summary>
-
+      .Net FOP2 client library providing event-based communication with a FOP2 server.
     </summary>
     <language>en-US</language>
     <dependencies>
