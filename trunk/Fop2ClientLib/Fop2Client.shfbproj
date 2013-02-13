@@ -36,6 +36,13 @@
       <NamespaceSummaryItem name="Fop2ClientLib" isDocumented="True" xmlns="">Provides classes for easy event-based communication to a FOP2 server (see http://www.fop2.com)</NamespaceSummaryItem>
     </NamespaceSummaries>
     <KeepLogFile>False</KeepLogFile>
+    <SyntaxFilters>CSharp, VisualBasic</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <PresentationStyle>VS2005</PresentationStyle>
+    <Preliminary>False</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional

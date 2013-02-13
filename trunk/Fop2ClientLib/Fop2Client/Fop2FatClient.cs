@@ -9,7 +9,7 @@ namespace Fop2ClientLib
     /// Represents a FOP2 client (See <a href="http://www.fop2.com/">fop2.com</a>).
     /// </summary>
     /// <remarks>
-    /// This class is a descendant of Fop2Client; it extends the Fop2Client with methods abstracting
+    /// This class is a derived of a Fop2Client; it extends the Fop2Client with methods abstracting
     /// implementation details on the "Fop2 protocol"
     /// </remarks>
     public class Fop2FatClient : Fop2Client
