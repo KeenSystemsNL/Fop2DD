@@ -35,6 +35,8 @@ namespace Fop2ClientLib
 
         public event ConnectedEventHandler Connected;
 
+        public event ConnectionErrorEventHandler ConnectionError;
+
         public Encoding Encoding { get; private set; }
 
         public AsyncClient()
@@ -95,6 +97,11 @@ namespace Fop2ClientLib
                 networkStream = _client.GetStream();
 
                 RaiseEvent(() => { if (this.Connected != null) Connected(this); });
+            }
+            catch (SocketException ex)
+            {
+                RaiseEvent(() => { if (this.ConnectionError != null) ConnectionError(this, new ConnectionErrorEventArgs(ex)); });
+                return;
             }
             catch (Exception ex)
             {

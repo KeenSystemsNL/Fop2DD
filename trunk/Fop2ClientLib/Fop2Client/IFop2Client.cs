@@ -48,6 +48,13 @@ namespace Fop2ClientLib
     /// <param name="e">A <see cref="HeartbeatEventArgs"/> containing information about the heartbeat "reply" (e.g. "pong") received.</param>
     public delegate void HeartbeatEventHandler(object sender, HeartbeatEventArgs e);
 
+    /// <summary>
+    /// Represents the method that will handle the <see cref="IFop2Client.ConnectionError"/> event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="ConnectionErrorEventArgs"/> containing information about the error.</param>
+    public delegate void ConnectionErrorEventHandler(object sender, ConnectionErrorEventArgs e);
+
     interface IFop2Client
     {
         event AuthenticationFailedEventHandler AuthenticationFailed;
@@ -57,6 +64,7 @@ namespace Fop2ClientLib
         event HeartbeatEventHandler Heartbeat;
         event MessageReceivedEventHandler MessageReceived;
         event MessageSentEventHandler MessageSent;
+        event ConnectionErrorEventHandler ConnectionError;
         
         void Authenticate(string context, string username, string password);
         void Connect(string host, int port);
