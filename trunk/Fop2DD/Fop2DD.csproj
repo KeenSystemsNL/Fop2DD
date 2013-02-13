@@ -7,8 +7,8 @@
     <ProjectGuid>{0A68BB4A-8A2F-4D34-A2B8-15DE6D194F73}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fop2DDClient</RootNamespace>
-    <AssemblyName>Fop2DDClient</AssemblyName>
+    <RootNamespace>Fop2DD</RootNamespace>
+    <AssemblyName>Fop2DD</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

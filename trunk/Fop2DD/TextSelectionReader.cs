@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows.Automation;
 using System.Windows.Forms;
 
-namespace Fop2DDClient
+namespace Fop2DD
 {
     // WARNING: The code below is NOT for the faint of heart. Exceptions are swallowed freely, sendkeys
     //          is used, P/Invokes are all over the place...

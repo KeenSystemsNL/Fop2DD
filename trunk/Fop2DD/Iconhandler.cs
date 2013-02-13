@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
-namespace Fop2DDClient
+namespace Fop2DD
 {
     public static class Iconhandler
     {
