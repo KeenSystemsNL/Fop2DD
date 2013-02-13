@@ -112,15 +112,18 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="NotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="NotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <metadata name="contextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>125, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="NotifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
@@ -141,6 +144,33 @@
         w//d3d3/3d3d/9vb2//b29v/2dnZ/9jY2P/W1tb/09PT/9HR0f/Ozs7/zMzM/8jIyP+ampr/VlZW74KC
         ghGWlpbRoKCg7aGhoe2goKDtnp6e7Zqamu2UlJTtj4+P7YiIiO2BgYHtfHx87XZ2du1vb2/tXl5e0z4+
         Phf///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8BAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
+        //8AAP//AAD//w==
+</value>
+  </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>249, 17</value>
+  </metadata>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAD///8B////Af///wH///8BET1V9yhfh/tJiL37Qo28wS13syP///8B////Af///wH///8B////Af//
+        /wH///8B////AYhYPtefclX/qnpa/y1lgv+Ux/n/kcn5/0GFyf8iZKb/hGpk/5NiTv+RYU7/j19M/4NT
+        RP9dMiuN////Af///wG0iF//z66P/8+xkf9Diar/4PL//1Sa2P8aer7/SZjF/0KFuv+omo3/vp1+/7yb
+        e/+zj3H/eU5B+f///wH///8Buo5n/9W3mP/InXT/g4aA/3q21f+Qt9H/Vcnk/1vf9f940O3/S5PP/6OD
+        av+ygVn/t5N2/39URfn///8B////Ab+Ta//Xup3/zKF6/+C6l/+Pl5D/dbfU/8L2/f9j3/f/XeL4/3nT
+        8P9HlNb/qIx1/7aRcv95TkHV////Af///wHBmXP95862/+bBn//z2cD///37/7HW5/93y+f/x/f9/17c
+        9f9a4ff/e9Tx/0qX2P+1pZX/h0w/0f///wH///8BoHBLy9a+pf/r0bj/9dvD//748v//////v+j1/3nT
+        7v/H9/3/X9z1/1vi9/961vL/S5nW/2ZVZJX///8B////AbCCVB+/nX3359C4//Paw//98OT/////////
+        ///B6/f/fdTu/8T2/f9s3fb/bcrt/2Oj1/9dm9LtUZLKJ////wH///8Bs41qp9S7of/z3cn//enY////
+        /////////////7Xm9f+A1Oz/suP5/4vA5/+u0/b/xOD8/2af0/eneEldpo1x5bGchOfNtJr/79fB/8as
+        k/+zlHn/sJBz/62Mb/+riWz/epeT/3e+5/+00vD/5fP//6zS7/9IicLxxqOA/72fgv+8nYT/v5+F/+bR
+        vv/sy63/6smq/+nHp//pxaX/58Kh/+XAnf+kvbz/WKXY/4Wx2/9GndD/YWx7/8yujP/gzrz/2cCp/9Ox
+        kv+2iWP/4r2b/7KFXv+wg17/roBb/7B/Wf/cs47/rHhR/66DYv+/n4H/xa6U/4piU//MrYv/4c++/9i9
+        pP/VuqD/tY1t/93Apf+3j3D/1bug/9O2nP+zimv/07OU/6Z3WP+8l3X/upRy/8ewmP+JYVL/wZpw497F
+        qf/w3Mr/8NzK/+/byP/v28j/7tnF/+3Xw//s1sD/6tO9/+nRuv/mzrf/5cy0/+LJr/+4mX3/cEk977SE
+        URHAmG3RxqJ77cehe+3FoHvtxJ947b+ade26k27ttY5p7a6GY+2nf1ztoHZY7ZduVe2PZU/tflA/01wn
+        IBf///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af//
         /wH///8BAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
         //8AAP//AAD//w==
 </value>

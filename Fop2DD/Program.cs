@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Fop2DDClient
+namespace Fop2DD
 {
     static class Program
     {

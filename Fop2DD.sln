@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2DDClient", "Fop2DDClient\Fop2DDClient.csproj", "{0A68BB4A-8A2F-4D34-A2B8-15DE6D194F73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2DD", "Fop2DD\Fop2DD.csproj", "{0A68BB4A-8A2F-4D34-A2B8-15DE6D194F73}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AFFD7B4F-0328-420B-A511-3A044201509D}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,13 +24,13 @@ Global
 		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Fop2DDClient\\Fop2DDClient.csproj
-		SccProjectName1 = Fop2DDClient
-		SccLocalPath1 = Fop2DDClient
-		SccProjectUniqueName2 = Fop2ClientLib\\Fop2ClientLib.csproj
-		SccProjectName2 = Fop2ClientLib
-		SccLocalPath2 = Fop2ClientLib
+		SccProjectUniqueName0 = Fop2ClientLib\\Fop2ClientLib.csproj
+		SccProjectName0 = Fop2ClientLib
+		SccLocalPath0 = Fop2ClientLib
+		SccProjectUniqueName1 = Fop2DD\\Fop2DD.csproj
+		SccProjectName1 = Fop2DD
+		SccLocalPath1 = Fop2DD
+		SccLocalPath2 = .
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

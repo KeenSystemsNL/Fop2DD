@@ -6,15 +6,16 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Forms.Design;
 
-namespace Fop2DDClient
+namespace Fop2DD
 {
     public partial class MainForm : Form
     {
         private Fop2FatClient _client;
 
         private HotKeyManager _hotkeymanager;
-        private PhonenumberGrabber _png;
+        private PhonenumberGrabber _phonenumbergrabber;
 
         public MainForm()
         {
@@ -25,26 +26,47 @@ namespace Fop2DDClient
             _hotkeymanager.KeyPressed += hotkeymanager_KeyPressed;
             _hotkeymanager.Register(Key.F8, System.Windows.Input.ModifierKeys.Control);
 
-            _png = new PhonenumberGrabber();
+            _phonenumbergrabber = new PhonenumberGrabber();
+
+            this.SetTrayStatus(null);
         }
 
         private void hotkeymanager_KeyPressed(object sender, KeyPressedEventArgs e)
         {
-            var numbers = _png.TryGrabPhonenumbersFromSelection(6);
-            _client.Dial(numbers.First());
+            var numbers = _phonenumbergrabber.TryGrabPhonenumbersFromSelection(6);
+            //_client.Dial(numbers.First());
+            Trace.WriteLine(string.Join("\r\n", numbers));
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             _client.MessageReceived += _client_MessageReceived;
             _client.MessageSent += _client_MessageSent;
-            _client.Connected += (s) => { NotifyIcon.Icon = Iconhandler.LoadIcon("online"); };
-            _client.Disconnected += (s) => { NotifyIcon.Icon = Iconhandler.LoadIcon("offline"); };
-            _client.AuthenticationFailed += (s) => { NotifyIcon.Icon = Iconhandler.LoadIcon("authfailure"); };
-            _client.AuthenticationSucceeded += (s) => { NotifyIcon.Icon = Iconhandler.LoadIcon("online"); };
+            _client.Connected += (s) => { this.SetTrayStatus("Connected", "online"); };
+            _client.Disconnected += (s) => { this.SetTrayStatus("Disconnected", "offline"); };
+            _client.ConnectionError += (s, ce) => { this.SetTrayStatus("Connection error: " + ce.Exception.Message, "error"); };
+            _client.AuthenticationFailed += (s) => { this.SetTrayStatus("Logon failed", "authfailure"); };
+            _client.AuthenticationSucceeded += (s) => { this.SetTrayStatus("Online", "online"); };
+
             //_client.Heartbeat += (s, hea) => { Trace.WriteLine("Heartbeat"); };
 
             textBox1.Text = _client.HeartbeatInterval.Seconds.ToString();
+        }
+
+        private void SetTrayStatus(string status)
+        {
+            this.SetTrayStatus(status, null);
+        }
+
+        private void SetTrayStatus(string status, string icon)
+        {
+            toolStripStatusLabel.Text = status;
+            
+            //Max length for notifyicon tooltip is 63 chars
+            var tooltip = (status ?? string.Empty);
+            NotifyIcon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip; ;
+            if (icon != null)
+                NotifyIcon.Icon = Iconhandler.LoadIcon(icon);
         }
 
         void _client_MessageSent(object sender, MessageSentEventArgs e)
@@ -59,7 +81,9 @@ namespace Fop2DDClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _client.Connect("192.168.10.5:4445");
+            var ipendpoint = "192.168.10.5:4445"; 
+            _client.Connect(ipendpoint);
+            this.SetTrayStatus(string.Format("Connecting to {0}", ipendpoint));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,6 +119,22 @@ namespace Fop2DDClient
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             _hotkeymanager.Dispose();
+        }
+    }
+
+    //http://stackoverflow.com/a/2904279
+    [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.StatusStrip)]
+    public class SpringLabel : ToolStripStatusLabel
+    {
+        public SpringLabel()
+        {
+            this.Spring = true;
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            var flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
+            var bounds = new Rectangle(0, 0, this.Bounds.Width, this.Bounds.Height);
+            TextRenderer.DrawText(e.Graphics, this.Text, this.Font, bounds, this.ForeColor, flags);
         }
     }
 }
