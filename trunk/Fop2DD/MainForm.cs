@@ -48,12 +48,19 @@ namespace Fop2DD
             this.passwordTextBox.Text = settings.Password;
             this.contextTextBox.Text = settings.PBXContext;
             this.pingIntervalTextBox.Text = settings.PingInterval.ToString();
+            this.fop2WebInterfaceTextBox.Text = settings.FOP2Url;
 
             hotkeyComboBox.SelectedItem = (si.Key)settings.Hotkey;
             hotkeyAltCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Alt) != 0;
             hotkeyCtrlCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Control) != 0;
             hotkeyWinCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Windows) != 0;
             hotkeyShiftCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Shift) != 0;
+
+            _client.ConnectionError += _client_ConnectionError;
+            _client.ConnectionStateChanged += _client_ConnectionStateChanged;
+            _client.AuthenticationResultReceived += _client_AuthenticationResultReceived;
+
+            this.Connect();
         }
 
         private void hotkeymanager_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -78,13 +85,6 @@ namespace Fop2DD
 
             if (dialnumber != null)
                 _client.Dial(dialnumber);
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            _client.ConnectionError += _client_ConnectionError;
-            _client.ConnectionStateChanged += _client_ConnectionStateChanged;
-            _client.AuthenticationResultReceived += _client_AuthenticationResultReceived;
         }
 
         private void _client_ConnectionError(object sender, ConnectionErrorEventArgs e)
@@ -148,6 +148,7 @@ namespace Fop2DD
             authenticationBox.Enabled = !isconnected;
             connectionBox.Enabled = !isconnected;
             hotkeyBox.Enabled = !isconnected;
+            commandsBox.Enabled = !isconnected;
         }
 
         private void Connect()
@@ -162,6 +163,7 @@ namespace Fop2DD
             settings.Username = this.usernameTextBox.Text;
             settings.Password = this.passwordTextBox.Text;
             settings.PBXContext = this.contextTextBox.Text;
+            settings.FOP2Url = this.fop2WebInterfaceTextBox.Text;
 
             if (_dialhotkey != null)
                 _hotkeymanager.Unregister(_dialhotkey);
@@ -261,6 +263,7 @@ namespace Fop2DD
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Trace.WriteLine("EXITING...");
             _hotkeymanager.Dispose();
             Application.Exit();
         }
@@ -309,6 +312,27 @@ namespace Fop2DD
         {
             using (var f = new AboutBox())
                 f.ShowDialog(this);
+        }
+
+        private string GetFOP2WebInterfaceURL()
+        {
+            var settings = Properties.Settings.Default;
+            return ShellExecutor.ReplacePlaceholder(settings.FOP2Url,
+            new[] {
+                new KeyValuePair<string, string>("%CONTEXT%", settings.PBXContext),
+                new KeyValuePair<string, string>("%USER%", settings.Username),
+                new KeyValuePair<string, string>("%PASS%", settings.Password)
+            });
+        }
+
+        private void contextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            fop2WebInterfaceToolStripMenuItem.Enabled = _client.IsAuthenticated && Uri.IsWellFormedUriString(this.GetFOP2WebInterfaceURL(), UriKind.Absolute);
+        }
+
+        private void fop2WebInterfaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShellExecutor.ExecuteCommand(new ShellCommand(this.GetFOP2WebInterfaceURL()));
         }
     }
 
