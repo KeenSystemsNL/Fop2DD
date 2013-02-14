@@ -102,6 +102,7 @@
     <EmbeddedResource Include="SelectNumber.resx">
       <DependentUpon>SelectNumber.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
