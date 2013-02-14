@@ -38,7 +38,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new Fop2DD.SpringLabel();
             this.connectionBox = new System.Windows.Forms.GroupBox();
             this.showAdvancedLabel = new System.Windows.Forms.LinkLabel();
             this.advancedConnection = new System.Windows.Forms.GroupBox();
@@ -56,20 +55,31 @@
             this.label6 = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.hotkeyBox = new System.Windows.Forms.GroupBox();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.hotkeyComboBox = new System.Windows.Forms.ComboBox();
+            this.hotkeyCtrlCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyAltCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyShiftCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyWinCheckBox = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.toolStripStatusLabel = new Fop2DD.SpringLabel();
             this.contextMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.connectionBox.SuspendLayout();
             this.advancedConnection.SuspendLayout();
             this.authenticationBox.SuspendLayout();
+            this.hotkeyBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(461, 189);
+            this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.connectButton.Location = new System.Drawing.Point(467, 206);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
-            this.connectButton.TabIndex = 0;
-            this.connectButton.Text = "Connect";
+            this.connectButton.TabIndex = 3;
+            this.connectButton.Text = "Apply";
             this.connectButton.UseVisualStyleBackColor = true;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
             // 
@@ -89,31 +99,31 @@
             this.exitToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(153, 98);
+            this.contextMenu.Size = new System.Drawing.Size(126, 76);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.settingsToolStripMenuItem.Text = "Settings...";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -122,18 +132,11 @@
             this.statusStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 227);
+            this.statusStrip.Location = new System.Drawing.Point(0, 234);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(557, 22);
             this.statusStrip.SizingGrip = false;
-            this.statusStrip.TabIndex = 7;
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(542, 17);
-            this.toolStripStatusLabel.Spring = true;
-            this.toolStripStatusLabel.Text = "-";
+            this.statusStrip.TabIndex = 4;
             // 
             // connectionBox
             // 
@@ -145,8 +148,8 @@
             this.connectionBox.Controls.Add(this.label1);
             this.connectionBox.Location = new System.Drawing.Point(12, 12);
             this.connectionBox.Name = "connectionBox";
-            this.connectionBox.Size = new System.Drawing.Size(262, 171);
-            this.connectionBox.TabIndex = 8;
+            this.connectionBox.Size = new System.Drawing.Size(262, 188);
+            this.connectionBox.TabIndex = 0;
             this.connectionBox.TabStop = false;
             this.connectionBox.Text = "FOP2 Connection";
             // 
@@ -161,7 +164,7 @@
             this.showAdvancedLabel.Location = new System.Drawing.Point(118, 88);
             this.showAdvancedLabel.Name = "showAdvancedLabel";
             this.showAdvancedLabel.Size = new System.Drawing.Size(134, 13);
-            this.showAdvancedLabel.TabIndex = 10;
+            this.showAdvancedLabel.TabIndex = 4;
             this.showAdvancedLabel.TabStop = true;
             this.showAdvancedLabel.Text = "▸ Show advanced options";
             this.showAdvancedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -172,10 +175,10 @@
             this.advancedConnection.Controls.Add(this.label4);
             this.advancedConnection.Controls.Add(this.label3);
             this.advancedConnection.Controls.Add(this.pingIntervalTextBox);
-            this.advancedConnection.Location = new System.Drawing.Point(6, 104);
+            this.advancedConnection.Location = new System.Drawing.Point(6, 117);
             this.advancedConnection.Name = "advancedConnection";
             this.advancedConnection.Size = new System.Drawing.Size(246, 61);
-            this.advancedConnection.TabIndex = 9;
+            this.advancedConnection.TabIndex = 5;
             this.advancedConnection.TabStop = false;
             this.advancedConnection.Text = "Advanced";
             this.advancedConnection.Visible = false;
@@ -186,7 +189,7 @@
             this.label4.Location = new System.Drawing.Point(141, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 2;
             this.label4.Text = "seconds";
             // 
             // label3
@@ -195,7 +198,7 @@
             this.label3.Location = new System.Drawing.Point(6, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Ping interval";
             // 
             // pingIntervalTextBox
@@ -204,8 +207,7 @@
             this.pingIntervalTextBox.MaxLength = 5;
             this.pingIntervalTextBox.Name = "pingIntervalTextBox";
             this.pingIntervalTextBox.Size = new System.Drawing.Size(50, 20);
-            this.pingIntervalTextBox.TabIndex = 5;
-            this.pingIntervalTextBox.Text = "20";
+            this.pingIntervalTextBox.TabIndex = 1;
             // 
             // portTextBox
             // 
@@ -214,7 +216,6 @@
             this.portTextBox.Name = "portTextBox";
             this.portTextBox.Size = new System.Drawing.Size(50, 20);
             this.portTextBox.TabIndex = 3;
-            this.portTextBox.Text = "4445";
             // 
             // label2
             // 
@@ -231,7 +232,6 @@
             this.hostTextBox.Name = "hostTextBox";
             this.hostTextBox.Size = new System.Drawing.Size(166, 20);
             this.hostTextBox.TabIndex = 1;
-            this.hostTextBox.Text = "192.168.10.5";
             // 
             // label1
             // 
@@ -252,8 +252,8 @@
             this.authenticationBox.Controls.Add(this.label5);
             this.authenticationBox.Location = new System.Drawing.Point(280, 13);
             this.authenticationBox.Name = "authenticationBox";
-            this.authenticationBox.Size = new System.Drawing.Size(262, 170);
-            this.authenticationBox.TabIndex = 9;
+            this.authenticationBox.Size = new System.Drawing.Size(262, 110);
+            this.authenticationBox.TabIndex = 1;
             this.authenticationBox.TabStop = false;
             this.authenticationBox.Text = "Authentication";
             // 
@@ -262,8 +262,7 @@
             this.contextTextBox.Location = new System.Drawing.Point(90, 25);
             this.contextTextBox.Name = "contextTextBox";
             this.contextTextBox.Size = new System.Drawing.Size(166, 20);
-            this.contextTextBox.TabIndex = 7;
-            this.contextTextBox.Text = "TESTA";
+            this.contextTextBox.TabIndex = 1;
             // 
             // label7
             // 
@@ -271,7 +270,7 @@
             this.label7.Location = new System.Drawing.Point(11, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 6;
+            this.label7.TabIndex = 0;
             this.label7.Text = "Context";
             // 
             // passwordTextBox
@@ -280,7 +279,6 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(166, 20);
             this.passwordTextBox.TabIndex = 5;
-            this.passwordTextBox.Text = "1234";
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // label6
@@ -298,7 +296,6 @@
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(166, 20);
             this.usernameTextBox.TabIndex = 3;
-            this.usernameTextBox.Text = "101";
             // 
             // label5
             // 
@@ -309,11 +306,92 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Username";
             // 
+            // hotkeyBox
+            // 
+            this.hotkeyBox.Controls.Add(this.label8);
+            this.hotkeyBox.Controls.Add(this.hotkeyWinCheckBox);
+            this.hotkeyBox.Controls.Add(this.hotkeyShiftCheckBox);
+            this.hotkeyBox.Controls.Add(this.hotkeyAltCheckBox);
+            this.hotkeyBox.Controls.Add(this.hotkeyCtrlCheckBox);
+            this.hotkeyBox.Controls.Add(this.hotkeyComboBox);
+            this.hotkeyBox.Location = new System.Drawing.Point(280, 129);
+            this.hotkeyBox.Name = "hotkeyBox";
+            this.hotkeyBox.Size = new System.Drawing.Size(262, 71);
+            this.hotkeyBox.TabIndex = 2;
+            this.hotkeyBox.TabStop = false;
+            this.hotkeyBox.Text = "Dial hotkey";
+            // 
+            // hotkeyComboBox
+            // 
+            this.hotkeyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.hotkeyComboBox.FormattingEnabled = true;
+            this.hotkeyComboBox.Location = new System.Drawing.Point(158, 29);
+            this.hotkeyComboBox.Name = "hotkeyComboBox";
+            this.hotkeyComboBox.Size = new System.Drawing.Size(98, 21);
+            this.hotkeyComboBox.TabIndex = 5;
+            // 
+            // hotkeyCtrlCheckBox
+            // 
+            this.hotkeyCtrlCheckBox.AutoSize = true;
+            this.hotkeyCtrlCheckBox.Location = new System.Drawing.Point(7, 20);
+            this.hotkeyCtrlCheckBox.Name = "hotkeyCtrlCheckBox";
+            this.hotkeyCtrlCheckBox.Size = new System.Drawing.Size(54, 17);
+            this.hotkeyCtrlCheckBox.TabIndex = 0;
+            this.hotkeyCtrlCheckBox.Text = "CTRL";
+            this.hotkeyCtrlCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyAltCheckBox
+            // 
+            this.hotkeyAltCheckBox.AutoSize = true;
+            this.hotkeyAltCheckBox.Location = new System.Drawing.Point(6, 43);
+            this.hotkeyAltCheckBox.Name = "hotkeyAltCheckBox";
+            this.hotkeyAltCheckBox.Size = new System.Drawing.Size(46, 17);
+            this.hotkeyAltCheckBox.TabIndex = 2;
+            this.hotkeyAltCheckBox.Text = "ALT";
+            this.hotkeyAltCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyShiftCheckBox
+            // 
+            this.hotkeyShiftCheckBox.AutoSize = true;
+            this.hotkeyShiftCheckBox.Location = new System.Drawing.Point(67, 20);
+            this.hotkeyShiftCheckBox.Name = "hotkeyShiftCheckBox";
+            this.hotkeyShiftCheckBox.Size = new System.Drawing.Size(57, 17);
+            this.hotkeyShiftCheckBox.TabIndex = 1;
+            this.hotkeyShiftCheckBox.Text = "SHIFT";
+            this.hotkeyShiftCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyWinCheckBox
+            // 
+            this.hotkeyWinCheckBox.AutoSize = true;
+            this.hotkeyWinCheckBox.Location = new System.Drawing.Point(67, 43);
+            this.hotkeyWinCheckBox.Name = "hotkeyWinCheckBox";
+            this.hotkeyWinCheckBox.Size = new System.Drawing.Size(48, 17);
+            this.hotkeyWinCheckBox.TabIndex = 3;
+            this.hotkeyWinCheckBox.Text = "WIN";
+            this.hotkeyWinCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(130, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "+";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(12, 15);
+            this.toolStripStatusLabel.Spring = true;
+            this.toolStripStatusLabel.Text = "-";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 249);
+            this.ClientSize = new System.Drawing.Size(557, 256);
+            this.Controls.Add(this.hotkeyBox);
             this.Controls.Add(this.authenticationBox);
             this.Controls.Add(this.connectionBox);
             this.Controls.Add(this.statusStrip);
@@ -336,6 +414,8 @@
             this.advancedConnection.PerformLayout();
             this.authenticationBox.ResumeLayout(false);
             this.authenticationBox.PerformLayout();
+            this.hotkeyBox.ResumeLayout(false);
+            this.hotkeyBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,6 +449,14 @@
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.GroupBox hotkeyBox;
+        private System.Windows.Forms.ComboBox hotkeyComboBox;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox hotkeyWinCheckBox;
+        private System.Windows.Forms.CheckBox hotkeyShiftCheckBox;
+        private System.Windows.Forms.CheckBox hotkeyAltCheckBox;
+        private System.Windows.Forms.CheckBox hotkeyCtrlCheckBox;
     }
 }
 

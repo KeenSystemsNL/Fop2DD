@@ -5,8 +5,9 @@ using System.Linq;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Forms.Design;
+using System.Collections.Generic;
+using si = System.Windows.Input;
 
 namespace Fop2DD
 {
@@ -19,6 +20,8 @@ namespace Fop2DD
 
         private bool _autoreconnect;
         private bool _isexiting;
+        private HotKey _dialhotkey;
+        private bool _authfailed;
 
         public MainForm()
         {
@@ -31,13 +34,26 @@ namespace Fop2DD
 
             _hotkeymanager = new HotKeyManager();
             _hotkeymanager.KeyPressed += hotkeymanager_KeyPressed;
-            
-            //TODO: make this a setting
-            _hotkeymanager.Register(Key.F8, System.Windows.Input.ModifierKeys.Control);
 
             _phonenumbergrabber = new PhonenumberGrabber();
 
+            hotkeyComboBox.DataSource = Enum.GetValues(typeof(si.Key)).Cast<si.Key>();
+
             this.SetTrayStatus(null);
+
+            var settings = Properties.Settings.Default;
+            this.hostTextBox.Text = settings.Host;
+            this.portTextBox.Text = settings.Port.ToString();
+            this.usernameTextBox.Text = settings.Username;
+            this.passwordTextBox.Text = settings.Password;
+            this.contextTextBox.Text = settings.PBXContext;
+            this.pingIntervalTextBox.Text = settings.PingInterval.ToString();
+
+            hotkeyComboBox.SelectedItem = (si.Key)settings.Hotkey;
+            hotkeyAltCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Alt) != 0;
+            hotkeyCtrlCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Control) != 0;
+            hotkeyWinCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Windows) != 0;
+            hotkeyShiftCheckBox.Checked = (settings.HotkeyModifiers & (int)si.ModifierKeys.Shift) != 0;
         }
 
         private void hotkeymanager_KeyPressed(object sender, KeyPressedEventArgs e)
@@ -73,6 +89,8 @@ namespace Fop2DD
 
         private void _client_ConnectionError(object sender, ConnectionErrorEventArgs e)
         {
+            if (_dialhotkey != null)
+                _hotkeymanager.Unregister(_dialhotkey);
             this.SetFormState(false);
             this.SetTrayStatus("Connection error: " + e.Exception.Message, "error");
         }
@@ -83,10 +101,13 @@ namespace Fop2DD
             {
                 this.SetTrayStatus("Online", "online");
                 _autoreconnect = true;
+
+                Properties.Settings.Default.Save();
             }
             else
             {
-                this.SetTrayStatus("Logon failed", "authfailure");
+                _authfailed = true;
+                _client.Disconnect();
             }
         }
 
@@ -94,12 +115,19 @@ namespace Fop2DD
         {
             if (e.ConnectionState == ConnectionState.Connected)
             {
-                this.SetTrayStatus("Connected", "online"); 
+                this.SetTrayStatus("Connected", "online");
                 _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text);
             }
             else
             {
-                this.SetTrayStatus("Disconnected", "offline");
+                if (_dialhotkey != null)
+                    _hotkeymanager.Unregister(_dialhotkey);
+
+                if (_authfailed)
+                    this.SetTrayStatus("Logon failed", "authfailure");
+                else
+                    this.SetTrayStatus("Disconnected", "offline");
+
                 if (_autoreconnect)
                     this.Connect();
             }
@@ -114,22 +142,51 @@ namespace Fop2DD
             }
             else
             {
-                connectButton.Text = "Connect";
+                connectButton.Text = "Apply";
             }
             connectButton.Enabled = true;
             authenticationBox.Enabled = !isconnected;
             connectionBox.Enabled = !isconnected;
+            hotkeyBox.Enabled = !isconnected;
         }
 
         private void Connect()
         {
             _autoreconnect = false;
+            _authfailed = false;
 
-            var ipendpoint = string.Format("{0}:{1}", this.hostTextBox.Text, this.portTextBox.Text);
-            var pinginterval = TimeSpan.FromSeconds(int.Parse(pingIntervalTextBox.Text));
+            var settings = Properties.Settings.Default;
+            settings.Host = this.hostTextBox.Text;
+            settings.Port = int.Parse(this.portTextBox.Text);
+            settings.PingInterval = int.Parse(pingIntervalTextBox.Text);
+            settings.Username = this.usernameTextBox.Text;
+            settings.Password = this.passwordTextBox.Text;
+            settings.PBXContext = this.contextTextBox.Text;
 
-            if (_client.IsConnected)
-                _client.Disconnect();
+            if (_dialhotkey != null)
+                _hotkeymanager.Unregister(_dialhotkey);
+
+            if ((si.Key)hotkeyComboBox.SelectedValue != si.Key.None)
+            {
+                si.ModifierKeys modifiers = si.ModifierKeys.None;
+                modifiers |= hotkeyAltCheckBox.Checked ? si.ModifierKeys.Alt : si.ModifierKeys.None;
+                modifiers |= hotkeyCtrlCheckBox.Checked ? si.ModifierKeys.Control : si.ModifierKeys.None;
+                modifiers |= hotkeyWinCheckBox.Checked ? si.ModifierKeys.Windows : si.ModifierKeys.None;
+                modifiers |= hotkeyShiftCheckBox.Checked ? si.ModifierKeys.Shift : si.ModifierKeys.None;
+
+                _dialhotkey = new HotKey((si.Key)hotkeyComboBox.SelectedValue, modifiers);
+                _hotkeymanager.Register(_dialhotkey);
+
+                settings.Hotkey = (int)_dialhotkey.Key;
+                settings.HotkeyModifiers = (int)_dialhotkey.Modifiers;
+            }
+            else
+            {
+                _dialhotkey = null;
+            }
+
+            var ipendpoint = string.Format("{0}:{1}", settings.Host, settings.Port);
+            var pinginterval = TimeSpan.FromSeconds(settings.PingInterval);
 
             _client.HeartbeatInterval = pinginterval;
             _client.Connect(ipendpoint);
@@ -155,6 +212,7 @@ namespace Fop2DD
 
         private void connectButton_Click(object sender, EventArgs e)
         {
+            connectButton.Enabled = false;
             if (_client.IsConnected)
             {
                 _autoreconnect = false;
@@ -164,7 +222,6 @@ namespace Fop2DD
             {
                 this.Connect();
             }
-            connectButton.Enabled = false;
         }
 
         public void NotifyPopup(string title, string text)
