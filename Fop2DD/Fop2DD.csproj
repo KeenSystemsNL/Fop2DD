@@ -81,6 +81,7 @@
     <Compile Include="SelectNumber.Designer.cs">
       <DependentUpon>SelectNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shell.cs" />
     <Compile Include="TextSelectionReader.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
