@@ -82,7 +82,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SelectNumber";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select number to dial";
             this.ResumeLayout(false);
