@@ -56,7 +56,7 @@ namespace Fop2ClientLib
         
         void Authenticate(string context, string username, string password);
         void Connect(string host, int port);
-        void Connect(IPEndPoint ipendpoint);
+        void Connect(IPEndPoint ipendpoint, TimeSpan timeout);
         void Disconnect();
         void Send(params string[] args);
         void Send(string message);

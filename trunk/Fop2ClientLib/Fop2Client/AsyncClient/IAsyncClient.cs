@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 
 namespace Fop2ClientLib
@@ -12,7 +13,7 @@ namespace Fop2ClientLib
         event DataReceivedEventHandler DataReceived;
         event DataSentEventHandler DataSent;
         
-        void Connect(System.Net.IPEndPoint ipendpoint);
+        void Connect(IPEndPoint ipendpoint, TimeSpan timeout);
         void Disconnect();
 
         Encoding Encoding { get; }
