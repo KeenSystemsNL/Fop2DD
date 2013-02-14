@@ -11,13 +11,13 @@ namespace Fop2ClientLib
         /// <summary>
         /// Gets the exception containing information about the specific cause of the error
         /// </summary>
-        public SocketException Exception { get; private set; }
+        public Exception Exception { get; private set; }
 
         /// <summary>
         /// Initializes a new ConnectionErrorEventArgs.
         /// </summary>
         /// <param name="exception">Exception containing information about the specific cause of the error.</param>
-        internal ConnectionErrorEventArgs(SocketException exception)
+        internal ConnectionErrorEventArgs(Exception exception)
         {
             this.Exception = exception;
         }

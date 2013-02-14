@@ -87,6 +87,11 @@ namespace Fop2ClientLib
         /// </summary>
         private const int RCVSTRINGBUFFSIZE = 8 * 1024;
 
+        /// <summary>
+        /// Default connection timeout in seconds.
+        /// </summary>
+        private const int DEFAULTCONNECTTIMEOUT = 10;
+
         #region Public properties
         /// <summary>
         /// Gets whether the client is connected to the host.
@@ -428,7 +433,7 @@ namespace Fop2ClientLib
         public void Connect(string hostnameandport)
         {
             var u = new Uri(string.Format("fop2clientlibipendpoint://{0}", hostnameandport));
-            this.Connect(u.Host, u.Port);
+            this.Connect(u.Host, u.Port, TimeSpan.FromSeconds(DEFAULTCONNECTTIMEOUT));
         }
 
         /// <summary>
@@ -438,7 +443,30 @@ namespace Fop2ClientLib
         /// <param name="port">The port to connect to.</param>
         public void Connect(string host, int port)
         {
-            this.Connect(new IPEndPoint(Dns.GetHostAddresses(host).First(), port));
+            this.Connect(new IPEndPoint(Dns.GetHostAddresses(host).First(), port), TimeSpan.FromSeconds(DEFAULTCONNECTTIMEOUT));
+        }
+
+        /// <summary>
+        /// Connects to the specified host and port.
+        /// </summary>
+        /// <param name="hostnameandport">The host (Ip or hostname) and port to connect to.</param>
+        /// <param name="timeout">Specifies the timespan after wich a timeout exception will be thrown during connecting to the other host.</param>
+        /// <remarks>User hostname:port notation for this method.</remarks>
+        public void Connect(string hostnameandport, TimeSpan timeout)
+        {
+            var u = new Uri(string.Format("fop2clientlibipendpoint://{0}", hostnameandport));
+            this.Connect(u.Host, u.Port, timeout);
+        }
+
+        /// <summary>
+        /// Connects to the specified host.
+        /// </summary>
+        /// <param name="host">The host (Ip or hostname) to connect to.</param>
+        /// <param name="port">The port to connect to.</param>
+        /// <param name="timeout">Specifies the timespan after wich a timeout exception will be thrown during connecting to the other host.</param>
+        public void Connect(string host, int port, TimeSpan timeout)
+        {
+            this.Connect(new IPEndPoint(Dns.GetHostAddresses(host).First(), port), timeout);
         }
 
         /// <summary>
@@ -448,10 +476,21 @@ namespace Fop2ClientLib
         /// <exception cref="ArgumentNullException">Thrown when ipendpoint is null.</exception>
         public void Connect(IPEndPoint ipendpoint)
         {
+            this.Connect(ipendpoint, TimeSpan.FromSeconds(DEFAULTCONNECTTIMEOUT));
+        }
+
+        /// <summary>
+        /// Connects to the specified host.
+        /// </summary>
+        /// <param name="ipendpoint">The IpEndpoint to connect to.</param>
+        /// <param name="timeout">Specifies the timespan after wich a timeout exception will be thrown during connecting to the other host.</param>
+        /// <exception cref="ArgumentNullException">Thrown when ipendpoint is null.</exception>
+        public void Connect(IPEndPoint ipendpoint, TimeSpan timeout)
+        {
             if (ipendpoint == null)
                 throw new ArgumentNullException("ipendpoint");
 
-            _client.Connect(ipendpoint);
+            _client.Connect(ipendpoint, timeout);
         }
 
         /// <summary>

@@ -24,6 +24,8 @@ namespace Fop2ClientLib
 
         private TcpClient _client;
         private int _buffersize;
+        private bool _connecttimedout;
+        private Timer _connecttimeouttimer;
 
         private AsyncOperation _operation;
 
@@ -53,13 +55,13 @@ namespace Fop2ClientLib
         {
             get
             {
-                if (_client == null)
+                if ((_client == null) || (_client.Client == null))
                     return false;
                 return _client.Connected;
             }
         }
 
-        public void Connect(IPEndPoint ipendpoint)
+        public void Connect(IPEndPoint ipendpoint, TimeSpan timeout)
         {
             _operation = AsyncOperationManager.CreateOperation(null);
 
@@ -67,6 +69,15 @@ namespace Fop2ClientLib
             _client.NoDelay = true;
 
             _client.BeginConnect(ipendpoint.Address, ipendpoint.Port, new AsyncCallback(EndConnect), new StateObject(null));
+
+            _connecttimedout = false;
+            _connecttimeouttimer = new Timer((si) =>
+            {
+                _connecttimeouttimer.Dispose();
+                _connecttimeouttimer = null;
+                _connecttimedout = true;
+                _client.Close();
+            }, null, (int)timeout.TotalMilliseconds, Timeout.Infinite);
         }
 
         public void Disconnect()
@@ -86,6 +97,15 @@ namespace Fop2ClientLib
 
         private void EndConnect(IAsyncResult result)
         {
+            if (_connecttimedout)
+            {
+                RaiseEvent(() => { if (this.ConnectionError != null) ConnectionError(this, new ConnectionErrorEventArgs(new TimeoutException())); });
+                return;
+            }
+
+            // stop the timeout timer
+            _connecttimeouttimer.Dispose();
+
             var so = result.AsyncState as StateObject;
             NetworkStream networkStream;
 
