@@ -33,10 +33,11 @@
             this.connectButton = new System.Windows.Forms.Button();
             this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fop2WebInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.connectionBox = new System.Windows.Forms.GroupBox();
             this.showAdvancedLabel = new System.Windows.Forms.LinkLabel();
@@ -56,13 +57,15 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.hotkeyBox = new System.Windows.Forms.GroupBox();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.hotkeyComboBox = new System.Windows.Forms.ComboBox();
-            this.hotkeyCtrlCheckBox = new System.Windows.Forms.CheckBox();
-            this.hotkeyAltCheckBox = new System.Windows.Forms.CheckBox();
-            this.hotkeyShiftCheckBox = new System.Windows.Forms.CheckBox();
-            this.hotkeyWinCheckBox = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.hotkeyWinCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyShiftCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyAltCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyCtrlCheckBox = new System.Windows.Forms.CheckBox();
+            this.hotkeyComboBox = new System.Windows.Forms.ComboBox();
+            this.commandsBox = new System.Windows.Forms.GroupBox();
+            this.fop2WebInterfaceTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.toolStripStatusLabel = new Fop2DD.SpringLabel();
             this.contextMenu.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -70,12 +73,13 @@
             this.advancedConnection.SuspendLayout();
             this.authenticationBox.SuspendLayout();
             this.hotkeyBox.SuspendLayout();
+            this.commandsBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // connectButton
             // 
             this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.connectButton.Location = new System.Drawing.Point(467, 206);
+            this.connectButton.Location = new System.Drawing.Point(467, 354);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
             this.connectButton.TabIndex = 3;
@@ -94,45 +98,58 @@
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fop2WebInterfaceToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.exitToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(126, 76);
+            this.contextMenu.Size = new System.Drawing.Size(179, 98);
+            this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
+            // 
+            // fop2WebInterfaceToolStripMenuItem
+            // 
+            this.fop2WebInterfaceToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fop2WebInterfaceToolStripMenuItem.Image")));
+            this.fop2WebInterfaceToolStripMenuItem.Name = "fop2WebInterfaceToolStripMenuItem";
+            this.fop2WebInterfaceToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.fop2WebInterfaceToolStripMenuItem.Text = "FOP2 Web Interface";
+            this.fop2WebInterfaceToolStripMenuItem.Click += new System.EventHandler(this.fop2WebInterfaceToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
+            this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.settingsToolStripMenuItem.Text = "Settings...";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(175, 6);
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
             this.statusStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 234);
+            this.statusStrip.Location = new System.Drawing.Point(0, 382);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(557, 22);
             this.statusStrip.SizingGrip = false;
@@ -321,44 +338,14 @@
             this.hotkeyBox.TabStop = false;
             this.hotkeyBox.Text = "Dial hotkey";
             // 
-            // hotkeyComboBox
+            // label8
             // 
-            this.hotkeyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.hotkeyComboBox.FormattingEnabled = true;
-            this.hotkeyComboBox.Location = new System.Drawing.Point(158, 29);
-            this.hotkeyComboBox.Name = "hotkeyComboBox";
-            this.hotkeyComboBox.Size = new System.Drawing.Size(98, 21);
-            this.hotkeyComboBox.TabIndex = 5;
-            // 
-            // hotkeyCtrlCheckBox
-            // 
-            this.hotkeyCtrlCheckBox.AutoSize = true;
-            this.hotkeyCtrlCheckBox.Location = new System.Drawing.Point(7, 20);
-            this.hotkeyCtrlCheckBox.Name = "hotkeyCtrlCheckBox";
-            this.hotkeyCtrlCheckBox.Size = new System.Drawing.Size(54, 17);
-            this.hotkeyCtrlCheckBox.TabIndex = 0;
-            this.hotkeyCtrlCheckBox.Text = "CTRL";
-            this.hotkeyCtrlCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // hotkeyAltCheckBox
-            // 
-            this.hotkeyAltCheckBox.AutoSize = true;
-            this.hotkeyAltCheckBox.Location = new System.Drawing.Point(6, 43);
-            this.hotkeyAltCheckBox.Name = "hotkeyAltCheckBox";
-            this.hotkeyAltCheckBox.Size = new System.Drawing.Size(46, 17);
-            this.hotkeyAltCheckBox.TabIndex = 2;
-            this.hotkeyAltCheckBox.Text = "ALT";
-            this.hotkeyAltCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // hotkeyShiftCheckBox
-            // 
-            this.hotkeyShiftCheckBox.AutoSize = true;
-            this.hotkeyShiftCheckBox.Location = new System.Drawing.Point(67, 20);
-            this.hotkeyShiftCheckBox.Name = "hotkeyShiftCheckBox";
-            this.hotkeyShiftCheckBox.Size = new System.Drawing.Size(57, 17);
-            this.hotkeyShiftCheckBox.TabIndex = 1;
-            this.hotkeyShiftCheckBox.Text = "SHIFT";
-            this.hotkeyShiftCheckBox.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(130, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "+";
             // 
             // hotkeyWinCheckBox
             // 
@@ -370,14 +357,73 @@
             this.hotkeyWinCheckBox.Text = "WIN";
             this.hotkeyWinCheckBox.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // hotkeyShiftCheckBox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(130, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "+";
+            this.hotkeyShiftCheckBox.AutoSize = true;
+            this.hotkeyShiftCheckBox.Location = new System.Drawing.Point(67, 20);
+            this.hotkeyShiftCheckBox.Name = "hotkeyShiftCheckBox";
+            this.hotkeyShiftCheckBox.Size = new System.Drawing.Size(57, 17);
+            this.hotkeyShiftCheckBox.TabIndex = 1;
+            this.hotkeyShiftCheckBox.Text = "SHIFT";
+            this.hotkeyShiftCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyAltCheckBox
+            // 
+            this.hotkeyAltCheckBox.AutoSize = true;
+            this.hotkeyAltCheckBox.Location = new System.Drawing.Point(6, 43);
+            this.hotkeyAltCheckBox.Name = "hotkeyAltCheckBox";
+            this.hotkeyAltCheckBox.Size = new System.Drawing.Size(46, 17);
+            this.hotkeyAltCheckBox.TabIndex = 2;
+            this.hotkeyAltCheckBox.Text = "ALT";
+            this.hotkeyAltCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyCtrlCheckBox
+            // 
+            this.hotkeyCtrlCheckBox.AutoSize = true;
+            this.hotkeyCtrlCheckBox.Location = new System.Drawing.Point(7, 20);
+            this.hotkeyCtrlCheckBox.Name = "hotkeyCtrlCheckBox";
+            this.hotkeyCtrlCheckBox.Size = new System.Drawing.Size(54, 17);
+            this.hotkeyCtrlCheckBox.TabIndex = 0;
+            this.hotkeyCtrlCheckBox.Text = "CTRL";
+            this.hotkeyCtrlCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hotkeyComboBox
+            // 
+            this.hotkeyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.hotkeyComboBox.FormattingEnabled = true;
+            this.hotkeyComboBox.Location = new System.Drawing.Point(158, 29);
+            this.hotkeyComboBox.Name = "hotkeyComboBox";
+            this.hotkeyComboBox.Size = new System.Drawing.Size(98, 21);
+            this.hotkeyComboBox.TabIndex = 5;
+            // 
+            // commandsBox
+            // 
+            this.commandsBox.Controls.Add(this.fop2WebInterfaceTextBox);
+            this.commandsBox.Controls.Add(this.label9);
+            this.commandsBox.Location = new System.Drawing.Point(12, 206);
+            this.commandsBox.Name = "commandsBox";
+            this.commandsBox.Size = new System.Drawing.Size(530, 142);
+            this.commandsBox.TabIndex = 5;
+            this.commandsBox.TabStop = false;
+            this.commandsBox.Text = "Commands";
+            // 
+            // fop2WebInterfaceTextBox
+            // 
+            this.fop2WebInterfaceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fop2WebInterfaceTextBox.Location = new System.Drawing.Point(150, 29);
+            this.fop2WebInterfaceTextBox.Name = "fop2WebInterfaceTextBox";
+            this.fop2WebInterfaceTextBox.Size = new System.Drawing.Size(374, 20);
+            this.fop2WebInterfaceTextBox.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(104, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "FOP2 Web interface";
             // 
             // toolStripStatusLabel
             // 
@@ -390,7 +436,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 256);
+            this.ClientSize = new System.Drawing.Size(557, 404);
+            this.Controls.Add(this.commandsBox);
             this.Controls.Add(this.hotkeyBox);
             this.Controls.Add(this.authenticationBox);
             this.Controls.Add(this.connectionBox);
@@ -404,7 +451,6 @@
             this.Text = "Fop2DD";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.contextMenu.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
@@ -416,6 +462,8 @@
             this.authenticationBox.PerformLayout();
             this.hotkeyBox.ResumeLayout(false);
             this.hotkeyBox.PerformLayout();
+            this.commandsBox.ResumeLayout(false);
+            this.commandsBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,12 +499,15 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.GroupBox hotkeyBox;
         private System.Windows.Forms.ComboBox hotkeyComboBox;
-        private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox hotkeyWinCheckBox;
         private System.Windows.Forms.CheckBox hotkeyShiftCheckBox;
         private System.Windows.Forms.CheckBox hotkeyAltCheckBox;
         private System.Windows.Forms.CheckBox hotkeyCtrlCheckBox;
+        private System.Windows.Forms.GroupBox commandsBox;
+        private System.Windows.Forms.TextBox fop2WebInterfaceTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripMenuItem fop2WebInterfaceToolStripMenuItem;
     }
 }
 

@@ -17,14 +17,17 @@
     <Setting Name="PBXContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">mycontext</Value>
     </Setting>
-    <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1234</Value>
-    </Setting>
     <Setting Name="Hotkey" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">97</Value>
     </Setting>
     <Setting Name="HotkeyModifiers" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mysecret</Value>
+    </Setting>
+    <Setting Name="FOP2Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.1.10/fop2/?context=%CONTEXT%&amp;exten=%USER%&amp;pass=%PASS%</Value>
     </Setting>
   </Settings>
 </SettingsFile>

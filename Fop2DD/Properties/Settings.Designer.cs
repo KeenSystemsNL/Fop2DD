@@ -85,18 +85,6 @@ namespace Fop2DD.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1234")]
-        public string Password {
-            get {
-                return ((string)(this["Password"]));
-            }
-            set {
-                this["Password"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("97")]
         public int Hotkey {
             get {
@@ -116,6 +104,30 @@ namespace Fop2DD.Properties {
             }
             set {
                 this["HotkeyModifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mysecret")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.10/fop2/?context=%CONTEXT%&exten=%USER%&pass=%PASS%")]
+        public string FOP2Url {
+            get {
+                return ((string)(this["FOP2Url"]));
+            }
+            set {
+                this["FOP2Url"] = value;
             }
         }
     }
