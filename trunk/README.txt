@@ -15,4 +15,4 @@ none).
 SOURCE MATERIAL:
 ================
 Project icon from http://www.iconlooker.com/icon/oldschool-icon-pack-telephone-256_w35649.html
-Other icons used from the famous famfamfam sil set: http://www.famfamfam.com/lab/icons/silk
+Other icons used from the famous famfamfam silk set: http://www.famfamfam.com/lab/icons/silk

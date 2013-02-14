@@ -82,7 +82,7 @@
             this.connectButton.Location = new System.Drawing.Point(467, 354);
             this.connectButton.Name = "connectButton";
             this.connectButton.Size = new System.Drawing.Size(75, 23);
-            this.connectButton.TabIndex = 3;
+            this.connectButton.TabIndex = 5;
             this.connectButton.Text = "Apply";
             this.connectButton.UseVisualStyleBackColor = true;
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
@@ -403,7 +403,7 @@
             this.commandsBox.Location = new System.Drawing.Point(12, 206);
             this.commandsBox.Name = "commandsBox";
             this.commandsBox.Size = new System.Drawing.Size(530, 142);
-            this.commandsBox.TabIndex = 5;
+            this.commandsBox.TabIndex = 3;
             this.commandsBox.TabStop = false;
             this.commandsBox.Text = "Commands";
             // 
@@ -414,7 +414,7 @@
             this.fop2WebInterfaceTextBox.Location = new System.Drawing.Point(150, 29);
             this.fop2WebInterfaceTextBox.Name = "fop2WebInterfaceTextBox";
             this.fop2WebInterfaceTextBox.Size = new System.Drawing.Size(374, 20);
-            this.fop2WebInterfaceTextBox.TabIndex = 3;
+            this.fop2WebInterfaceTextBox.TabIndex = 1;
             // 
             // label9
             // 
@@ -422,7 +422,7 @@
             this.label9.Location = new System.Drawing.Point(7, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 13);
-            this.label9.TabIndex = 2;
+            this.label9.TabIndex = 0;
             this.label9.Text = "FOP2 Web interface";
             // 
             // toolStripStatusLabel
