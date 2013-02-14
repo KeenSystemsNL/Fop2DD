@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Fop2DD")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("FOP2 Desktop Dialer\r\n\r\nhttps://fop2dd.codeplex.com/")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("KeenSystems B.V.")]
 [assembly: AssemblyProduct("Fop2DD")]
 [assembly: AssemblyCopyright("Copyright © 2013 KeenSystems")]
 [assembly: AssemblyTrademark("")]

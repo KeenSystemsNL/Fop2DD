@@ -244,6 +244,12 @@ namespace Fop2DD
             this.Show();
             this.Activate();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new AboutBox())
+                f.ShowDialog(this);
+        }
     }
 
     //http://stackoverflow.com/a/2904279
