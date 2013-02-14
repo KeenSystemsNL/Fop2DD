@@ -18,13 +18,15 @@ namespace Fop2DD
         private PhonenumberGrabber _phonenumbergrabber;
 
         private bool _autoreconnect;
+        private bool _isexiting;
 
         public MainForm()
         {
             InitializeComponent();
 
             _autoreconnect = false;
-            
+            _isexiting = false;
+
             _client = new Fop2FatClient();
 
             _hotkeymanager = new HotKeyManager();
@@ -53,6 +55,7 @@ namespace Fop2DD
 
         private void _client_ConnectionError(object sender, ConnectionErrorEventArgs e)
         {
+            this.SetFormState(false);
             this.SetTrayStatus("Connection error: " + e.Exception.Message, "error");
         }
 
@@ -73,7 +76,7 @@ namespace Fop2DD
         {
             if (e.ConnectionState == ConnectionState.Connected)
             {
-                this.SetTrayStatus("Connected", "online");
+                this.SetTrayStatus("Connected", "online"); 
                 _client.Authenticate(contextTextBox.Text, usernameTextBox.Text, passwordTextBox.Text);
             }
             else
@@ -82,6 +85,22 @@ namespace Fop2DD
                 if (_autoreconnect)
                     this.Connect();
             }
+            this.SetFormState(e.ConnectionState == ConnectionState.Connected);
+        }
+
+        private void SetFormState(bool isconnected)
+        {
+            if (isconnected)
+            {
+                connectButton.Text = "Disconnect";
+            }
+            else
+            {
+                connectButton.Text = "Connect";
+            }
+            connectButton.Enabled = true;
+            authenticationBox.Enabled = !isconnected;
+            connectionBox.Enabled = !isconnected;
         }
 
         private void Connect()
@@ -118,7 +137,16 @@ namespace Fop2DD
 
         private void connectButton_Click(object sender, EventArgs e)
         {
-            this.Connect();
+            if (_client.IsConnected)
+            {
+                _autoreconnect = false;
+                _client.Disconnect();
+            }
+            else
+            {
+                this.Connect();
+            }
+            connectButton.Enabled = false;
         }
 
         public void NotifyPopup(string title, string text)
@@ -136,18 +164,27 @@ namespace Fop2DD
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Un"bind" the events so they won't cause trouble when being raised while we're busy closing and cleaning up.
-            _client.ConnectionError -= _client_ConnectionError;
-            _client.ConnectionStateChanged -= _client_ConnectionStateChanged;
-            _client.AuthenticationResultReceived -= _client_AuthenticationResultReceived;
+            if (!_isexiting && (e.CloseReason == CloseReason.UserClosing))
+            {
+                this.Hide();
+                e.Cancel = true;
+            }
+            else
+            {
+                //Un"bind" the events so they won't cause trouble when being raised while we're busy closing and cleaning up.
+                _client.ConnectionError -= _client_ConnectionError;
+                _client.ConnectionStateChanged -= _client_ConnectionStateChanged;
+                _client.AuthenticationResultReceived -= _client_AuthenticationResultReceived;
 
-            _autoreconnect = false;
-            _client.Disconnect();
+                _autoreconnect = false;
+                _client.Disconnect();
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _hotkeymanager.Dispose();
+            Application.Exit();
         }
 
         private void showAdvancedLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -165,12 +202,29 @@ namespace Fop2DD
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Show();
+            this.Unhide();
         }
 
         private void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)
         {
             Trace.WriteLine("Balloon clicked!");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _isexiting = true;
+            this.Close();
+        }
+
+        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.Unhide();
+        }
+
+        private void Unhide()
+        {
+            this.Show();
+            this.Activate();
         }
     }
 
