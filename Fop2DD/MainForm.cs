@@ -196,6 +196,9 @@ namespace Fop2DD
 
                 _autoreconnect = false;
                 _client.Disconnect();
+
+                foreach (var f in this.OwnedForms)
+                    f.Close();
             }
         }
 

@@ -113,9 +113,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Fop2ClientLib\Fop2ClientLib.csproj">
       <Project>{b595d6d7-5887-47a2-8515-ccc5a5ed7de1}</Project>
       <Name>Fop2ClientLib</Name>
