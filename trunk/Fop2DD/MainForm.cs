@@ -31,6 +31,8 @@ namespace Fop2DD
 
             _hotkeymanager = new HotKeyManager();
             _hotkeymanager.KeyPressed += hotkeymanager_KeyPressed;
+            
+            //TODO: make this a setting
             _hotkeymanager.Register(Key.F8, System.Windows.Input.ModifierKeys.Control);
 
             _phonenumbergrabber = new PhonenumberGrabber();
@@ -40,10 +42,26 @@ namespace Fop2DD
 
         private void hotkeymanager_KeyPressed(object sender, KeyPressedEventArgs e)
         {
-            var numbers = _phonenumbergrabber.TryGrabPhonenumbersFromSelection(6);
-            //TODO: When numers.length == 1 => Dial number
-            //      When numbers.length >1 => Show dialog to select which number to dial
-            Trace.WriteLine(string.Join("\r\n", numbers));
+            var numbers = _phonenumbergrabber.TryGrabPhonenumbersFromSelection(6);  //TODO: Make this minlength a setting?
+            if (numbers.Length == 0)
+                return;                 //Nothing to do...
+
+            string dialnumber = null;
+            if (numbers.Length == 1)
+            {
+                dialnumber = numbers[0];
+            }
+            else
+            {
+                using (var s = new SelectNumber(numbers))
+                {
+                    if (s.ShowDialog(this) == DialogResult.OK)
+                        dialnumber = s.SelectedNumber;
+                }
+            }
+
+            if (dialnumber != null)
+                _client.Dial(dialnumber);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
