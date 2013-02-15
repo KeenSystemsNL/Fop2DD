@@ -17,12 +17,6 @@
     <Setting Name="PBXContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">mycontext</Value>
     </Setting>
-    <Setting Name="Hotkey" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">97</Value>
-    </Setting>
-    <Setting Name="HotkeyModifiers" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">mysecret</Value>
     </Setting>
@@ -31,6 +25,12 @@
     </Setting>
     <Setting Name="GrabMinLength" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="ConnectTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="GlobalDialHotkey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Control + F8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

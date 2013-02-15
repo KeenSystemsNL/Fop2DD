@@ -85,30 +85,6 @@ namespace Fop2DD.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("97")]
-        public int Hotkey {
-            get {
-                return ((int)(this["Hotkey"]));
-            }
-            set {
-                this["Hotkey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int HotkeyModifiers {
-            get {
-                return ((int)(this["HotkeyModifiers"]));
-            }
-            set {
-                this["HotkeyModifiers"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("mysecret")]
         public string Password {
             get {
@@ -140,6 +116,30 @@ namespace Fop2DD.Properties {
             }
             set {
                 this["GrabMinLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ConnectTimeout {
+            get {
+                return ((int)(this["ConnectTimeout"]));
+            }
+            set {
+                this["ConnectTimeout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control + F8")]
+        public string GlobalDialHotkey {
+            get {
+                return ((string)(this["GlobalDialHotkey"]));
+            }
+            set {
+                this["GlobalDialHotkey"] = value;
             }
         }
     }

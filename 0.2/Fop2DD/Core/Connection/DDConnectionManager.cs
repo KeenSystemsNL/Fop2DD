@@ -1,8 +1,6 @@
 ﻿using Fop2ClientLib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Fop2DD.Core.Connection
 {
@@ -32,7 +30,8 @@ namespace Fop2DD.Core.Connection
                 throw new ArgumentNullException("connectioninfo");
 
             _connectioninfo = connectioninfo;
-            _client.Connect(_connectioninfo.IPEndPoint);
+            _client.Connect(_connectioninfo.GetIPEndPoint(), _connectioninfo.ConnectionTimeout);
+            _client.HeartbeatInterval = _connectioninfo.PingInterval;
         }
 
         public void Disconnect()
@@ -54,7 +53,7 @@ namespace Fop2DD.Core.Connection
                     break;
                 case DDConnectionState.ConnectionLost:
                     if (_isauthenticated)   //Retry dropped connections if we were authenticated
-                        _client.Connect(_connectioninfo.IPEndPoint);
+                        this.Connect(_connectioninfo);
                     break;
             }
 

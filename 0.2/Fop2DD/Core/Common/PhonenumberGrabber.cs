@@ -74,8 +74,18 @@ namespace Fop2DD.Core.Common
                     .Select(m => removewhitespace.Replace(m.Captures[0].Value, " ").Trim())
                     .Where(r => r.Length >= minlength)
                 )
-                .Select(n => numericonly.Replace(n.Replace("+", "00"), string.Empty))
+                .Select(n => StripNonDigit(n.Replace("+", "00")))
                 .ToArray();
+        }
+
+        /// <summary>
+        /// Strips anything but digits from a string.
+        /// </summary>
+        /// <param name="value">The value to be stripped.</param>
+        /// <returns>Returns the value passed with anything but digits stripped.</returns>
+        public static string StripNonDigit(string value)
+        {
+            return numericonly.Replace(value, string.Empty);
         }
     }
 }

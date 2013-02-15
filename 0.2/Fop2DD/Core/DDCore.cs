@@ -1,11 +1,10 @@
 ﻿using Fop2ClientLib;
+using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
-using System.Net;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace Fop2DD.Core
 {
@@ -15,7 +14,7 @@ namespace Fop2DD.Core
         private DDConnectionManager _connectionmanager;
         private DDHotkeyManager _hotkeymanager;
         private DDNotifyIcon _notifyicon;
-        
+
         public DDCore()
         {
             _client = new Fop2FatClient();
@@ -23,9 +22,6 @@ namespace Fop2DD.Core
             _connectionmanager = new DDConnectionManager(_client);
             _notifyicon = new DDNotifyIcon();
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);
-
-            //TODO: move this elsewhere... and make it configurable
-            _hotkeymanager.Register(DDHotkeyType.DialSelectionFromActiveWindow, new DDHotkey(Key.F8, ModifierKeys.Control));
 
             _hotkeymanager.DialRequest += event_DialRequest;
 
@@ -66,23 +62,35 @@ namespace Fop2DD.Core
                 numbertodial = e.Numbers[0];
             }
 
-            //TODO: Ensure only (and ONLY) digits in number
-
             if (numbertodial != null)
-                _client.Dial(numbertodial);
+            {
+                numbertodial = PhonenumberGrabber.StripNonDigit(numbertodial);
+                if (!string.IsNullOrWhiteSpace(numbertodial))
+                    _client.Dial(numbertodial);
+            }
         }
 
         public void Start()
         {
-            //Get connection info and connect if possible
-            DDConnectionInfo c = new DDConnectionInfo(new IPEndPoint(IPAddress.Parse("192.168.10.5"), 4445), new DDCredential("TESTA", "101", "1234"));
-            _connectionmanager.Connect(c);
+            _hotkeymanager.Register(DDHotkeyType.DialSelectionFromActiveWindow, DDHotkey.Parse(Properties.Settings.Default.GlobalDialHotkey));
+            _connectionmanager.Connect(DDCore.GetConnectionInfo());
         }
 
         public void Stop()
         {
+            _hotkeymanager.UnregisterByType(DDHotkeyType.DialSelectionFromActiveWindow);
             _connectionmanager.Disconnect();
-            _client = null;
+        }
+
+        public static DDConnectionInfo GetConnectionInfo()
+        {
+            var s = Properties.Settings.Default;
+            return new DDConnectionInfo(
+                new DDFop2Endpoint(s.Host, s.Port),
+                new DDCredential(s.PBXContext, s.Username, s.Password),
+                TimeSpan.FromSeconds(s.PingInterval),
+                TimeSpan.FromSeconds(s.ConnectTimeout)
+                );
         }
 
         #region IDisposable

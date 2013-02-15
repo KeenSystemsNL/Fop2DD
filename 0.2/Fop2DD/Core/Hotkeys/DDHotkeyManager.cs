@@ -1,11 +1,7 @@
-﻿using Fop2ClientLib;
-using Fop2DD.Core.Common;
+﻿using Fop2DD.Core.Common;
 using GlobalHotKey;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace Fop2DD.Core.Hotkeys
 {
@@ -77,6 +73,7 @@ namespace Fop2DD.Core.Hotkeys
             if (_hotkeytypelookup.ContainsKey(hotkey))
                 this.UnregisterByType(_hotkeytypelookup[hotkey]);
         }
+
     }
 
     public delegate void DialRequestEventhandler(object sender, DialRequestEventArgs e);

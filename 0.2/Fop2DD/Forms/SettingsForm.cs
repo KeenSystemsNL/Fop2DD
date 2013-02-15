@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fop2DD.Core.Hotkeys;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using swi = System.Windows.Input;
 
 namespace Fop2DD
 {
@@ -48,6 +50,14 @@ namespace Fop2DD
                 s.FOP2Url = fop2WebInterfaceTextBox.Text.Trim();
                 s.GrabMinLength = 6; //TODO: Create interface element
 
+                swi.ModifierKeys modifiers = swi.ModifierKeys.None;
+                modifiers |= hotkeyAltCheckBox.Checked ? swi.ModifierKeys.Alt : swi.ModifierKeys.None;
+                modifiers |= hotkeyCtrlCheckBox.Checked ? swi.ModifierKeys.Control : swi.ModifierKeys.None;
+                modifiers |= hotkeyWinCheckBox.Checked ? swi.ModifierKeys.Windows : swi.ModifierKeys.None;
+                modifiers |= hotkeyShiftCheckBox.Checked ? swi.ModifierKeys.Shift : swi.ModifierKeys.None;
+
+                s.GlobalDialHotkey = new DDHotkey((swi.Key)hotkeyComboBox.SelectedValue, modifiers).ToString();
+
                 s.Save();
             }
             catch
@@ -74,6 +84,16 @@ namespace Fop2DD
 
             pingIntervalTextBox.Text = s.PingInterval.ToString();
             fop2WebInterfaceTextBox.Text = s.FOP2Url;
+
+            hotkeyComboBox.DataSource = Enum.GetValues(typeof(swi.Key)).Cast<swi.Key>();
+
+            DDHotkey hk = DDHotkey.Parse(s.GlobalDialHotkey);
+            hotkeyComboBox.SelectedItem = hk.Key;
+            hotkeyAltCheckBox.Checked = (hk.Modifier & swi.ModifierKeys.Alt) != 0;
+            hotkeyCtrlCheckBox.Checked = (hk.Modifier & swi.ModifierKeys.Control) != 0;
+            hotkeyWinCheckBox.Checked = (hk.Modifier & swi.ModifierKeys.Windows) != 0;
+            hotkeyShiftCheckBox.Checked = (hk.Modifier & swi.ModifierKeys.Shift) != 0;
+
             //TODO: Create interface element for "GrabMinLength"
         }
     }
