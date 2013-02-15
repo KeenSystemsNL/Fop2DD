@@ -130,5 +130,17 @@ namespace Fop2DD.Properties {
                 this["FOP2Url"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int GrabMinLength {
+            get {
+                return ((int)(this["GrabMinLength"]));
+            }
+            set {
+                this["GrabMinLength"] = value;
+            }
+        }
     }
 }

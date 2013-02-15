@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Fop2DD
 {
-    partial class AboutBox : Form
+    partial class AboutForm : Form
     {
-        public AboutBox()
+        public AboutForm()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

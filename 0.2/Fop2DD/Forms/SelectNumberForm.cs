@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Fop2DD
 {
-    public partial class SelectNumber : Form
+    public partial class SelectNumberForm : Form
     {
-        public SelectNumber(string[] numbers)
+        public SelectNumberForm(string[] numbers)
         {
             InitializeComponent();
             numberBox.DataSource = numbers;

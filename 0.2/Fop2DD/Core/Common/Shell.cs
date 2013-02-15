@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Fop2DD
+namespace Fop2DD.Core.Common
 {
     /// <summary>
     /// Used to fire up processes

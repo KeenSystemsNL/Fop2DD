@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Fop2DD
+namespace Fop2DD.Core.Common
 {
     // See https://gist.github.com/RobThree/4943822 for updates / forks etc. and possibly improvements.
 
