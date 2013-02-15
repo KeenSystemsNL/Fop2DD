@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Fop2DD.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Host" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4445</Value>
+    </Setting>
+    <Setting Name="PingInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">101</Value>
+    </Setting>
+    <Setting Name="PBXContext" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mycontext</Value>
+    </Setting>
+    <Setting Name="Hotkey" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">97</Value>
+    </Setting>
+    <Setting Name="HotkeyModifiers" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mysecret</Value>
+    </Setting>
+    <Setting Name="FOP2Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.1.10/fop2/?context=%CONTEXT%&amp;exten=%USER%&amp;pass=%PASS%</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
