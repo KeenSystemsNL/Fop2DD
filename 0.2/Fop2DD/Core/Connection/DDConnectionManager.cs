@@ -36,7 +36,7 @@ namespace Fop2DD.Core.Connection
 
         public void Disconnect()
         {
-            _isauthenticated = false;   //Force authenticated to false
+            _isauthenticated = false;   //Force authenticated to false to prevent reconnecting on the Disconnected event
             _client.Disconnect();
         }
 
