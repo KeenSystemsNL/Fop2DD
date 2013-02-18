@@ -4,6 +4,7 @@ using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core
@@ -20,7 +21,7 @@ namespace Fop2DD.Core
             _client = new Fop2FatClient();
             _hotkeymanager = new DDHotkeyManager();
             _connectionmanager = new DDConnectionManager(_client);
-            _notifyicon = new DDNotifyIcon();
+            _notifyicon = new DDNotifyIcon(_client);
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);
 
             _hotkeymanager.DialRequest += event_DialRequest;

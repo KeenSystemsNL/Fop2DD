@@ -310,6 +310,7 @@ namespace Fop2ClientLib
                 case "setvar":
                 case "handshake":
                 case "clidname":
+                case "clidnum":
                     //These messages (...and then some) contain base64-encoded data
                     parsedmessage.Data = this.DecodeBase64(parsedmessage.Data);
                     break;

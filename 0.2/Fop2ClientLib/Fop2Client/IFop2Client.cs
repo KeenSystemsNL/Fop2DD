@@ -45,7 +45,7 @@ namespace Fop2ClientLib
     /// <param name="e">A <see cref="ConnectionErrorEventArgs"/> containing information about the error.</param>
     public delegate void ConnectionErrorEventHandler(object sender, ConnectionErrorEventArgs e);
 
-    interface IFop2Client
+    public interface IFop2Client
     {
         event AuthenticationResultReceivedEventHandler AuthenticationResultReceived;
         event ConnectionStateChangedEventHandler ConnectionStateChanged;
@@ -65,6 +65,7 @@ namespace Fop2ClientLib
         string Context { get; }
         string Username { get; }
         string Password { get; }
+        int Id { get; }
         TimeSpan HeartbeatInterval { get; set; }
         Version HostVersion { get; }
         int LicenseLevel { get; }

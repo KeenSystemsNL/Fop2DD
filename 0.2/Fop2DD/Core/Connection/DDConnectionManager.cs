@@ -7,12 +7,12 @@ namespace Fop2DD.Core.Connection
     public class DDConnectionManager : IDDConnectionStateChangeNotifyable
     {
         private bool _isauthenticated;
-        private Fop2FatClient _client;
+        private IFop2Client _client;
         private DDConnectionInfo _connectioninfo;
 
         private List<IDDConnectionStateChangeNotifyable> _registeredobjects;
 
-        public DDConnectionManager(Fop2FatClient client)
+        public DDConnectionManager(IFop2Client client)
         {
             _isauthenticated = false;
             _client = client;
