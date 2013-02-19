@@ -98,6 +98,24 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select executable file.
+        /// </summary>
+        internal static string dialcmd_dialogtitle {
+            get {
+                return ResourceManager.GetString("dialcmd_dialogtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executable files|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|All files (*.*)|*.*.
+        /// </summary>
+        internal static string dialcmd_filter {
+            get {
+                return ResourceManager.GetString("dialcmd_filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About....
         /// </summary>
         internal static string menu_about {

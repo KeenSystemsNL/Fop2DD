@@ -47,7 +47,21 @@ namespace Fop2DD.Core
 
         private void event_BalloonClicked(object sender, DDBalloonClickedEventArgs e)
         {
-            //TODO: Execute command
+            var s = Properties.Settings.Default;
+
+            if (!string.IsNullOrEmpty(s.DialCmd_File))
+            {
+                var phonenumber = Filters.NumbersOnly(e.BalloonInfo.CallerIdNumber);
+                if (phonenumber.Length >= Properties.Settings.Default.DialCmd_MinLength)
+                {
+                    var command = new ShellCommand(s.DialCmd_File, s.DialCmd_Args);
+                    command.WorkingDirectory = s.DialCmd_WorkDir;
+
+                    ShellExecutor.ExecuteCommand(command, new[] {
+                        new KeyValuePair<string, string>("%PHONENUMBER%", phonenumber)
+                    });
+                }
+            }
         }
 
         private void event_WebInterface(object sender, EventArgs e)
@@ -55,9 +69,9 @@ namespace Fop2DD.Core
             var command = new ShellCommand(Properties.Settings.Default.FOP2Url);
 
             ShellExecutor.ExecuteCommand(command, new[] {
-                new KeyValuePair<string, string>("%CONTEXT%",_client.Context),
-                new KeyValuePair<string, string>("%USER%",_client.Username),
-                new KeyValuePair<string, string>("%PASS%",_client.Password),
+                new KeyValuePair<string, string>("%CONTEXT%", _client.Context),
+                new KeyValuePair<string, string>("%USER%", _client.Username),
+                new KeyValuePair<string, string>("%PASS%", _client.Password),
             });
         }
 

@@ -142,5 +142,53 @@ namespace Fop2DD.Properties {
                 this["GlobalDialHotkey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.google.com/search?q=%PHONENUMBER%")]
+        public string DialCmd_File {
+            get {
+                return ((string)(this["DialCmd_File"]));
+            }
+            set {
+                this["DialCmd_File"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DialCmd_Args {
+            get {
+                return ((string)(this["DialCmd_Args"]));
+            }
+            set {
+                this["DialCmd_Args"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DialCmd_WorkDir {
+            get {
+                return ((string)(this["DialCmd_WorkDir"]));
+            }
+            set {
+                this["DialCmd_WorkDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int DialCmd_MinLength {
+            get {
+                return ((int)(this["DialCmd_MinLength"]));
+            }
+            set {
+                this["DialCmd_MinLength"] = value;
+            }
+        }
     }
 }

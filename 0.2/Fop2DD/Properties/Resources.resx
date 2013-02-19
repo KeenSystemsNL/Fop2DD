@@ -130,6 +130,12 @@ Number: {1}</value>
   <data name="balloon_title" xml:space="preserve">
     <value>Incoming call</value>
   </data>
+  <data name="dialcmd_dialogtitle" xml:space="preserve">
+    <value>Select executable file</value>
+  </data>
+  <data name="dialcmd_filter" xml:space="preserve">
+    <value>Executable files|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|All files (*.*)|*.*</value>
+  </data>
   <data name="menu_about" xml:space="preserve">
     <value>About...</value>
   </data>

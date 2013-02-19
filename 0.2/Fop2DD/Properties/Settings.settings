@@ -32,5 +32,17 @@
     <Setting Name="GlobalDialHotkey" Type="System.String" Scope="User">
       <Value Profile="(Default)">Control + F8</Value>
     </Setting>
+    <Setting Name="DialCmd_File" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.google.com/search?q=%PHONENUMBER%</Value>
+    </Setting>
+    <Setting Name="DialCmd_Args" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DialCmd_WorkDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DialCmd_MinLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
