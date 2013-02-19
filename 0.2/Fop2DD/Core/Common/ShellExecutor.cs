@@ -21,18 +21,18 @@ namespace Fop2DD.Core.Common
         }
 
         /// <summary>
-        /// Executes a <see cref="ShellCommand"/> replacing a placeholder with the specified phonenumber.
+        /// Executes a <see cref="ShellCommand"/> replacing the placeholders with the specified value.
         /// </summary>
         /// <param name="command">The command to execute.</param>
-        /// <param name="phonenumber">The phonenumber to put in place of any placeholders.</param>
-        public static void ExecuteCommand(ShellCommand command, string phonenumber)
+        /// <param name="replacements">The placeholders and their values to replace them with.</param>
+        public static void ExecuteCommand(ShellCommand command, IEnumerable<KeyValuePair<string, string>> replacements)
         {
             if (command == null)
                 throw new ArgumentNullException("command");
 
             try
             {
-                Process.Start(command.ToProcessStartInfo(phonenumber));
+                Process.Start(command.ToProcessStartInfo(replacements));
             }
             catch (Exception ex)
             {
@@ -49,8 +49,11 @@ namespace Fop2DD.Core.Common
         /// <returns>Returns the value with all placeholders (if any) replaced with their respective replacement.</returns>
         public static string ReplacePlaceholder(string value, IEnumerable<KeyValuePair<string, string>> replacements)
         {
-            foreach (var kv in replacements)
-                value = ReplacePlaceholder(value, kv.Key, kv.Value);
+            if (replacements != null)
+            {
+                foreach (var kv in replacements)
+                    value = ReplacePlaceholder(value, kv.Key, kv.Value);
+            }
             return value;
         }
 

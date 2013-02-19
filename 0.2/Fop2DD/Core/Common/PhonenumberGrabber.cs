@@ -12,11 +12,6 @@ namespace Fop2DD.Core.Common
     /// </summary>
     public class PhonenumberGrabber
     {
-        //Regex to remove double (or more) whitespace
-        private static Regex removewhitespace = new Regex(@"\s{2,}", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
-        //Regex to remove anything but numbers
-        private static Regex numericonly = new Regex(@"([^0-9])", RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline);
-
         //Internal TextSelectionReader
         private TextSelectionReader _textselectionreader;
 
@@ -71,21 +66,11 @@ namespace Fop2DD.Core.Common
             return lines.SelectMany(
                 l => nummatch.Matches(l)
                     .Cast<Match>()
-                    .Select(m => removewhitespace.Replace(m.Captures[0].Value, " ").Trim())
+                    .Select(m => Filters.RemoveExtraWhitespace(m.Captures[0].Value))
                     .Where(r => r.Length >= minlength)
                 )
-                .Select(n => StripNonDigit(n.Replace("+", "00")))
+                .Select(n => Filters.NumbersOnly(n.Replace("+", "00")))
                 .ToArray();
-        }
-
-        /// <summary>
-        /// Strips anything but digits from a string.
-        /// </summary>
-        /// <param name="value">The value to be stripped.</param>
-        /// <returns>Returns the value passed with anything but digits stripped.</returns>
-        public static string StripNonDigit(string value)
-        {
-            return numericonly.Replace(value, string.Empty);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Fop2DD.Core.Common
 {
@@ -8,12 +8,6 @@ namespace Fop2DD.Core.Common
     /// </summary>
     public class ShellCommand
     {
-        //Used to filter everything but digits from shell commands when passing a phonenumber
-        private static Regex _numericonly = new Regex("[^0-9]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
-        //The placeholder to replace
-        private const string PHONENUMBERPLACEHOLDER = "%PHONENUMBER%";
-
         /// <summary>
         /// Gets or sets the application or document to start.
         /// </summary>
@@ -57,8 +51,8 @@ namespace Fop2DD.Core.Common
         ///     Returns a "ready to use" <see cref="ProcessStartInfo"/> object that can be passed
         ///     to <see cref="Process.Start()"/>.
         /// </summary>
-        /// <param name="phonenumber">
-        ///     The phonenumber to be used for the placeholder(s) (if any)
+        /// <param name="replacements">
+        ///     The template values to be replaced (if any).
         /// </param>
         /// <returns>
         ///     Returns a "ready to use" <see cref="ProcessStartInfo"/> object that can be passed
@@ -66,30 +60,17 @@ namespace Fop2DD.Core.Common
         /// </returns>
         /// <remarks>
         ///     Both the <see cref="Filename"/> and <see cref="Arguments"/> will be scanned for 
-        ///     placeholder(s) which will be replaced by the phonenumber passed to this method
+        ///     placeholder(s) which will be replaced by the values passed to this method
         /// </remarks>
-        public ProcessStartInfo ToProcessStartInfo(string phonenumber)
+        public ProcessStartInfo ToProcessStartInfo(IEnumerable<KeyValuePair<string, string>> replacements)
         {
-            //Ensure phonenumber only contains digits
-            phonenumber = _numericonly.Replace(phonenumber ?? string.Empty, string.Empty);
-
             ProcessStartInfo pi = new ProcessStartInfo();
-            pi.FileName = ShellCommand.ReplacePhonenumberArgument(this.Filename, phonenumber);
-            pi.Arguments = ShellCommand.ReplacePhonenumberArgument(this.Arguments, phonenumber);
+
+            this.Filename = ShellExecutor.ReplacePlaceholder(this.Filename, replacements);
+            this.Arguments = ShellExecutor.ReplacePlaceholder(this.Arguments, replacements);
             pi.UseShellExecute = true;
             pi.WorkingDirectory = this.WorkingDirectory;
             return pi;
-        }
-
-        /// <summary>
-        /// Replaces the placeholder(s) with the actual phonenumber.
-        /// </summary>
-        /// <param name="value">The value to scanned for placeholder(s).</param>
-        /// <param name="phonenumber">The phonenumber to be used in place of the placeholder(s).</param>
-        /// <returns>Returns the value with all placeholders (if any) replaced with the phonenumber</returns>
-        private static string ReplacePhonenumberArgument(string value, string phonenumber)
-        {
-            return ShellExecutor.ReplacePlaceholder(value, PHONENUMBERPLACEHOLDER, phonenumber);
         }
     }
 }

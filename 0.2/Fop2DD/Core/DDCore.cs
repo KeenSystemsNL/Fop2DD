@@ -4,7 +4,6 @@ using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core
@@ -65,7 +64,7 @@ namespace Fop2DD.Core
 
             if (numbertodial != null)
             {
-                numbertodial = PhonenumberGrabber.StripNonDigit(numbertodial);
+                numbertodial = Filters.NumbersOnly(numbertodial);
                 if (!string.IsNullOrWhiteSpace(numbertodial))
                     _client.Dial(numbertodial);
             }

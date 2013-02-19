@@ -59,6 +59,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Common\Filters.cs" />
     <Compile Include="Core\Common\ShellCommand.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />
     <Compile Include="Forms\AboutForm.cs">
