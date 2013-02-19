@@ -4,6 +4,7 @@ using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core
@@ -15,37 +16,69 @@ namespace Fop2DD.Core
         private DDHotkeyManager _hotkeymanager;
         private DDNotifyIcon _notifyicon;
 
+        private ToolStripMenuItem _fop2webinterface;
+
         public DDCore()
         {
             _client = new Fop2FatClient();
             _hotkeymanager = new DDHotkeyManager();
             _connectionmanager = new DDConnectionManager(_client);
+
+            _fop2webinterface = new ToolStripMenuItem("FOP2 web interface", Iconhandler.LoadIconAsImage("world_go"), event_WebInterface);
+
             _notifyicon = new DDNotifyIcon(_client);
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);
 
+
+            _notifyicon.ContextMenuStrip.Items.Insert(0, _fop2webinterface);
+
+            _notifyicon.ContextMenuStrip.Opening += event_ContextMenuStripOpening;
+
+            _notifyicon.BalloonClicked += event_BalloonClicked;
             _hotkeymanager.DialRequest += event_DialRequest;
 
             _connectionmanager.RegisterListener(_notifyicon);
         }
 
-        public void event_OnExit(object sender, EventArgs e)
+        private void event_ContextMenuStripOpening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _fop2webinterface.Enabled = (_client.IsAuthenticated && Validators.IsValidHttpUrl(Properties.Settings.Default.FOP2Url));
+        }
+
+        private void event_BalloonClicked(object sender, DDBalloonClickedEventArgs e)
+        {
+            //TODO: Execute command
+        }
+
+        private void event_WebInterface(object sender, EventArgs e)
+        {
+            var command = new ShellCommand(Properties.Settings.Default.FOP2Url);
+
+            ShellExecutor.ExecuteCommand(command, new[] {
+                new KeyValuePair<string, string>("%CONTEXT%",_client.Context),
+                new KeyValuePair<string, string>("%USER%",_client.Username),
+                new KeyValuePair<string, string>("%PASS%",_client.Password),
+            });
+        }
+
+        private void event_OnExit(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        public void event_OnAbout(object sender, EventArgs e)
+        private void event_OnAbout(object sender, EventArgs e)
         {
             using (var f = new AboutForm())
                 f.ShowDialog();
         }
 
-        public void event_OnSettings(object sender, EventArgs e)
+        private void event_OnSettings(object sender, EventArgs e)
         {
             using (var f = new SettingsForm())
                 f.ShowDialog();
         }
 
-        public void event_DialRequest(object sender, DialRequestEventArgs e)
+        private void event_DialRequest(object sender, DialRequestEventArgs e)
         {
             if (e.Numbers.Length == 0)
                 return;

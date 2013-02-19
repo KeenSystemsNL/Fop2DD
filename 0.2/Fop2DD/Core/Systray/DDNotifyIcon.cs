@@ -2,11 +2,12 @@
 using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core.Systray
 {
+    public delegate void BalloonClickedEventHandler(object sender, DDBalloonClickedEventArgs e);
+
     public class DDNotifyIcon : IDDConnectionStateChangeNotifyable, IDisposable
     {
         private NotifyIcon _notifyicon;
@@ -14,6 +15,10 @@ namespace Fop2DD.Core.Systray
 
         private string _lastclidname;
         private string _lastclidnum;
+
+        private DDBalloonInfo _currentballoon;
+
+        public event BalloonClickedEventHandler BalloonClicked;
 
         public ContextMenuStrip ContextMenuStrip
         {
@@ -24,6 +29,14 @@ namespace Fop2DD.Core.Systray
         public DDNotifyIcon(IFop2Client client)
         {
             _notifyicon = new NotifyIcon();
+
+            _notifyicon.BalloonTipClosed += (s, e) => { _currentballoon = null; };
+            _notifyicon.BalloonTipClicked += (s, e) =>
+            {
+                if ((_currentballoon != null) && (BalloonClicked != null)) 
+                    BalloonClicked(this, new DDBalloonClickedEventArgs(_currentballoon));
+            };
+
             _client = client;
 
             _client.MessageReceived += MessageReceived;
@@ -50,14 +63,15 @@ namespace Fop2DD.Core.Systray
                                 string.Format(string.Format("{0} ({1})", _lastclidname, _lastclidnum)),
                                 ToolTipIcon.Info
                                 );
+
+                            _currentballoon = new DDBalloonInfo(_lastclidname, _lastclidnum);
+
                             _lastclidname = null;
                             _lastclidnum = null;
                         }
                         break;
                 }
             }
-
-            //Trace.WriteLine(string.Format("==================\r\n\t{0}\r\n\t{1}\r\n\t{2}\r\n\t{3}", e.Message.Command, e.Message.Data, e.Message.Button, e.Message.Slot));
         }
 
         public void StateChanged(object sender, DDConnectionStateChangedEventArgs e)

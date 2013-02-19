@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace Fop2DD.Core.Hotkeys
 {
-    public delegate void DDHotKeyPressedEventHandler(object sender, DDHotkeyPressedEventArgs e);
-
     public class DDHotkeyManager : IDisposable
     {
         private HotKeyManager _hotkeymanager;

@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -61,7 +62,10 @@
   <ItemGroup>
     <Compile Include="Core\Common\Filters.cs" />
     <Compile Include="Core\Common\ShellCommand.cs" />
+    <Compile Include="Core\Common\Validators.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />
+    <Compile Include="Core\Systray\DDBalloonClickedEventArgs.cs" />
+    <Compile Include="Core\Systray\DDBalloonInfo.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>

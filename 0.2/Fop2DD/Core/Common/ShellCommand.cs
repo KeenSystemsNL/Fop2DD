@@ -66,8 +66,8 @@ namespace Fop2DD.Core.Common
         {
             ProcessStartInfo pi = new ProcessStartInfo();
 
-            this.Filename = ShellExecutor.ReplacePlaceholder(this.Filename, replacements);
-            this.Arguments = ShellExecutor.ReplacePlaceholder(this.Arguments, replacements);
+            pi.FileName = ShellExecutor.ReplacePlaceholder(this.Filename, replacements, Validators.IsValidHttpUrl(this.Filename));
+            pi.Arguments = ShellExecutor.ReplacePlaceholder(this.Arguments, replacements, false);
             pi.UseShellExecute = true;
             pi.WorkingDirectory = this.WorkingDirectory;
             return pi;
