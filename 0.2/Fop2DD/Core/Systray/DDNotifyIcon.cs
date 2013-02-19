@@ -44,6 +44,7 @@ namespace Fop2DD.Core.Systray
 
         public void MessageReceived(object sender, MessageReceivedEventArgs e)
         {
+            //TODO: {0}@{1} (or id@context) should probably be some property/method on Fop2Client for easy usage
             if (e.Message.Button.Equals(string.Format("{0}@{1}", _client.Id, _client.Context), StringComparison.OrdinalIgnoreCase))
             {
                 switch (e.Message.Command.ToLowerInvariant())
@@ -59,8 +60,8 @@ namespace Fop2DD.Core.Systray
                         {
                             _notifyicon.ShowBalloonTip(
                                 (int)TimeSpan.FromSeconds(30).TotalMilliseconds,
-                                string.Format("Incoming call"),
-                                string.Format(string.Format("{0} ({1})", _lastclidname, _lastclidnum)),
+                                string.Format(Properties.Resources.balloon_title),
+                                string.Format(string.Format(Properties.Resources.balloon_text, _lastclidname, _lastclidnum)),
                                 ToolTipIcon.Info
                                 );
 
@@ -80,19 +81,19 @@ namespace Fop2DD.Core.Systray
             switch (e.State)
             {
                 case DDConnectionState.Connected:
-                    ni = new NotifyInfo("online", "Online");
+                    ni = new NotifyInfo("online", Properties.Resources.status_online);
                     break;
                 case DDConnectionState.ConnectionLost:
-                    ni = new NotifyInfo("offline", "Offline");
+                    ni = new NotifyInfo("offline", Properties.Resources.status_offline);
                     break;
                 case DDConnectionState.ConnectionTimedOut:
-                    ni = new NotifyInfo("error", string.Format("Error: {0}", e.Data));
+                    ni = new NotifyInfo("error", string.Format(Properties.Resources.status_error, e.Data));
                     break;
                 case DDConnectionState.AuthenticationFailed:
-                    ni = new NotifyInfo("authfailure", "Authentication failed");
+                    ni = new NotifyInfo("authfailure", Properties.Resources.status_authfailure);
                     break;
                 case DDConnectionState.AuthenticationSucceeded:
-                    ni = new NotifyInfo("online", "Online");
+                    ni = new NotifyInfo("online", Properties.Resources.status_authsuccess);
                     break;
             }
 
@@ -118,10 +119,10 @@ namespace Fop2DD.Core.Systray
         public static ContextMenuStrip CreateDefaultContextMenu(EventHandler onsettings, EventHandler onabout, EventHandler onexit)
         {
             var menuitems = new ToolStripItem[] {
-                new ToolStripMenuItem("Settings", Iconhandler.LoadIconAsImage("wrench"), onsettings),
+                new ToolStripMenuItem(Properties.Resources.menu_settings, Iconhandler.LoadIconAsImage("wrench"), onsettings),
                 new ToolStripSeparator(),
-                new ToolStripMenuItem("About", Iconhandler.LoadIconAsImage("information"), onabout),
-                new ToolStripMenuItem("Exit", Iconhandler.LoadIconAsImage("cross"), onexit),
+                new ToolStripMenuItem(Properties.Resources.menu_about, Iconhandler.LoadIconAsImage("information"), onabout),
+                new ToolStripMenuItem(Properties.Resources.menu_exit, Iconhandler.LoadIconAsImage("cross"), onexit),
             };
 
             var m = new ContextMenuStrip();

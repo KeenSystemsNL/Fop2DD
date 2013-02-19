@@ -59,5 +59,131 @@ namespace Fop2DD.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0}.
+        /// </summary>
+        internal static string about_title {
+            get {
+                return ResourceManager.GetString("about_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0}.
+        /// </summary>
+        internal static string about_version {
+            get {
+                return ResourceManager.GetString("about_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}\r\nNumber: {1}.
+        /// </summary>
+        internal static string balloon_text {
+            get {
+                return ResourceManager.GetString("balloon_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming call.
+        /// </summary>
+        internal static string balloon_title {
+            get {
+                return ResourceManager.GetString("balloon_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About....
+        /// </summary>
+        internal static string menu_about {
+            get {
+                return ResourceManager.GetString("menu_about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string menu_exit {
+            get {
+                return ResourceManager.GetString("menu_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FOP2 web interface....
+        /// </summary>
+        internal static string menu_fop2web {
+            get {
+                return ResourceManager.GetString("menu_fop2web", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings....
+        /// </summary>
+        internal static string menu_settings {
+            get {
+                return ResourceManager.GetString("menu_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error executing command.
+        /// </summary>
+        internal static string shellexecutor_errorexecutecmd {
+            get {
+                return ResourceManager.GetString("shellexecutor_errorexecutecmd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failed.
+        /// </summary>
+        internal static string status_authfailure {
+            get {
+                return ResourceManager.GetString("status_authfailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connected.
+        /// </summary>
+        internal static string status_authsuccess {
+            get {
+                return ResourceManager.GetString("status_authsuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: {0}.
+        /// </summary>
+        internal static string status_error {
+            get {
+                return ResourceManager.GetString("status_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline.
+        /// </summary>
+        internal static string status_offline {
+            get {
+                return ResourceManager.GetString("status_offline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        internal static string status_online {
+            get {
+                return ResourceManager.GetString("status_online", resourceCulture);
+            }
+        }
     }
 }

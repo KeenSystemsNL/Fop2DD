@@ -24,7 +24,7 @@ namespace Fop2DD.Core
             _hotkeymanager = new DDHotkeyManager();
             _connectionmanager = new DDConnectionManager(_client);
 
-            _fop2webinterface = new ToolStripMenuItem("FOP2 web interface", Iconhandler.LoadIconAsImage("world_go"), event_WebInterface);
+            _fop2webinterface = new ToolStripMenuItem(Properties.Resources.menu_fop2web, Iconhandler.LoadIconAsImage("world_go"), event_WebInterface);
 
             _notifyicon = new DDNotifyIcon(_client);
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);

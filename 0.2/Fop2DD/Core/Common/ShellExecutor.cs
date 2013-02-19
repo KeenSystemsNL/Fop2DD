@@ -38,7 +38,7 @@ namespace Fop2DD.Core.Common
             catch (Exception ex)
             {
                 //For now we just alert the user; maybe someday we'll use something more sophisticated than a messagebox
-                MessageBox.Show(string.Format("{0}\r\n[{1}]", ex.Message, ex.GetType().Name), "Error executing command", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}\r\n[{1}]", ex.Message, ex.GetType().Name), Properties.Resources.shellexecutor_errorexecutecmd, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
