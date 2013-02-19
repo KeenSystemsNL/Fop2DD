@@ -79,7 +79,8 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name: {0}\r\nNumber: {1}.
+        ///   Looks up a localized string similar to Name: {0}
+        ///Number: {1}.
         /// </summary>
         internal static string balloon_text {
             get {
