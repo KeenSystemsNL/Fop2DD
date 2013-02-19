@@ -58,17 +58,20 @@ namespace Fop2DD.Core.Systray
                     case "notifyringing":
                         if ((!string.IsNullOrEmpty(_lastclidnum)) && (_lastclidname != null))
                         {
-                            _notifyicon.ShowBalloonTip(
-                                (int)TimeSpan.FromSeconds(30).TotalMilliseconds,
-                                string.Format(Properties.Resources.balloon_title),
-                                string.Format(string.Format(Properties.Resources.balloon_text, _lastclidname, _lastclidnum)),
-                                ToolTipIcon.Info
-                                );
+                            if (_lastclidnum.Length >= Properties.Settings.Default.DialCmd_MinLength)
+                            {
+                                _notifyicon.ShowBalloonTip(
+                                    (int)TimeSpan.FromSeconds(30).TotalMilliseconds,
+                                    string.Format(Properties.Resources.balloon_title),
+                                    string.Format(string.Format(Properties.Resources.balloon_text, _lastclidname, _lastclidnum)),
+                                    ToolTipIcon.Info
+                                    );
 
-                            _currentballoon = new DDBalloonInfo(_lastclidname, _lastclidnum);
+                                _currentballoon = new DDBalloonInfo(_lastclidname, _lastclidnum);
 
-                            _lastclidname = null;
-                            _lastclidnum = null;
+                                _lastclidname = null;
+                                _lastclidnum = null;
+                            }
                         }
                         break;
                 }

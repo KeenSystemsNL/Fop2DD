@@ -134,7 +134,7 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FOP2 web interface....
+        ///   Looks up a localized string similar to Operator panel....
         /// </summary>
         internal static string menu_fop2web {
             get {

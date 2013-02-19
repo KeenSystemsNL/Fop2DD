@@ -143,7 +143,7 @@ Nummer: {1}</value>
     <value>Afsluiten</value>
   </data>
   <data name="menu_fop2web" xml:space="preserve">
-    <value>FOP2 webpagina...</value>
+    <value>Operator panel...</value>
   </data>
   <data name="menu_settings" xml:space="preserve">
     <value>Instellingen...</value>

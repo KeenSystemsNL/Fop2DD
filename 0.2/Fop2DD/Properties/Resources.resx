@@ -143,7 +143,7 @@ Number: {1}</value>
     <value>Exit</value>
   </data>
   <data name="menu_fop2web" xml:space="preserve">
-    <value>FOP2 web interface...</value>
+    <value>Operator panel...</value>
   </data>
   <data name="menu_settings" xml:space="preserve">
     <value>Settings...</value>

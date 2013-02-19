@@ -52,15 +52,12 @@ namespace Fop2DD.Core
             if (!string.IsNullOrEmpty(s.DialCmd_File))
             {
                 var phonenumber = Filters.NumbersOnly(e.BalloonInfo.CallerIdNumber);
-                if (phonenumber.Length >= Properties.Settings.Default.DialCmd_MinLength)
-                {
-                    var command = new ShellCommand(s.DialCmd_File, s.DialCmd_Args);
-                    command.WorkingDirectory = s.DialCmd_WorkDir;
+                var command = new ShellCommand(s.DialCmd_File, s.DialCmd_Args);
+                command.WorkingDirectory = s.DialCmd_WorkDir;
 
-                    ShellExecutor.ExecuteCommand(command, new[] {
+                ShellExecutor.ExecuteCommand(command, new[] {
                         new KeyValuePair<string, string>("%PHONENUMBER%", phonenumber)
                     });
-                }
             }
         }
 
