@@ -29,7 +29,7 @@
     <FeedbackEMailLinkText>Rob Janssen</FeedbackEMailLinkText>
     <HelpTitle>FOP2 Client library %28Fop2ClientLib%29</HelpTitle>
     <ProductTitle>Fop2ClientLib</ProductTitle>
-    <HelpFileVersion>0.1.0.0</HelpFileVersion>
+    <HelpFileVersion>0.2.0.0</HelpFileVersion>
     <ProjectSummary>
     </ProjectSummary>
     <NamespaceSummaries>

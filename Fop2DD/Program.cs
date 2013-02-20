@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Fop2DD.Core;
 
 namespace Fop2DD
 {
@@ -15,8 +16,15 @@ namespace Fop2DD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var f = new MainForm();
-            Application.Run();
+
+            using (var core = new DDCore())
+            {
+                core.Start();
+
+                Application.Run();
+
+                core.Stop();
+            }
         }
     }
 }

@@ -59,5 +59,267 @@ namespace Fop2DD.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About {0}.
+        /// </summary>
+        internal static string about_title {
+            get {
+                return ResourceManager.GetString("about_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0}.
+        /// </summary>
+        internal static string about_version {
+            get {
+                return ResourceManager.GetString("about_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {0}
+        ///Number: {1}.
+        /// </summary>
+        internal static string balloon_text {
+            get {
+                return ResourceManager.GetString("balloon_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming call.
+        /// </summary>
+        internal static string balloon_title {
+            get {
+                return ResourceManager.GetString("balloon_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select executable file.
+        /// </summary>
+        internal static string dialcmd_dialogtitle {
+            get {
+                return ResourceManager.GetString("dialcmd_dialogtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executable files|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|All files (*.*)|*.*.
+        /// </summary>
+        internal static string dialcmd_filter {
+            get {
+                return ResourceManager.GetString("dialcmd_filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About....
+        /// </summary>
+        internal static string menu_about {
+            get {
+                return ResourceManager.GetString("menu_about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string menu_exit {
+            get {
+                return ResourceManager.GetString("menu_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator panel....
+        /// </summary>
+        internal static string menu_fop2web {
+            get {
+                return ResourceManager.GetString("menu_fop2web", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings....
+        /// </summary>
+        internal static string menu_settings {
+            get {
+                return ResourceManager.GetString("menu_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum length must be a number.
+        /// </summary>
+        internal static string settings_err_dialcmdminlengthnumber {
+            get {
+                return ResourceManager.GetString("settings_err_dialcmdminlengthnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimum length, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_dialcmdminlengthrange {
+            get {
+                return ResourceManager.GetString("settings_err_dialcmdminlengthrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum length must be a number.
+        /// </summary>
+        internal static string settings_err_grabminlengthnumber {
+            get {
+                return ResourceManager.GetString("settings_err_grabminlengthnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimum length, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_grabminlengthrange {
+            get {
+                return ResourceManager.GetString("settings_err_grabminlengthrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator panel url must be a valid URL (or empty).
+        /// </summary>
+        internal static string settings_err_invalidfop2url {
+            get {
+                return ResourceManager.GetString("settings_err_invalidfop2url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid/unspecified host.
+        /// </summary>
+        internal static string settings_err_invalidhost {
+            get {
+                return ResourceManager.GetString("settings_err_invalidhost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one modifier (Alt/Ctrl/Shift/Windows) must be used.
+        /// </summary>
+        internal static string settings_err_invalidhotkeycombo {
+            get {
+                return ResourceManager.GetString("settings_err_invalidhotkeycombo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context must be specified.
+        /// </summary>
+        internal static string settings_err_nocontext {
+            get {
+                return ResourceManager.GetString("settings_err_nocontext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username must be specified.
+        /// </summary>
+        internal static string settings_err_nouser {
+            get {
+                return ResourceManager.GetString("settings_err_nouser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping interval must be a number.
+        /// </summary>
+        internal static string settings_err_pingnumber {
+            get {
+                return ResourceManager.GetString("settings_err_pingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ping interval, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_pingrange {
+            get {
+                return ResourceManager.GetString("settings_err_pingrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port must be a number.
+        /// </summary>
+        internal static string settings_err_portnumber {
+            get {
+                return ResourceManager.GetString("settings_err_portnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid port, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_portrange {
+            get {
+                return ResourceManager.GetString("settings_err_portrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error executing command.
+        /// </summary>
+        internal static string shellexecutor_errorexecutecmd {
+            get {
+                return ResourceManager.GetString("shellexecutor_errorexecutecmd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication failed.
+        /// </summary>
+        internal static string status_authfailure {
+            get {
+                return ResourceManager.GetString("status_authfailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connected.
+        /// </summary>
+        internal static string status_authsuccess {
+            get {
+                return ResourceManager.GetString("status_authsuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: {0}.
+        /// </summary>
+        internal static string status_error {
+            get {
+                return ResourceManager.GetString("status_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline.
+        /// </summary>
+        internal static string status_offline {
+            get {
+                return ResourceManager.GetString("status_offline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online.
+        /// </summary>
+        internal static string status_online {
+            get {
+                return ResourceManager.GetString("status_online", resourceCulture);
+            }
+        }
     }
 }

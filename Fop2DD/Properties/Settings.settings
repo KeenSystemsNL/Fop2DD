@@ -17,17 +17,32 @@
     <Setting Name="PBXContext" Type="System.String" Scope="User">
       <Value Profile="(Default)">mycontext</Value>
     </Setting>
-    <Setting Name="Hotkey" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">97</Value>
-    </Setting>
-    <Setting Name="HotkeyModifiers" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
-    </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">mysecret</Value>
     </Setting>
     <Setting Name="FOP2Url" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.1.10/fop2/?context=%CONTEXT%&amp;exten=%USER%&amp;pass=%PASS%</Value>
+    </Setting>
+    <Setting Name="GrabMinLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="ConnectTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="GlobalDialHotkey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Control + F8</Value>
+    </Setting>
+    <Setting Name="DialCmd_File" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.google.com/search?q=%PHONENUMBER%</Value>
+    </Setting>
+    <Setting Name="DialCmd_Args" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DialCmd_WorkDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DialCmd_MinLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">6</Value>
     </Setting>
   </Settings>
 </SettingsFile>

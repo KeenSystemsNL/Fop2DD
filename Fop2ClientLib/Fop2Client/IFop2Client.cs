@@ -45,32 +45,105 @@ namespace Fop2ClientLib
     /// <param name="e">A <see cref="ConnectionErrorEventArgs"/> containing information about the error.</param>
     public delegate void ConnectionErrorEventHandler(object sender, ConnectionErrorEventArgs e);
 
-    interface IFop2Client
+    /// <summary>
+    /// Provides the base interface for implementation of a Fop2Client class.
+    /// </summary>
+    public interface IFop2Client
     {
+        /// <summary>
+        /// Occurs when the client received and authenticaiton result.
+        /// </summary>
         event AuthenticationResultReceivedEventHandler AuthenticationResultReceived;
+
+        /// <summary>
+        /// Occurs when the clients connection state changes.
+        /// </summary>
         event ConnectionStateChangedEventHandler ConnectionStateChanged;
+
+        /// <summary>
+        /// Occurs at the specified interval (<see cref="HeartbeatInterval"/>).
+        /// </summary>
         event HeartbeatEventHandler Heartbeat;
+
+        /// <summary>
+        /// Occurs when the client received a message from the host.
+        /// </summary>
         event MessageReceivedEventHandler MessageReceived;
+
+        /// <summary>
+        /// Occurs when the client has sent a message to the host.
+        /// </summary>
         event MessageSentEventHandler MessageSent;
+
+        /// <summary>
+        /// Occurs when the client successfully authenticated.
+        /// </summary>
         event ConnectionErrorEventHandler ConnectionError;
-        
+
+        /// <summary>
+        /// Authenticates for a session.
+        /// </summary>
+        /// <param name="context">The context to use for the session.</param>
+        /// <param name="username">The username to use for the session.</param>
+        /// <param name="password">The password to use when authenticating.</param>
         void Authenticate(string context, string username, string password);
-        void Connect(string host, int port);
+
+        /// <summary>
+        /// Connects to the specified host.
+        /// </summary>
+        /// <param name="ipendpoint">The IpEndpoint to connect to.</param>
+        /// <param name="timeout">Specifies the timespan after wich a timeout exception will be thrown during connecting to the other host.</param>
         void Connect(IPEndPoint ipendpoint, TimeSpan timeout);
+
+        /// <summary>
+        /// Disconnects from host.
+        /// </summary>
         void Disconnect();
-        void Send(params string[] args);
+
+        /// <summary>
+        /// Sends a message to the host; the message is wrapped in an "msg" Xml-element's "data" attribute.
+        /// </summary>
+        /// <param name="message">The message to send.</param>
         void Send(string message);
 
+        /// <summary>
+        /// Gets the "session" key.
+        /// </summary>
         string Key { get; }
-        string Context { get; }
-        string Username { get; }
-        string Password { get; }
-        TimeSpan HeartbeatInterval { get; set; }
-        Version HostVersion { get; }
-        int LicenseLevel { get; }
-        Dictionary<string, string> Preferences { get; }
 
+        /// <summary>
+        /// Gets the current context which is set during authentication.
+        /// </summary>
+        string Context { get; }
+
+        /// <summary>
+        /// Gets the current user which is set during authentication.
+        /// </summary>
+        string Username { get; }
+
+        /// <summary>
+        /// Gets the current user which is set during authentication.
+        /// </summary>
+        string Password { get; }
+
+        /// <summary>
+        /// Gets the "Id" of the useragent (also "position", "button number")
+        /// </summary>
+        int Id { get; }
+
+        /// <summary>
+        /// Gets/sets the interval at which "heartbeat" / "keepalive" messages will be sent (e.g. ping).
+        /// </summary>
+        TimeSpan HeartbeatInterval { get; set; }
+
+        /// <summary>
+        /// Gets whether the client is connected to the host.
+        /// </summary>
         bool IsConnected { get; }
+
+        /// <summary>
+        /// Gets whether the client is authenticated at the host.
+        /// </summary>
         bool IsAuthenticated { get; }
     }
 }
