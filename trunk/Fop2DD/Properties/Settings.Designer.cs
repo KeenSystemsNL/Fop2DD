@@ -85,30 +85,6 @@ namespace Fop2DD.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("97")]
-        public int Hotkey {
-            get {
-                return ((int)(this["Hotkey"]));
-            }
-            set {
-                this["Hotkey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public int HotkeyModifiers {
-            get {
-                return ((int)(this["HotkeyModifiers"]));
-            }
-            set {
-                this["HotkeyModifiers"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("mysecret")]
         public string Password {
             get {
@@ -128,6 +104,90 @@ namespace Fop2DD.Properties {
             }
             set {
                 this["FOP2Url"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int GrabMinLength {
+            get {
+                return ((int)(this["GrabMinLength"]));
+            }
+            set {
+                this["GrabMinLength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int ConnectTimeout {
+            get {
+                return ((int)(this["ConnectTimeout"]));
+            }
+            set {
+                this["ConnectTimeout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control + F8")]
+        public string GlobalDialHotkey {
+            get {
+                return ((string)(this["GlobalDialHotkey"]));
+            }
+            set {
+                this["GlobalDialHotkey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.google.com/search?q=%PHONENUMBER%")]
+        public string DialCmd_File {
+            get {
+                return ((string)(this["DialCmd_File"]));
+            }
+            set {
+                this["DialCmd_File"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DialCmd_Args {
+            get {
+                return ((string)(this["DialCmd_Args"]));
+            }
+            set {
+                this["DialCmd_Args"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DialCmd_WorkDir {
+            get {
+                return ((string)(this["DialCmd_WorkDir"]));
+            }
+            set {
+                this["DialCmd_WorkDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int DialCmd_MinLength {
+            get {
+                return ((int)(this["DialCmd_MinLength"]));
+            }
+            set {
+                this["DialCmd_MinLength"] = value;
             }
         }
     }

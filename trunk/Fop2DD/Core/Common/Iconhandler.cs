@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
-namespace Fop2DD
+namespace Fop2DD.Core.Common
 {
     public static class Iconhandler
     {
@@ -15,7 +15,7 @@ namespace Fop2DD
             {
                 try
                 {
-                    _iconcache.Add(filename, Icon.ExtractAssociatedIcon(Path.Combine("icons", filename + ".ico")));
+                    _iconcache.Add(filename, Icon.ExtractAssociatedIcon(Path.Combine("icons", string.Format("{0}.ico", filename))));
                 }
                 catch (Exception)
                 {
@@ -23,6 +23,11 @@ namespace Fop2DD
                 }
             }
             return _iconcache[filename];
+        }
+
+        public static Image LoadIconAsImage(string filename)
+        {
+            return Iconhandler.LoadIcon(filename).ToBitmap();
         }
     }
 }

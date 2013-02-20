@@ -1,6 +1,6 @@
 ﻿namespace Fop2DD
 {
-    partial class AboutBox
+    partial class AboutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -27,7 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
@@ -149,7 +149,7 @@
             this.okButton.Text = "&OK";
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // AboutBox
+            // AboutForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,11 +160,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AboutBox";
+            this.Name = "AboutForm";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AboutBox";
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();

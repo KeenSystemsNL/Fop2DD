@@ -118,86 +118,86 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about_title" xml:space="preserve">
-    <value>About {0}</value>
+    <value>Over {0}</value>
   </data>
   <data name="about_version" xml:space="preserve">
-    <value>Version {0}</value>
+    <value>Versie {0}</value>
   </data>
   <data name="balloon_text" xml:space="preserve">
-    <value>Name: {0}
-Number: {1}</value>
+    <value>Naam: {0}
+Nummer: {1}</value>
   </data>
   <data name="balloon_title" xml:space="preserve">
-    <value>Incoming call</value>
+    <value>Inkomend gesprek</value>
   </data>
   <data name="dialcmd_dialogtitle" xml:space="preserve">
-    <value>Select executable file</value>
+    <value>Selecteer opdracht</value>
   </data>
   <data name="dialcmd_filter" xml:space="preserve">
-    <value>Executable files|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|All files (*.*)|*.*</value>
+    <value>Uitvoerbare bestanden|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|Alle bestanden (*.*)|*.*</value>
   </data>
   <data name="menu_about" xml:space="preserve">
-    <value>About...</value>
+    <value>Over...</value>
   </data>
   <data name="menu_exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Afsluiten</value>
   </data>
   <data name="menu_fop2web" xml:space="preserve">
     <value>Operator panel...</value>
   </data>
   <data name="menu_settings" xml:space="preserve">
-    <value>Settings...</value>
+    <value>Instellingen...</value>
   </data>
   <data name="settings_err_dialcmdminlengthnumber" xml:space="preserve">
-    <value>Minimum length must be a number</value>
+    <value>Minimum lenge moet een getal zijn</value>
   </data>
   <data name="settings_err_dialcmdminlengthrange" xml:space="preserve">
-    <value>Invalid minimum length, must be between {0} and {1}</value>
+    <value>Ongeldige minimum lengte, kies een waarde tussen {0} en {1}</value>
   </data>
   <data name="settings_err_grabminlengthnumber" xml:space="preserve">
-    <value>Minimum length must be a number</value>
+    <value>Minimum lenge moet een getal zijn</value>
   </data>
   <data name="settings_err_grabminlengthrange" xml:space="preserve">
-    <value>Invalid minimum length, must be between {0} and {1}</value>
+    <value>Ongeldige minimum lengte, kies een waarde tussen {0} en {1}</value>
   </data>
   <data name="settings_err_invalidfop2url" xml:space="preserve">
-    <value>Operator panel url must be a valid URL (or empty)</value>
+    <value>Operator panel url moet een geldige URL zijn (of leeg)</value>
   </data>
   <data name="settings_err_invalidhost" xml:space="preserve">
-    <value>Invalid/unspecified host</value>
+    <value>Ongeldige host</value>
   </data>
   <data name="settings_err_invalidhotkeycombo" xml:space="preserve">
-    <value>At least one modifier (Alt/Ctrl/Shift/Windows) must be used</value>
+    <value>U dient minimaal 1 combinatietoets (Alt/Ctrl/Shift/Windows) te kiezen</value>
   </data>
   <data name="settings_err_nocontext" xml:space="preserve">
-    <value>Context must be specified</value>
+    <value>Context niet opgegeven</value>
   </data>
   <data name="settings_err_nouser" xml:space="preserve">
-    <value>Username must be specified</value>
+    <value>Gebruikersnaam niet opgegeven</value>
   </data>
   <data name="settings_err_pingnumber" xml:space="preserve">
-    <value>Ping interval must be a number</value>
+    <value>Ping interval moet een getal zijn</value>
   </data>
   <data name="settings_err_pingrange" xml:space="preserve">
-    <value>Invalid ping interval, must be between {0} and {1}</value>
+    <value>Ongeldige ping interval, kies een waarde tussen {0} en {1}</value>
   </data>
   <data name="settings_err_portnumber" xml:space="preserve">
-    <value>Port must be a number</value>
+    <value>Poort moet een getal zijn</value>
   </data>
   <data name="settings_err_portrange" xml:space="preserve">
-    <value>Invalid port, must be between {0} and {1}</value>
+    <value>Ongeldige poort, kies een waarde tussen {0} en {1}</value>
   </data>
   <data name="shellexecutor_errorexecutecmd" xml:space="preserve">
-    <value>Error executing command</value>
+    <value>Fout bij uitvoeren opdracht</value>
   </data>
   <data name="status_authfailure" xml:space="preserve">
-    <value>Authentication failed</value>
+    <value>Aanmelden mislukt</value>
   </data>
   <data name="status_authsuccess" xml:space="preserve">
-    <value>Connected</value>
+    <value>Verbonden</value>
   </data>
   <data name="status_error" xml:space="preserve">
-    <value>Error: {0}</value>
+    <value>Fout: {0}</value>
   </data>
   <data name="status_offline" xml:space="preserve">
     <value>Offline</value>
