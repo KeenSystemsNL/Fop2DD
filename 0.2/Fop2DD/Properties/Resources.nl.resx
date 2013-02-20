@@ -148,6 +148,33 @@ Nummer: {1}</value>
   <data name="menu_settings" xml:space="preserve">
     <value>Instellingen...</value>
   </data>
+  <data name="settings_err_invalidfop2url" xml:space="preserve">
+    <value>Operator panel url moet een geldige URL zijn (of leeg)</value>
+  </data>
+  <data name="settings_err_invalidhost" xml:space="preserve">
+    <value>Ongeldige host</value>
+  </data>
+  <data name="settings_err_invalidhotkeycombo" xml:space="preserve">
+    <value>U dient minimaal 1 combinatietoets (Alt/Ctrl/Shift/Windows) te kiezen</value>
+  </data>
+  <data name="settings_err_nocontext" xml:space="preserve">
+    <value>Context niet opgegeven</value>
+  </data>
+  <data name="settings_err_nouser" xml:space="preserve">
+    <value>Gebruikersnaam niet opgegeven</value>
+  </data>
+  <data name="settings_err_pingnumber" xml:space="preserve">
+    <value>Ping interval moet een getal zijn</value>
+  </data>
+  <data name="settings_err_pingrange" xml:space="preserve">
+    <value>Ongeldige ping interval, kies een waarde tussen {0} en {1}</value>
+  </data>
+  <data name="settings_err_portnumber" xml:space="preserve">
+    <value>Poort moet een getal zijn</value>
+  </data>
+  <data name="settings_err_portrange" xml:space="preserve">
+    <value>Ongeldige poort, kies een waarde tussen {0} en {1}</value>
+  </data>
   <data name="shellexecutor_errorexecutecmd" xml:space="preserve">
     <value>Fout bij uitvoeren opdracht</value>
   </data>

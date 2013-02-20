@@ -152,6 +152,87 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operator panel url must be a valid URL (or empty).
+        /// </summary>
+        internal static string settings_err_invalidfop2url {
+            get {
+                return ResourceManager.GetString("settings_err_invalidfop2url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid/unspecified host.
+        /// </summary>
+        internal static string settings_err_invalidhost {
+            get {
+                return ResourceManager.GetString("settings_err_invalidhost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one modifier (Alt/Ctrl/Shift/Windows) must be used.
+        /// </summary>
+        internal static string settings_err_invalidhotkeycombo {
+            get {
+                return ResourceManager.GetString("settings_err_invalidhotkeycombo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context must be specified.
+        /// </summary>
+        internal static string settings_err_nocontext {
+            get {
+                return ResourceManager.GetString("settings_err_nocontext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username must be specified.
+        /// </summary>
+        internal static string settings_err_nouser {
+            get {
+                return ResourceManager.GetString("settings_err_nouser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping interval must be a number.
+        /// </summary>
+        internal static string settings_err_pingnumber {
+            get {
+                return ResourceManager.GetString("settings_err_pingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ping interval, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_pingrange {
+            get {
+                return ResourceManager.GetString("settings_err_pingrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port must be a number.
+        /// </summary>
+        internal static string settings_err_portnumber {
+            get {
+                return ResourceManager.GetString("settings_err_portnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid port, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_portrange {
+            get {
+                return ResourceManager.GetString("settings_err_portrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error executing command.
         /// </summary>
         internal static string shellexecutor_errorexecutecmd {

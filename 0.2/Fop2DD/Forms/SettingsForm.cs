@@ -1,13 +1,10 @@
-﻿using Fop2DD.Core.Hotkeys;
+﻿using Fop2DD.Core.Common;
+using Fop2DD.Core.Hotkeys;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using System.Windows.Input;
 using swi = System.Windows.Input;
 
 namespace Fop2DD
@@ -37,9 +34,9 @@ namespace Fop2DD
 
         private bool ApplySettings()
         {
-            var s = Properties.Settings.Default;
-            try
+            if (ValidateForm())
             {
+                var s = Properties.Settings.Default;
                 s.Host = hostTextBox.Text.Trim();
                 s.Port = int.Parse(portTextBox.Text);
 
@@ -66,16 +63,69 @@ namespace Fop2DD
                 s.DialCmd_Args = dialcmd_ArgsTextBox.Text;
 
                 s.Save();
+                return true;
             }
-            catch
-            {
-                //TODO: make this a bit more specific :P
-                this.errorProvider.SetError(okButton, "Invalid setting, somewhere...");
+            return false;
+        }
 
-                s.Reload();
-                return false;
-            }
-            return true;
+        private bool ValidateForm()
+        {
+            errorProvider.Clear();
+
+            //Tab 0
+            if (string.IsNullOrWhiteSpace(hostTextBox.Text))
+                errorProvider.SetError(hostTextBox, Properties.Resources.settings_err_invalidhost);
+
+            int port;
+            if (!int.TryParse(portTextBox.Text, out port))
+                errorProvider.SetError(portTextBox, Properties.Resources.settings_err_portnumber);
+            else if (!Validators.IsValidPort(port))
+                errorProvider.SetError(portTextBox, string.Format(Properties.Resources.settings_err_portrange, Validators.PORT_MIN, Validators.PORT_MAX));
+
+            int pinginterval;
+            if (!int.TryParse(pingIntervalTextBox.Text, out pinginterval))
+                errorProvider.SetError(pingIntervalTextBox, Properties.Resources.settings_err_pingnumber);
+            else if (!Validators.IsValidPingInterval(pinginterval))
+                errorProvider.SetError(pingIntervalTextBox, string.Format(Properties.Resources.settings_err_pingrange, Validators.PING_MIN, Validators.PING_MAX));
+
+            if (string.IsNullOrWhiteSpace(contextTextBox.Text))
+                errorProvider.SetError(contextTextBox, Properties.Resources.settings_err_nocontext);
+
+            if (string.IsNullOrWhiteSpace(usernameTextBox.Text))
+                errorProvider.SetError(usernameTextBox, Properties.Resources.settings_err_nouser);
+
+            //Tab 1
+            if (!string.IsNullOrWhiteSpace(fop2WebInterfaceTextBox.Text))
+                if (!Validators.IsValidHttpUrl(fop2WebInterfaceTextBox.Text))
+                    errorProvider.SetError(fop2WebInterfaceTextBox, Properties.Resources.settings_err_invalidfop2url);
+
+            //Tab2
+            if ((Key)hotkeyComboBox.SelectedItem != Key.None)
+                if (!hotkeyCtrlCheckBox.Checked && !hotkeyShiftCheckBox.Checked && !hotkeyWinCheckBox.Checked && !hotkeyAltCheckBox.Checked)
+                    errorProvider.SetError(hotkeyComboBox, Properties.Resources.settings_err_invalidhotkeycombo);
+
+            //Select first tab with error(s) (if any)
+            int[] errorspertab = new int[tabControl.TabPages.Count];
+            for (int i = 0; i < tabControl.TabPages.Count; i++)
+                errorspertab[i] = GetControlErrorCount(tabControl.TabPages[i]);
+
+            if (errorspertab.Sum() > 0)
+                tabControl.SelectedIndex = errorspertab.ToList().FindIndex(e => e > 0);
+
+            //Return result
+            return errorspertab.Sum() == 0;
+        }
+
+        private int GetControlErrorCount(Control control)
+        {
+            int errors = 0;
+
+            if (!string.IsNullOrEmpty(errorProvider.GetError(control)))
+                errors++;
+
+            foreach (Control c in control.Controls)
+                errors += GetControlErrorCount(c);
+            return errors;
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
@@ -128,7 +178,7 @@ namespace Fop2DD
                     if (File.Exists(Path.GetFileName(file)))
                         f.FileName = Path.GetFileName(file);
                 }
-                
+
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     dialcmd_FileTextBox.Text = f.FileName;

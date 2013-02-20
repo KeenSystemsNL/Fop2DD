@@ -4,6 +4,11 @@ namespace Fop2DD.Core.Common
 {
     public static class Validators
     {
+        public const int PORT_MIN = 1;
+        public const int PORT_MAX = 65535;
+        public const int PING_MIN = 5;
+        public const int PING_MAX = 600;
+
         public static bool IsValidHttpUrl(string value)
         {
             Uri result;
@@ -17,7 +22,12 @@ namespace Fop2DD.Core.Common
 
         public static bool IsValidPort(int value)
         {
-            return (value > 0) && (value <= 65535);
+            return (value >= PORT_MIN) && (value <= PORT_MAX);
+        }
+
+        public static bool IsValidPingInterval(int value)
+        {
+            return (value >= PING_MIN) && (value <= PING_MAX);
         }
     }
 }

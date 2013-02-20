@@ -148,6 +148,33 @@ Number: {1}</value>
   <data name="menu_settings" xml:space="preserve">
     <value>Settings...</value>
   </data>
+  <data name="settings_err_invalidfop2url" xml:space="preserve">
+    <value>Operator panel url must be a valid URL (or empty)</value>
+  </data>
+  <data name="settings_err_invalidhost" xml:space="preserve">
+    <value>Invalid/unspecified host</value>
+  </data>
+  <data name="settings_err_invalidhotkeycombo" xml:space="preserve">
+    <value>At least one modifier (Alt/Ctrl/Shift/Windows) must be used</value>
+  </data>
+  <data name="settings_err_nocontext" xml:space="preserve">
+    <value>Context must be specified</value>
+  </data>
+  <data name="settings_err_nouser" xml:space="preserve">
+    <value>Username must be specified</value>
+  </data>
+  <data name="settings_err_pingnumber" xml:space="preserve">
+    <value>Ping interval must be a number</value>
+  </data>
+  <data name="settings_err_pingrange" xml:space="preserve">
+    <value>Invalid ping interval, must be between {0} and {1}</value>
+  </data>
+  <data name="settings_err_portnumber" xml:space="preserve">
+    <value>Port must be a number</value>
+  </data>
+  <data name="settings_err_portrange" xml:space="preserve">
+    <value>Invalid port, must be between {0} and {1}</value>
+  </data>
   <data name="shellexecutor_errorexecutecmd" xml:space="preserve">
     <value>Error executing command</value>
   </data>

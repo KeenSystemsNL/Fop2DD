@@ -127,6 +127,9 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Poort</value>
   </data>
+  <data name="hostTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 20</value>
+  </data>
   <data name="connectionBox.Text" xml:space="preserve">
     <value>FOP2 verbinding</value>
   </data>
@@ -139,11 +142,20 @@
   <data name="advancedConnection.Text" xml:space="preserve">
     <value>Geavanceerd</value>
   </data>
+  <data name="contextTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 20</value>
+  </data>
+  <data name="passwordTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 20</value>
+  </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Wachtwoord</value>
+  </data>
+  <data name="usernameTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 20</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -159,6 +171,18 @@
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Opdrachten</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Fop2DD zal proberen telefoonnummers uit de huidige selectie in het actieve venster te detecteren wanneer deze toets(combinatie) wordt ingedrukt en het nummer bellen.</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 77</value>
+  </data>
+  <data name="hotkeyComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 74</value>
+  </data>
+  <data name="hotkeyComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 21</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
     <value>Sneltoetsen</value>
@@ -1579,11 +1603,8 @@
   <data name="label10.Text" xml:space="preserve">
     <value>Doel</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>FOP2 webpagina</value>
+  <data name="fop2WebInterfaceTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 20</value>
   </data>
   <data name="commandsBox.Text" xml:space="preserve">
     <value>Opdrachten</value>
