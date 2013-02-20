@@ -8,6 +8,10 @@ namespace Fop2DD.Core.Common
         public const int PORT_MAX = 65535;
         public const int PING_MIN = 5;
         public const int PING_MAX = 600;
+        public const int GRAB_MIN = 3;
+        public const int GRAB_MAX = 15;
+        public const int DIALCMD_MIN = 3;
+        public const int DIALCMD_MAX = 15;
 
         public static bool IsValidHttpUrl(string value)
         {
@@ -28,6 +32,16 @@ namespace Fop2DD.Core.Common
         public static bool IsValidPingInterval(int value)
         {
             return (value >= PING_MIN) && (value <= PING_MAX);
+        }
+
+        public static bool IsValidGrabMinLength(int value)
+        {
+            return (value >= GRAB_MIN) && (value <= GRAB_MAX);
+        }
+
+        public static bool IsValidDialCmdMinLength(int value)
+        {
+            return (value >= DIALCMD_MIN) && (value <= DIALCMD_MAX);
         }
     }
 }

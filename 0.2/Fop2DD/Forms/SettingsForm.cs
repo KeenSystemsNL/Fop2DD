@@ -47,8 +47,7 @@ namespace Fop2DD
                 s.PingInterval = int.Parse(pingIntervalTextBox.Text);
                 s.FOP2Url = fop2WebInterfaceTextBox.Text.Trim();
 
-                s.GrabMinLength = 6; //TODO: Create interface element
-                s.DialCmd_MinLength = 6; //TODO: Create interface element
+                s.GrabMinLength = int.Parse(grabMinLengthTextBox.Text);
 
                 swi.ModifierKeys modifiers = swi.ModifierKeys.None;
                 modifiers |= hotkeyAltCheckBox.Checked ? swi.ModifierKeys.Alt : swi.ModifierKeys.None;
@@ -61,6 +60,7 @@ namespace Fop2DD
                 s.DialCmd_File = dialcmd_FileTextBox.Text;
                 s.DialCmd_WorkDir = dialcmd_WorkDirTextBox.Text;
                 s.DialCmd_Args = dialcmd_ArgsTextBox.Text;
+                s.DialCmd_MinLength = int.Parse(dialcmd_MinLengthTextBox.Text);
 
                 s.Save();
                 return true;
@@ -103,6 +103,19 @@ namespace Fop2DD
             if ((Key)hotkeyComboBox.SelectedItem != Key.None)
                 if (!hotkeyCtrlCheckBox.Checked && !hotkeyShiftCheckBox.Checked && !hotkeyWinCheckBox.Checked && !hotkeyAltCheckBox.Checked)
                     errorProvider.SetError(hotkeyComboBox, Properties.Resources.settings_err_invalidhotkeycombo);
+
+            int grabminlength;
+            if (!int.TryParse(grabMinLengthTextBox.Text, out grabminlength))
+                errorProvider.SetError(grabMinLengthTextBox, Properties.Resources.settings_err_grabminlengthnumber);
+            else if (!Validators.IsValidGrabMinLength(grabminlength))
+                errorProvider.SetError(grabMinLengthTextBox, string.Format(Properties.Resources.settings_err_grabminlengthrange, Validators.GRAB_MIN, Validators.GRAB_MAX));
+
+            int dialcmdminlength;
+            if (!int.TryParse(dialcmd_MinLengthTextBox.Text, out dialcmdminlength))
+                errorProvider.SetError(dialcmd_MinLengthTextBox, Properties.Resources.settings_err_dialcmdminlengthnumber);
+            else if (!Validators.IsValidDialCmdMinLength(dialcmdminlength))
+                errorProvider.SetError(dialcmd_MinLengthTextBox, string.Format(Properties.Resources.settings_err_dialcmdminlengthrange, Validators.DIALCMD_MIN, Validators.DIALCMD_MAX));
+
 
             //Select first tab with error(s) (if any)
             int[] errorspertab = new int[tabControl.TabPages.Count];
@@ -154,9 +167,9 @@ namespace Fop2DD
             dialcmd_FileTextBox.Text = s.DialCmd_File;
             dialcmd_WorkDirTextBox.Text = s.DialCmd_WorkDir;
             dialcmd_ArgsTextBox.Text = s.DialCmd_Args;
-
-            //TODO: Create interface element for "GrabMinLength"
-            //TODO: Create interface element for "DialCmd_MinLength"
+            dialcmd_MinLengthTextBox.Text = s.DialCmd_MinLength.ToString();
+            
+            grabMinLengthTextBox.Text = s.GrabMinLength.ToString();
         }
 
         private void cmdBrowse_Click(object sender, EventArgs e)

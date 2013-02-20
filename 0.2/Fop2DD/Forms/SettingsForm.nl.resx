@@ -117,8 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cancelButton.Error" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cancelButton.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cancelButton.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="cancelButton.Text" xml:space="preserve">
     <value>&amp;Annuleren</value>
+  </data>
+  <data name="portTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="portTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="portTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label2.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label2.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
@@ -127,11 +156,44 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Poort</value>
   </data>
-  <data name="hostTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 20</value>
+  <data name="hostTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hostTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hostTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label1.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="connectionBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="connectionBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="connectionBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="connectionBox.Text" xml:space="preserve">
     <value>FOP2 verbinding</value>
+  </data>
+  <data name="label4.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label4.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label4.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -139,14 +201,71 @@
   <data name="label4.Text" xml:space="preserve">
     <value>seconden</value>
   </data>
+  <data name="label3.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label3.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pingIntervalTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="pingIntervalTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="pingIntervalTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="advancedConnection.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="advancedConnection.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="advancedConnection.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="advancedConnection.Text" xml:space="preserve">
     <value>Geavanceerd</value>
   </data>
-  <data name="contextTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 20</value>
+  <data name="contextTextBox.Error" xml:space="preserve">
+    <value />
   </data>
-  <data name="passwordTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 20</value>
+  <data name="contextTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="contextTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label7.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label7.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label7.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="passwordTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="passwordTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="passwordTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label6.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label6.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label6.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
@@ -154,8 +273,23 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Wachtwoord</value>
   </data>
-  <data name="usernameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 20</value>
+  <data name="usernameTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="usernameTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="usernameTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label5.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label5.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label5.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 13</value>
@@ -163,32 +297,233 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Gebruiker</value>
   </data>
+  <data name="authenticationBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="authenticationBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="authenticationBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="authenticationBox.Text" xml:space="preserve">
     <value>Authenticatie</value>
+  </data>
+  <data name="tabPage1.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tabPage1.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>FOP2 Verbinding</value>
   </data>
+  <data name="tabPage2.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tabPage2.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Opdrachten</value>
+  </data>
+  <data name="label19.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label19.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label19.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>cijfers lang is</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label18.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label18.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label18.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 13</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Toon notificaties voor inkomende gesprekken wanneer de nummerlengte minimaal</value>
+  </data>
+  <data name="dialcmd_MinLengthTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dialcmd_MinLengthTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="dialcmd_MinLengthTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="groupBox1.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label17.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label17.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label17.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 13</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Selecteer nummers met minimum lengte</value>
+  </data>
+  <data name="grabMinLengthTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="grabMinLengthTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="grabMinLengthTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label13.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label13.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Fop2DD zal proberen telefoonnummers uit de huidige selectie in het actieve venster te detecteren wanneer deze toets(combinatie) wordt ingedrukt en het nummer bellen.</value>
   </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 77</value>
+  <data name="label8.Error" xml:space="preserve">
+    <value />
   </data>
-  <data name="hotkeyComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 74</value>
+  <data name="label8.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
   </data>
-  <data name="hotkeyComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 21</value>
+  <data name="label8.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyWinCheckBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyWinCheckBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyWinCheckBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyShiftCheckBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyShiftCheckBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyShiftCheckBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyAltCheckBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyAltCheckBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyAltCheckBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyCtrlCheckBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyCtrlCheckBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyCtrlCheckBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyComboBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyComboBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyComboBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="hotkeyBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="hotkeyBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="hotkeyBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPage3.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPage3.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tabPage3.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
-    <value>Sneltoetsen</value>
+    <value>Sneltoetsen &amp;&amp; notificaties</value>
+  </data>
+  <data name="tabControl.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControl.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="tabControl.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="okButton.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="okButton.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="okButton.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="okButton.Text" xml:space="preserve">
     <value>&amp;Ok</value>
+  </data>
+  <data name="applyButton.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="applyButton.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="applyButton.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="applyButton.Text" xml:space="preserve">
     <value>&amp;Toepassen</value>
@@ -1579,8 +1914,26 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>
+  <data name="label16.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label16.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="label16.Text" xml:space="preserve">
     <value>U kunt de %CONTEXT%, %USER% en %PASS% variabelen in de FOP2 webpagina URL gebruiken welke zullen worden vervangen met de huidige context, gebruiker en wachtwoord respectievelijk.</value>
+  </data>
+  <data name="label15.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label15.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 229</value>
@@ -1588,8 +1941,44 @@
   <data name="label15.Text" xml:space="preserve">
     <value>U kunt de %PHONENUMBER% variabele in het doel en/of commandline argumenten gebruiken welke zal worden vervangen door het caller-id nummer.</value>
   </data>
+  <data name="label14.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label14.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Wanneer de binnenkomend gesprek notificatie wordt geklikt, voer de volgende opdracht uit of open de volgende URL:</value>
+  </data>
+  <data name="cmdBrowse.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cmdBrowse.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="cmdBrowse.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="dialcmd_ArgsTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dialcmd_ArgsTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="dialcmd_ArgsTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label12.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label12.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 13</value>
@@ -1597,14 +1986,74 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Commandline argumenten</value>
   </data>
+  <data name="dialcmd_WorkDirTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dialcmd_WorkDirTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="dialcmd_WorkDirTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label11.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label11.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="dialcmd_FileTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dialcmd_FileTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="dialcmd_FileTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label10.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label10.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 13</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Doel</value>
   </data>
-  <data name="fop2WebInterfaceTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 20</value>
+  <data name="fop2WebInterfaceTextBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="fop2WebInterfaceTextBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="fop2WebInterfaceTextBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label9.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label9.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="label9.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="commandsBox.Error" xml:space="preserve">
+    <value />
+  </data>
+  <data name="commandsBox.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
+    <value>MiddleRight</value>
+  </data>
+  <data name="commandsBox.IconPadding" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="commandsBox.Text" xml:space="preserve">
     <value>Opdrachten</value>

@@ -152,6 +152,42 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimum length must be a number.
+        /// </summary>
+        internal static string settings_err_dialcmdminlengthnumber {
+            get {
+                return ResourceManager.GetString("settings_err_dialcmdminlengthnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimum length, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_dialcmdminlengthrange {
+            get {
+                return ResourceManager.GetString("settings_err_dialcmdminlengthrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum length must be a number.
+        /// </summary>
+        internal static string settings_err_grabminlengthnumber {
+            get {
+                return ResourceManager.GetString("settings_err_grabminlengthnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid minimum length, must be between {0} and {1}.
+        /// </summary>
+        internal static string settings_err_grabminlengthrange {
+            get {
+                return ResourceManager.GetString("settings_err_grabminlengthrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operator panel url must be a valid URL (or empty).
         /// </summary>
         internal static string settings_err_invalidfop2url {

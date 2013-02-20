@@ -148,6 +148,18 @@ Number: {1}</value>
   <data name="menu_settings" xml:space="preserve">
     <value>Settings...</value>
   </data>
+  <data name="settings_err_dialcmdminlengthnumber" xml:space="preserve">
+    <value>Minimum length must be a number</value>
+  </data>
+  <data name="settings_err_dialcmdminlengthrange" xml:space="preserve">
+    <value>Invalid minimum length, must be between {0} and {1}</value>
+  </data>
+  <data name="settings_err_grabminlengthnumber" xml:space="preserve">
+    <value>Minimum length must be a number</value>
+  </data>
+  <data name="settings_err_grabminlengthrange" xml:space="preserve">
+    <value>Invalid minimum length, must be between {0} and {1}</value>
+  </data>
   <data name="settings_err_invalidfop2url" xml:space="preserve">
     <value>Operator panel url must be a valid URL (or empty)</value>
   </data>

@@ -148,6 +148,18 @@ Nummer: {1}</value>
   <data name="menu_settings" xml:space="preserve">
     <value>Instellingen...</value>
   </data>
+  <data name="settings_err_dialcmdminlengthnumber" xml:space="preserve">
+    <value>Minimum lenge moet een getal zijn</value>
+  </data>
+  <data name="settings_err_dialcmdminlengthrange" xml:space="preserve">
+    <value>Ongeldige minimum lengte, kies een waarde tussen {0} en {1}</value>
+  </data>
+  <data name="settings_err_grabminlengthnumber" xml:space="preserve">
+    <value>Minimum lenge moet een getal zijn</value>
+  </data>
+  <data name="settings_err_grabminlengthrange" xml:space="preserve">
+    <value>Ongeldige minimum lengte, kies een waarde tussen {0} en {1}</value>
+  </data>
   <data name="settings_err_invalidfop2url" xml:space="preserve">
     <value>Operator panel url moet een geldige URL zijn (of leeg)</value>
   </data>
