@@ -4,7 +4,7 @@ namespace Fop2DD
 {
     public partial class SelectNumberForm : Form
     {
-        public string SelectedNumber { get; private set; }
+        public string SelectedNumber { get { return numberBox.Text; } }
 
         public SelectNumberForm(string[] numbers)
         {
