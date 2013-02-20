@@ -7,6 +7,7 @@ namespace Fop2DD.Core.Connection
     public class DDConnectionManager : IDDConnectionStateChangeNotifyable
     {
         private bool _isauthenticated;
+        private bool _reconnect;
         private IFop2Client _client;
         private DDConnectionInfo _connectioninfo;
 
@@ -34,6 +35,13 @@ namespace Fop2DD.Core.Connection
             _client.HeartbeatInterval = _connectioninfo.PingInterval;
         }
 
+        public void Reconnect(DDConnectionInfo connectioninfo)
+        {
+            _connectioninfo = connectioninfo;
+            _reconnect = true;
+            this.Disconnect();
+        }
+
         public void Disconnect()
         {
             _isauthenticated = false;   //Force authenticated to false to prevent reconnecting on the Disconnected event
@@ -52,7 +60,7 @@ namespace Fop2DD.Core.Connection
                     _isauthenticated = true;
                     break;
                 case DDConnectionState.ConnectionLost:
-                    if (_isauthenticated)   //Retry dropped connections if we were authenticated
+                    if (_isauthenticated || _reconnect)   //Retry dropped connections if we were authenticated or when reconnect is used
                         this.Connect(_connectioninfo);
                     break;
             }

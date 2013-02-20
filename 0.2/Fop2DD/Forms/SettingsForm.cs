@@ -11,6 +11,8 @@ namespace Fop2DD
 {
     public partial class SettingsForm : Form
     {
+        public event SettingsChangedEventHandler SettingsChanged;
+
         public SettingsForm()
         {
             InitializeComponent();
@@ -63,6 +65,10 @@ namespace Fop2DD
                 s.DialCmd_MinLength = int.Parse(dialcmd_MinLengthTextBox.Text);
 
                 s.Save();
+
+                if (SettingsChanged != null)
+                    SettingsChanged(this, new SettingsChangedEventArgs());
+
                 return true;
             }
             return false;
@@ -200,4 +206,10 @@ namespace Fop2DD
             }
         }
     }
+
+    public class SettingsChangedEventArgs : EventArgs
+    {
+    }
+
+    public delegate void SettingsChangedEventHandler(object sender, SettingsChangedEventArgs e);
 }

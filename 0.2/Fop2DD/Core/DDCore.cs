@@ -28,10 +28,7 @@ namespace Fop2DD.Core
 
             _notifyicon = new DDNotifyIcon(_client);
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);
-
-
             _notifyicon.ContextMenuStrip.Items.Insert(0, _fop2webinterface);
-
             _notifyicon.ContextMenuStrip.Opening += event_ContextMenuStripOpening;
 
             _notifyicon.BalloonClicked += event_BalloonClicked;
@@ -86,7 +83,12 @@ namespace Fop2DD.Core
         private void event_OnSettings(object sender, EventArgs e)
         {
             using (var f = new SettingsForm())
+            {
+                f.SettingsChanged += (s, scea) => {
+                    _connectionmanager.Reconnect(DDCore.GetConnectionInfo());
+                };
                 f.ShowDialog();
+            }
         }
 
         private void event_DialRequest(object sender, DialRequestEventArgs e)
