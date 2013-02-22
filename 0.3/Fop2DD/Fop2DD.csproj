@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Common\Filters.cs" />
+    <Compile Include="Core\Common\RegistryHelper.cs" />
     <Compile Include="Core\Common\ShellCommand.cs" />
     <Compile Include="Core\Common\Validators.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />

@@ -67,6 +67,12 @@ namespace Fop2DD
 
                 s.Save();
 
+                if (startwithwindowsCheckBox.Checked)
+                    RegistryHelper.AddToRunKey();
+                else
+                    if (RegistryHelper.IsInRunKey())
+                        RegistryHelper.RemoveFromRunKey();
+
                 if (SettingsChanged != null)
                     SettingsChanged(this, new SettingsChangedEventArgs());
 
@@ -180,8 +186,10 @@ namespace Fop2DD
             dialcmd_WorkDirTextBox.Text = s.DialCmd_WorkDir;
             dialcmd_ArgsTextBox.Text = s.DialCmd_Args;
             dialcmd_MinLengthTextBox.Text = s.DialCmd_MinLength.ToString();
-            
+
             grabMinLengthTextBox.Text = s.GrabMinLength.ToString();
+
+            startwithwindowsCheckBox.Checked = RegistryHelper.IsInRunKey();
         }
 
         private void cmdBrowse_Click(object sender, EventArgs e)

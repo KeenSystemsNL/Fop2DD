@@ -160,6 +160,15 @@
   <data name="tabPage2.Text" xml:space="preserve">
     <value>Opdrachten</value>
   </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 17</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Start met windows</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Opstarten</value>
+  </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
   </data>
@@ -186,7 +195,7 @@
     <value>Fop2DD zal proberen telefoonnummers uit de huidige selectie in het actieve venster te detecteren wanneer deze toets(combinatie) wordt ingedrukt en het nummer bellen.</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
-    <value>Sneltoetsen &amp;&amp; notificaties</value>
+    <value>Overig...</value>
   </data>
   <data name="okButton.Text" xml:space="preserve">
     <value>&amp;Ok</value>
@@ -1595,9 +1604,6 @@
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>U kunt de %PHONENUMBER% variabele in het doel en/of commandline argumenten gebruiken welke zal worden vervangen door het caller-id nummer.</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 126</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Wanneer de binnenkomend gesprek notificatie wordt geklikt, voer de volgende opdracht uit of open de volgende URL:</value>
