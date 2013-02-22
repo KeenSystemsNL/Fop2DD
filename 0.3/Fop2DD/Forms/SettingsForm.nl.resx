@@ -1623,4 +1623,7 @@
   <data name="commandsBox.Text" xml:space="preserve">
     <value>Opdrachten</value>
   </data>
+  <data name="startwithwindowsCheckBox.Text" xml:space="preserve">
+    <value>Start met windows</value>
+  </data>
 </root>
