@@ -16,8 +16,11 @@ namespace Fop2DD
         [STAThread]
         static void Main(string[] args)
         {
-            if (!ApplicationInstanceManager.CreateSingleInstance(Assembly.GetExecutingAssembly().GetName().Name, SingleInstanceCallback))
+            if (!ApplicationInstanceManager.CreateSingleInstance(Application.ProductName, SingleInstanceCallback))
                 return;
+
+            bool creatednew = false;
+            var mux = new Mutex(true, "mux_" + Application.ProductName.ToLowerInvariant(), out creatednew);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -29,6 +32,9 @@ namespace Fop2DD
 
                 _core.Stop();
             }
+
+            mux.ReleaseMutex();
+            mux.Close();
         }
 
         private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
