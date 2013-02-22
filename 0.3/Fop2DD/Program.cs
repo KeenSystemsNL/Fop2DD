@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Fop2DD.Core;
+using System;
+using System.Threading;
 using System.Windows.Forms;
-using Fop2DD.Core;
 
 namespace Fop2DD
 {
@@ -19,11 +18,23 @@ namespace Fop2DD
 
             using (var core = new DDCore())
             {
-                core.Start();
+                bool creatednew = false;
+                var mux = new Mutex(true, "mux_" + Application.ProductName, out creatednew);
+                if (creatednew)
+                {
+                    core.Start();
 
-                Application.Run();
+                    Application.Run();
 
-                core.Stop();
+                    core.Stop();
+
+                    mux.ReleaseMutex();
+                    mux.Close();
+                }
+                else
+                {
+
+                }
             }
         }
     }
