@@ -57,7 +57,9 @@ namespace Fop2DD.Core
 
         private void event_ContextMenuStripOpening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _fop2webinterface.Enabled = (_client.IsAuthenticated && Validators.IsValidHttpUrl(Properties.Settings.Default.FOP2Url));
+            var enableweblinks = (_client.IsAuthenticated && Validators.IsValidHttpUrl(Properties.Settings.Default.FOP2Url));
+            _fop2webinterface.Enabled = enableweblinks;
+            _fop2userportal.Enabled = enableweblinks;
         }
 
         private void event_BalloonClicked(object sender, DDBalloonClickedEventArgs e)
