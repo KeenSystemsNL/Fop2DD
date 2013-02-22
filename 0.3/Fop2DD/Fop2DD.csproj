@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,6 +66,8 @@
     <Compile Include="Core\Common\ShellCommand.cs" />
     <Compile Include="Core\Common\Validators.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />
+    <Compile Include="Core\SingleInstance\ApplicationInstanceManager.cs" />
+    <Compile Include="Core\SingleInstance\InstanceProxy.cs" />
     <Compile Include="Core\Systray\DDBalloonClickedEventArgs.cs" />
     <Compile Include="Core\Systray\DDBalloonInfo.cs" />
     <Compile Include="Forms\AboutForm.cs">

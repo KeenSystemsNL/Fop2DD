@@ -1,5 +1,6 @@
 ﻿using Fop2DD.Core;
 using System;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -7,35 +8,33 @@ namespace Fop2DD
 {
     static class Program
     {
+        private static DDCore _core;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            if (!ApplicationInstanceManager.CreateSingleInstance(Assembly.GetExecutingAssembly().GetName().Name, SingleInstanceCallback))
+                return;
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            using (var core = new DDCore())
+            using (_core = new DDCore())
             {
-                bool creatednew = false;
-                var mux = new Mutex(true, "mux_" + Application.ProductName, out creatednew);
-                if (creatednew)
-                {
-                    core.Start();
+                _core.Start();
 
-                    Application.Run();
+                Application.Run();
 
-                    core.Stop();
-
-                    mux.ReleaseMutex();
-                    mux.Close();
-                }
-                else
-                {
-
-                }
+                _core.Stop();
             }
+        }
+
+        private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
+        {
+            if (args == null || _core == null) return;
+            _core.DialFromCommandlineArgs(args.CommandLineArgs);
         }
     }
 }

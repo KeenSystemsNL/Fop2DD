@@ -4,6 +4,7 @@ using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -35,6 +36,20 @@ namespace Fop2DD.Core
             _hotkeymanager.DialRequest += event_DialRequest;
 
             _connectionmanager.RegisterListener(_notifyicon);
+        }
+
+        public void DialFromCommandlineArgs(string[] args)
+        {
+            var number = GetNumberFromArgs(args);
+            if (number != null)
+                _client.Dial(number);
+        }
+
+        private string GetNumberFromArgs(string[] args)
+        {
+            return args.Select(a => Filters.NumbersOnly(a))
+                            .Where(n => n.Length > Properties.Settings.Default.GrabMinLength)
+                            .FirstOrDefault();
         }
 
         private void event_ContextMenuStripOpening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -84,7 +99,8 @@ namespace Fop2DD.Core
         {
             using (var f = new SettingsForm())
             {
-                f.SettingsChanged += (s, scea) => {
+                f.SettingsChanged += (s, scea) =>
+                {
                     _connectionmanager.Reconnect(DDCore.GetConnectionInfo());
                 };
                 f.ShowDialog();
