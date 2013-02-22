@@ -1580,14 +1580,24 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 13</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Gebruikersportaal</value>
+  </data>
   <data name="label16.Text" xml:space="preserve">
     <value>U kunt de %CONTEXT%, %USER% en %PASS% variabelen in de FOP2 webpagina URL gebruiken welke zullen worden vervangen met de huidige context, gebruiker en wachtwoord respectievelijk.</value>
   </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 229</value>
-  </data>
   <data name="label15.Text" xml:space="preserve">
     <value>U kunt de %PHONENUMBER% variabele in het doel en/of commandline argumenten gebruiken welke zal worden vervangen door het caller-id nummer.</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 126</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Wanneer de binnenkomend gesprek notificatie wordt geklikt, voer de volgende opdracht uit of open de volgende URL:</value>
