@@ -50,7 +50,7 @@ namespace Fop2DD.Core
 
         private string GetNumberFromArgs(string[] args)
         {
-            return args.Select(a => Filters.NumbersOnly(a))
+            return args.Select(a => Filters.DigitsOnly(Filters.NormalizeNumber(a)))
                             .Where(n => n.Length > Properties.Settings.Default.GrabMinLength)
                             .FirstOrDefault();
         }
@@ -68,7 +68,7 @@ namespace Fop2DD.Core
 
             if (!string.IsNullOrEmpty(s.DialCmd_File))
             {
-                var phonenumber = Filters.NumbersOnly(e.BalloonInfo.CallerIdNumber);
+                var phonenumber = Filters.DigitsOnly(e.BalloonInfo.CallerIdNumber);
                 var command = new ShellCommand(s.DialCmd_File, s.DialCmd_Args);
                 command.WorkingDirectory = s.DialCmd_WorkDir;
 
@@ -137,7 +137,7 @@ namespace Fop2DD.Core
 
             if (numbertodial != null)
             {
-                numbertodial = Filters.NumbersOnly(numbertodial);
+                numbertodial = Filters.DigitsOnly(numbertodial);
                 if (!string.IsNullOrWhiteSpace(numbertodial))
                     _client.Dial(numbertodial);
             }
