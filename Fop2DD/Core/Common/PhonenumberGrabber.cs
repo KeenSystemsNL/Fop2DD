@@ -69,7 +69,7 @@ namespace Fop2DD.Core.Common
                     .Select(m => Filters.RemoveExtraWhitespace(m.Captures[0].Value))
                     .Where(r => r.Length >= minlength)
                 )
-                .Select(n => Filters.NumbersOnly(n.Replace("+", "00")))
+                .Select(n => Filters.DigitsOnly(Filters.NormalizeNumber(n)))
                 .ToArray();
         }
     }

@@ -1,3 +1,5 @@
+;Inno Setup file. See http://www.jrsoftware.org/isinfo.php if you're unfamiliar with this type of file.
+
 [Setup]
 AppPublisher=KeenSystems
 AppPublisherURL=http://www.keensystems.eu
@@ -11,12 +13,12 @@ DefaultGroupName=KeenSystems\Fop2DD
 UninstallDisplayIcon={app}\Fop2DD.exe
 Compression=lzma2/max
 SolidCompression=yes
-OutputDir=.\
+OutputDir=..\
 OutputBaseFilename=fop2dd_setup
 PrivilegesRequired=admin
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x86 x64
-MinVersion=0.0,5.01
+MinVersion=0.0,5.1
 UsePreviousLanguage=yes
 DisableWelcomePage=yes
 SetupIconFile=icons\application.ico
@@ -51,6 +53,7 @@ Name: "{group}\{cm:UnInstall}"; Filename: "{uninstallexe}"
 [Tasks]
 Name: launchonboot;   Description: {cm:LaunchOnBoot};   
 Name: calltohandler;  Description: {cm:CalltoHandler};  
+Name: telhandler;	  Description: {cm:TelHandler};  Flags: unchecked;
 
 [CustomMessages]
 en.FullInstallation=Full installation
@@ -59,6 +62,7 @@ en.MainFiles=Fop2DD program files (required)
 en.LanguageFiles_Dutch=Dutch language files
 en.LaunchOnBoot=Set Fop2DD to launch when Windows boots
 en.CalltoHandler=Set Fop2DD to handle callto: links
+en.TelHandler=Set Fop2DD to handle tel: links
 en.UnInstall=Uninstall Fop2DD
 
 nl.FullInstallation=Volledige installatie
@@ -67,6 +71,7 @@ nl.MainFiles=Fop2DD programma bestanden (vereist)
 nl.LanguageFiles_Dutch=Nederlandse taalbestanden
 nl.LaunchOnBoot=Stel Fop2DD in om te starten wanneer Windows opstart
 nl.CalltoHandler=Stel Fop2DD in om callto: links af te handelen
+nl.TelHandler=Stel Fop2DD in om tel: links af te handelen
 nl.UnInstall=Fop2DD Verwijderen
 
 [Registry]
@@ -76,6 +81,11 @@ Root: HKCR; Subkey: "callto";                    ValueType: string; ValueName: "
 Root: HKCR; Subkey: "callto";                    ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: CalltoHandler;
 Root: HKCR; Subkey: "callto\DefaultIcon";        ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: CalltoHandler;
 Root: HKCR; Subkey: "callto\shell\open\command"; ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: CalltoHandler;
+
+Root: HKCR; Subkey: "tel";						 ValueType: string; ValueName: "";             ValueData: "URL:Callto Protocol";          Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel";						 ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel\DefaultIcon";			 ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel\shell\open\command";	 ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: TelHandler;
 
 [Run]
 Filename: "{app}\Fop2DD.exe"; Flags: postinstall nowait;
