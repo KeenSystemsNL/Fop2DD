@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.commandsBox = new System.Windows.Forms.GroupBox();
+            this.fop2UserPortalTextBox = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -97,6 +99,8 @@
             // commandsBox
             // 
             resources.ApplyResources(this.commandsBox, "commandsBox");
+            this.commandsBox.Controls.Add(this.fop2UserPortalTextBox);
+            this.commandsBox.Controls.Add(this.label20);
             this.commandsBox.Controls.Add(this.label16);
             this.commandsBox.Controls.Add(this.label15);
             this.commandsBox.Controls.Add(this.label14);
@@ -111,6 +115,16 @@
             this.commandsBox.Controls.Add(this.label9);
             this.commandsBox.Name = "commandsBox";
             this.commandsBox.TabStop = false;
+            // 
+            // fop2UserPortalTextBox
+            // 
+            resources.ApplyResources(this.fop2UserPortalTextBox, "fop2UserPortalTextBox");
+            this.fop2UserPortalTextBox.Name = "fop2UserPortalTextBox";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
             // 
             // label16
             // 
@@ -179,7 +193,6 @@
             // 
             // hotkeyBox
             // 
-            resources.ApplyResources(this.hotkeyBox, "hotkeyBox");
             this.hotkeyBox.Controls.Add(this.label17);
             this.hotkeyBox.Controls.Add(this.grabMinLengthTextBox);
             this.hotkeyBox.Controls.Add(this.label13);
@@ -189,6 +202,7 @@
             this.hotkeyBox.Controls.Add(this.hotkeyAltCheckBox);
             this.hotkeyBox.Controls.Add(this.hotkeyCtrlCheckBox);
             this.hotkeyBox.Controls.Add(this.hotkeyComboBox);
+            resources.ApplyResources(this.hotkeyBox, "hotkeyBox");
             this.hotkeyBox.Name = "hotkeyBox";
             this.hotkeyBox.TabStop = false;
             // 
@@ -367,47 +381,46 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            resources.ApplyResources(this.errorProvider, "errorProvider");
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.connectionBox);
             this.tabPage1.Controls.Add(this.advancedConnection);
             this.tabPage1.Controls.Add(this.authenticationBox);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Controls.Add(this.commandsBox);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.hotkeyBox);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.dialcmd_MinLengthTextBox);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -512,5 +525,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox dialcmd_MinLengthTextBox;
+        private System.Windows.Forms.TextBox fop2UserPortalTextBox;
+        private System.Windows.Forms.Label label20;
     }
 }

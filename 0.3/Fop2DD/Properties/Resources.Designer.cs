@@ -134,6 +134,15 @@ namespace Fop2DD.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User portal....
+        /// </summary>
+        internal static string menu_fop2userportal {
+            get {
+                return ResourceManager.GetString("menu_fop2userportal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operator panel....
         /// </summary>
         internal static string menu_fop2web {
@@ -211,6 +220,15 @@ namespace Fop2DD.Properties {
         internal static string settings_err_invalidhotkeycombo {
             get {
                 return ResourceManager.GetString("settings_err_invalidhotkeycombo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User portal url must be a valid URL (or empty).
+        /// </summary>
+        internal static string settings_err_invaliduserportalurl {
+            get {
+                return ResourceManager.GetString("settings_err_invaliduserportalurl", resourceCulture);
             }
         }
         

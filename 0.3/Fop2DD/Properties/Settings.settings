@@ -44,5 +44,8 @@
     <Setting Name="DialCmd_MinLength" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
     </Setting>
+    <Setting Name="FOP2UserPortal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://192.168.1.10:10000/session_login.cgi?user=%CONTEXT%-%USER%&amp;pass=%PASS%</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

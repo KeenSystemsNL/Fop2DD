@@ -190,5 +190,17 @@ namespace Fop2DD.Properties {
                 this["DialCmd_MinLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://192.168.1.10:10000/session_login.cgi?user=%CONTEXT%-%USER%&pass=%PASS%")]
+        public string FOP2UserPortal {
+            get {
+                return ((string)(this["FOP2UserPortal"]));
+            }
+            set {
+                this["FOP2UserPortal"] = value;
+            }
+        }
     }
 }

@@ -4,8 +4,8 @@ using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
 using Fop2DD.Core.Systray;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core
@@ -18,6 +18,7 @@ namespace Fop2DD.Core
         private DDNotifyIcon _notifyicon;
 
         private ToolStripMenuItem _fop2webinterface;
+        private ToolStripMenuItem _fop2userportal;
 
         public DDCore()
         {
@@ -26,10 +27,12 @@ namespace Fop2DD.Core
             _connectionmanager = new DDConnectionManager(_client);
 
             _fop2webinterface = new ToolStripMenuItem(Properties.Resources.menu_fop2web, Iconhandler.LoadIconAsImage("world_go"), event_WebInterface);
+            _fop2userportal = new ToolStripMenuItem(Properties.Resources.menu_fop2userportal, Iconhandler.LoadIconAsImage("world_go"), event_WebInterface);
 
             _notifyicon = new DDNotifyIcon(_client);
             _notifyicon.ContextMenuStrip = DDNotifyIcon.CreateDefaultContextMenu(event_OnSettings, event_OnAbout, event_OnExit);
-            _notifyicon.ContextMenuStrip.Items.Insert(0, _fop2webinterface);
+            _notifyicon.ContextMenuStrip.Items.Insert(0, _fop2userportal);
+            _notifyicon.ContextMenuStrip.Items.Insert(1, _fop2webinterface);
             _notifyicon.ContextMenuStrip.Opening += event_ContextMenuStripOpening;
 
             _notifyicon.BalloonClicked += event_BalloonClicked;
@@ -75,7 +78,13 @@ namespace Fop2DD.Core
 
         private void event_WebInterface(object sender, EventArgs e)
         {
-            var command = new ShellCommand(Properties.Settings.Default.FOP2Url);
+            string url;
+            if (sender == _fop2webinterface)
+                url = Properties.Settings.Default.FOP2Url;
+            else
+                url = Properties.Settings.Default.FOP2UserPortal;
+
+            var command = new ShellCommand(url);
 
             ShellExecutor.ExecuteCommand(command, new[] {
                 new KeyValuePair<string, string>("%CONTEXT%", _client.Context),

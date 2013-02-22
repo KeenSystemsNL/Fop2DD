@@ -142,6 +142,9 @@ Nummer: {1}</value>
   <data name="menu_exit" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
+  <data name="menu_fop2userportal" xml:space="preserve">
+    <value>Gebruikersportaal...</value>
+  </data>
   <data name="menu_fop2web" xml:space="preserve">
     <value>Operator panel...</value>
   </data>
@@ -168,6 +171,9 @@ Nummer: {1}</value>
   </data>
   <data name="settings_err_invalidhotkeycombo" xml:space="preserve">
     <value>U dient minimaal 1 combinatietoets (Alt/Ctrl/Shift/Windows) te kiezen</value>
+  </data>
+  <data name="settings_err_invaliduserportalurl" xml:space="preserve">
+    <value>Gebruikersportaal url moet een geldige URL zijn (of leeg)</value>
   </data>
   <data name="settings_err_nocontext" xml:space="preserve">
     <value>Context niet opgegeven</value>

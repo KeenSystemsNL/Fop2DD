@@ -142,6 +142,9 @@ Number: {1}</value>
   <data name="menu_exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="menu_fop2userportal" xml:space="preserve">
+    <value>User portal...</value>
+  </data>
   <data name="menu_fop2web" xml:space="preserve">
     <value>Operator panel...</value>
   </data>
@@ -168,6 +171,9 @@ Number: {1}</value>
   </data>
   <data name="settings_err_invalidhotkeycombo" xml:space="preserve">
     <value>At least one modifier (Alt/Ctrl/Shift/Windows) must be used</value>
+  </data>
+  <data name="settings_err_invaliduserportalurl" xml:space="preserve">
+    <value>User portal url must be a valid URL (or empty)</value>
   </data>
   <data name="settings_err_nocontext" xml:space="preserve">
     <value>Context must be specified</value>

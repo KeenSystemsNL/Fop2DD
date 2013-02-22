@@ -48,6 +48,7 @@ namespace Fop2DD
 
                 s.PingInterval = int.Parse(pingIntervalTextBox.Text);
                 s.FOP2Url = fop2WebInterfaceTextBox.Text.Trim();
+                s.FOP2UserPortal = fop2UserPortalTextBox.Text.Trim();
 
                 s.GrabMinLength = int.Parse(grabMinLengthTextBox.Text);
 
@@ -105,6 +106,10 @@ namespace Fop2DD
                 if (!Validators.IsValidHttpUrl(fop2WebInterfaceTextBox.Text))
                     errorProvider.SetError(fop2WebInterfaceTextBox, Properties.Resources.settings_err_invalidfop2url);
 
+            if (!string.IsNullOrWhiteSpace(fop2UserPortalTextBox.Text))
+                if (!Validators.IsValidHttpUrl(fop2UserPortalTextBox.Text))
+                    errorProvider.SetError(fop2UserPortalTextBox, Properties.Resources.settings_err_invaliduserportalurl);
+
             //Tab2
             if ((Key)hotkeyComboBox.SelectedItem != Key.None)
                 if (!hotkeyCtrlCheckBox.Checked && !hotkeyShiftCheckBox.Checked && !hotkeyWinCheckBox.Checked && !hotkeyAltCheckBox.Checked)
@@ -160,6 +165,7 @@ namespace Fop2DD
 
             pingIntervalTextBox.Text = s.PingInterval.ToString();
             fop2WebInterfaceTextBox.Text = s.FOP2Url;
+            fop2UserPortalTextBox.Text = s.FOP2UserPortal;
 
             hotkeyComboBox.DataSource = Enum.GetValues(typeof(swi.Key)).Cast<swi.Key>();
 
