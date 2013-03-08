@@ -69,8 +69,7 @@ namespace Fop2DD.Core.Common
         /// <returns>Returns the value with all placeholders (if any) replaced with the replacement.</returns>
         public static string ReplacePlaceholder(string value, string placeholder, string replacement, bool useurlencoding)
         {
-
-            return new Regex(Regex.Escape(placeholder), RegexOptions.CultureInvariant | RegexOptions.IgnoreCase).Replace(value, useurlencoding ? HttpUtility.UrlEncode(replacement) : replacement);
+            return new Regex(Regex.Escape(placeholder), RegexOptions.CultureInvariant | RegexOptions.IgnoreCase).Replace(value, useurlencoding ? Uri.EscapeDataString(replacement) : replacement);
         }
     }
 }
