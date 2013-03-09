@@ -553,9 +553,6 @@ namespace Fop2ClientLib
             //Make sure our state is "clean"
             this.ResetState();
 
-            //Context is stored/used in UPPER case
-            context = context.ToUpperInvariant();
-
             //Set up callbacks
             _authcallback = () =>
             {
@@ -571,7 +568,7 @@ namespace Fop2ClientLib
 
             //Send message to initiate authentication
             if (!string.IsNullOrEmpty(context))
-                this.Send(context, "contexto", "1");
+                this.Send(context.ToUpperInvariant(), "contexto", "1");
             else
                 this.Send("GENERAL", "contexto", "0");
         }
