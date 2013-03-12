@@ -59,9 +59,11 @@ namespace Fop2DD.Core.Connection
                 case DDConnectionState.AuthenticationSucceeded:
                     _isauthenticated = true;
                     break;
+                case DDConnectionState.ConnectionTimedOut:
                 case DDConnectionState.ConnectionLost:
-                    if (_isauthenticated || _reconnect)   //Retry dropped connections if we were authenticated or when reconnect is used
+                    if (_isauthenticated || _reconnect)   //Retry dropped/failed connections if we were authenticated or when reconnect is used
                         this.Connect(_connectioninfo);
+                    _reconnect = false;
                     break;
             }
 
