@@ -136,6 +136,34 @@ Number: {1}</value>
   <data name="dialcmd_filter" xml:space="preserve">
     <value>Executable files|*.vbs;*.bat;*.cmd;*.exe;*.com;*.wsh|All files (*.*)|*.*</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ico_authfailure" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\authfailure.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\cross.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\error.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\information.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_offline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\offline.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_online" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\online.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_telephone_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\telephone_edit.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_world_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\world_go.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ico_wrench" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\wrench.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="menu_about" xml:space="preserve">
     <value>About...</value>
   </data>

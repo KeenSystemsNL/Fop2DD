@@ -2,6 +2,7 @@
 using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Fop2DD.Core.Systray
@@ -84,19 +85,19 @@ namespace Fop2DD.Core.Systray
             switch (e.State)
             {
                 case DDConnectionState.Connected:
-                    ni = new NotifyInfo("online", Properties.Resources.status_online);
+                    ni = new NotifyInfo(Properties.Resources.ico_online, Properties.Resources.status_online);
                     break;
                 case DDConnectionState.ConnectionLost:
-                    ni = new NotifyInfo("offline", Properties.Resources.status_offline);
+                    ni = new NotifyInfo(Properties.Resources.ico_offline, Properties.Resources.status_offline);
                     break;
                 case DDConnectionState.ConnectionTimedOut:
-                    ni = new NotifyInfo("error", string.Format(Properties.Resources.status_error, e.Data));
+                    ni = new NotifyInfo(Properties.Resources.ico_error, string.Format(Properties.Resources.status_error, e.Data));
                     break;
                 case DDConnectionState.AuthenticationFailed:
-                    ni = new NotifyInfo("authfailure", Properties.Resources.status_authfailure);
+                    ni = new NotifyInfo(Properties.Resources.ico_authfailure, Properties.Resources.status_authfailure);
                     break;
                 case DDConnectionState.AuthenticationSucceeded:
-                    ni = new NotifyInfo("online", Properties.Resources.status_authsuccess);
+                    ni = new NotifyInfo(Properties.Resources.ico_online, Properties.Resources.status_authsuccess);
                     break;
             }
 
@@ -109,7 +110,7 @@ namespace Fop2DD.Core.Systray
             if (_notifyicon.Visible == false)
                 _notifyicon.Visible = true;
 
-            _notifyicon.Icon = Iconhandler.LoadIcon(notifyinfo.Icon);
+            _notifyicon.Icon = notifyinfo.Icon;
             var tooltip = (notifyinfo.Text ?? string.Empty);
             _notifyicon.Text = (tooltip.Length > 63) ? tooltip.Substring(0, 63) : tooltip;
         }
@@ -122,12 +123,12 @@ namespace Fop2DD.Core.Systray
         public static ContextMenuStrip CreateDefaultContextMenu(EventHandler onsettings, EventHandler onabout, EventHandler onexit)
         {
             var menuitems = new ToolStripItem[] {
-                new ToolStripMenuItem(Properties.Resources.menu_settings, Iconhandler.LoadIconAsImage("wrench"), onsettings),
+                new ToolStripMenuItem(Properties.Resources.menu_settings, Properties.Resources.ico_wrench.ToBitmap(), onsettings),
                 new ToolStripSeparator(),
-                new ToolStripMenuItem(Properties.Resources.menu_about, Iconhandler.LoadIconAsImage("information"), onabout),
-                new ToolStripMenuItem(Properties.Resources.menu_exit, Iconhandler.LoadIconAsImage("cross"), onexit),
+                new ToolStripMenuItem(Properties.Resources.menu_about, Properties.Resources.ico_information.ToBitmap(), onabout),
+                new ToolStripMenuItem(Properties.Resources.menu_exit, Properties.Resources.ico_cross.ToBitmap(), onexit),
             };
-
+            
             var m = new ContextMenuStrip();
             m.Items.AddRange(menuitems);
             return m;
@@ -135,10 +136,10 @@ namespace Fop2DD.Core.Systray
 
         private class NotifyInfo
         {
-            public string Icon { get; set; }
+            public Icon Icon { get; set; }
             public string Text { get; set; }
 
-            public NotifyInfo(string icon, string text)
+            public NotifyInfo(Icon icon, string text)
             {
                 this.Icon = icon;
                 this.Text = text;
