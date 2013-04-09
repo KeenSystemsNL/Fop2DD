@@ -2,7 +2,7 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Fop2ClientLib</id>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <authors>RobIII</authors>
     <owners>KeenSystems, RobIII</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,14 +10,14 @@
     <projectUrl>https://fop2dd.codeplex.com</projectUrl>
     <iconUrl>http://riii.nl/fop2clientliblogo</iconUrl>
     <licenseUrl>https://fop2dd.codeplex.com/license</licenseUrl>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Should now work with the .Net client profile. Context is no longer stored in uppercase, but it IS SENT in uppercase and stored as entered. Updated to JSON.Net 5.0.2 (from 4.5.11).</releaseNotes>
     <tags>FOP2 Flash Operator Panel</tags>
     <summary>
       .Net FOP2 client library providing event-based communication with a FOP2 server.
     </summary>
     <language>en-US</language>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="4.5.11" />
+      <dependency id="Newtonsoft.Json" version="5.0.2" />
     </dependencies>
   </metadata>
   <files>
