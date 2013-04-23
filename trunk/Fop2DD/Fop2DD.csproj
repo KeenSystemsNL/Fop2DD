@@ -40,8 +40,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>application.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GlobalHotKey">
@@ -159,6 +158,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="application.ico" />
     <Content Include="icons\application.ico" />
     <Content Include="icons\application.png" />
     <Content Include="icons\authfailure.ico" />

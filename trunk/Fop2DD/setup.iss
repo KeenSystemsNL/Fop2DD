@@ -31,28 +31,28 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "nl"; MessagesFile: "compiler:Languages\Dutch.isl"
 
 [Types]
-Name: "full"; Description: {cm:FullInstallation}
+Name: "full";   Description: {cm:FullInstallation}
 Name: "custom"; Description: {cm:CustomInstallation}; Flags: iscustom
 
 [Components]
-Name: "main"; Description: {cm:MainFiles}; Types: full custom; Flags: fixed
+Name: "main";           Description: {cm:MainFiles};           Types: full custom; Flags: fixed
 Name: "language\dutch"; Description: {cm:LanguageFiles_Dutch}; Types: full
 
 [Files]
-Source: "bin\release\Fop2DD.exe"          ; DestDir: "{app}"       ;  Components: main;           Flags: replacesameversion
-Source: "bin\release\Fop2ClientLib.dll"   ; DestDir: "{app}"       ;  Components: main;           Flags: replacesameversion
-Source: "bin\release\GlobalHotKey.dll"    ; DestDir: "{app}"       ;  Components: main;           Flags: replacesameversion
-Source: "bin\release\Newtonsoft.Json.dll" ; DestDir: "{app}"       ;  Components: main;           Flags: replacesameversion
-Source: "bin\release\nl\*"                ; DestDir: "{app}\nl"    ;  Components: language\dutch; Flags: replacesameversion
+Source: "bin\release\Fop2DD.exe";           DestDir: "{app}";    Components: main;           Flags: replacesameversion
+Source: "bin\release\Fop2ClientLib.dll";    DestDir: "{app}";    Components: main;           Flags: replacesameversion
+Source: "bin\release\GlobalHotKey.dll";     DestDir: "{app}";    Components: main;           Flags: replacesameversion
+Source: "bin\release\Newtonsoft.Json.dll";  DestDir: "{app}";    Components: main;           Flags: replacesameversion
+Source: "bin\release\nl\*";                 DestDir: "{app}\nl"; Components: language\dutch; Flags: replacesameversion
 
 [Icons]
-Name: "{group}\Fop2DD"; Filename: "{app}\Fop2DD.exe"
+Name: "{group}\Fop2DD";         Filename: "{app}\Fop2DD.exe"
 Name: "{group}\{cm:UnInstall}"; Filename: "{uninstallexe}"
 
 [Tasks]
 Name: launchonboot;   Description: {cm:LaunchOnBoot};   
 Name: calltohandler;  Description: {cm:CalltoHandler};  
-Name: telhandler;	  Description: {cm:TelHandler};  Flags: unchecked;
+Name: telhandler;     Description: {cm:TelHandler};    Flags: unchecked;
 
 [CustomMessages]
 en.FullInstallation=Full installation
@@ -74,23 +74,17 @@ nl.TelHandler=Stel Fop2DD in om tel: links af te handelen
 nl.UnInstall=Fop2DD Verwijderen
 
 [Registry]
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Fop2DD"; ValueData: "{app}\Fop2DD.exe"; Flags: uninsdeletevalue; Tasks: launchonboot;
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Fop2DD";       ValueData: "{app}\Fop2DD.exe";             Flags: uninsdeletevalue; Tasks: launchonboot;
 
-Root: HKCR; Subkey: "callto";                    ValueType: string; ValueName: "";             ValueData: "URL:Callto Protocol";          Flags: uninsdeletevalue; Tasks: CalltoHandler;
-Root: HKCR; Subkey: "callto";                    ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: CalltoHandler;
-Root: HKCR; Subkey: "callto\DefaultIcon";        ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: CalltoHandler;
-Root: HKCR; Subkey: "callto\shell\open\command"; ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: CalltoHandler;
+Root: HKCR; Subkey: "callto";                                        ValueType: string; ValueName: "";             ValueData: "URL:Callto Protocol";          Flags: uninsdeletevalue; Tasks: CalltoHandler;
+Root: HKCR; Subkey: "callto";                                        ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: CalltoHandler;
+Root: HKCR; Subkey: "callto\DefaultIcon";                            ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: CalltoHandler;
+Root: HKCR; Subkey: "callto\shell\open\command";                     ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: CalltoHandler;
 
-Root: HKCR; Subkey: "tel";						 ValueType: string; ValueName: "";             ValueData: "URL:Callto Protocol";          Flags: uninsdeletevalue; Tasks: TelHandler;
-Root: HKCR; Subkey: "tel";						 ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: TelHandler;
-Root: HKCR; Subkey: "tel\DefaultIcon";			 ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: TelHandler;
-Root: HKCR; Subkey: "tel\shell\open\command";	 ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel";                                           ValueType: string; ValueName: "";             ValueData: "URL:Callto Protocol";          Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel";                                           ValueType: string; ValueName: "URL Protocol"; ValueData: "";                             Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel\DefaultIcon";                               ValueType: string; ValueName: "";             ValueData: "{app}\Fop2DD.exe,1";           Flags: uninsdeletevalue; Tasks: TelHandler;
+Root: HKCR; Subkey: "tel\shell\open\command";                        ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: TelHandler;
 
 [Run]
 Filename: "{app}\Fop2DD.exe"; Flags: postinstall nowait;
-
-
-
-
-
-
