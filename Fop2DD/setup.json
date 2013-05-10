@@ -1,7 +1,7 @@
 /* Sample setup config file */
 {
   Host: "127.0.0.1",
-  Port: 4444,
+  Port: 4445,
   PingInterval: 20,
   Username: "101",
   PBXContext: "mycontext",
