@@ -3,11 +3,11 @@
 [Setup]
 AppPublisher=KeenSystems
 AppPublisherURL=http://www.keensystems.eu
-AppVersion=0.3.2.0
+AppVersion=0.4.0.0
 AppName=Fop2DD
-AppVerName=Fop2DD 0.3.2
+AppVerName=Fop2DD 0.4.0
 AppCopyright=Copyright (C) 2013 KeenSystems
-VersionInfoVersion=0.3.2.0
+VersionInfoVersion=0.4.0.0
 DefaultDirName={pf}\KeenSystems\Fop2DD
 DefaultGroupName=KeenSystems\Fop2DD
 UninstallDisplayIcon={app}\Fop2DD.exe
@@ -87,4 +87,4 @@ Root: HKCR; Subkey: "tel\DefaultIcon";                               ValueType: 
 Root: HKCR; Subkey: "tel\shell\open\command";                        ValueType: string; ValueName: "";             ValueData: """{app}\Fop2DD.exe"" ""%1""";  Flags: uninsdeletevalue; Tasks: TelHandler;
 
 [Run]
-Filename: "{app}\Fop2DD.exe"; Flags: postinstall nowait;
+Filename: "{app}\Fop2DD.exe"; Parameters: "{src}\setup.json"; Flags: postinstall nowait;

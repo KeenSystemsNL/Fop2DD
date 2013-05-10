@@ -1,6 +1,9 @@
 ﻿using Fop2DD.Core;
+using Newtonsoft.Json;
 using System;
-using System.Reflection;
+using System.Configuration;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -22,6 +25,11 @@ namespace Fop2DD
             bool creatednew = false;
             var mux = new Mutex(true, "mux_" + Application.ProductName.ToLowerInvariant(), out creatednew);
 
+            //When a json file was passed and we can find the file try to import it as default settings
+            var importsettingsfile = args.Where(a => a.EndsWith(".json", StringComparison.OrdinalIgnoreCase) && File.Exists(a)).FirstOrDefault();
+            if (importsettingsfile != null)
+                ImportSettings(importsettingsfile);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             using (_core = new DDCore())
@@ -41,6 +49,25 @@ namespace Fop2DD
         {
             if (args == null || _core == null) return;
             _core.DialFromCommandlineArgs(args.CommandLineArgs);
+        }
+
+        private static void ImportSettings(string path)
+        {
+            try
+            {
+                var f = JsonConvert.DeserializeObject<Properties.Settings>(File.OpenText(path).ReadToEnd());
+                foreach (var x in f.Properties.OfType<SettingsProperty>())
+                {
+                    var pi = Properties.Settings.Default.GetType().GetProperty(x.Name);
+                    var v = f.GetType().GetProperty(x.Name).GetValue(f, null);
+                    pi.SetValue(Properties.Settings.Default, v, null);
+                }
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Error importing settings '{0}'", path), ex);
+            }
         }
     }
 }
