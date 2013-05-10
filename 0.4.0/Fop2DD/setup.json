@@ -1,0 +1,18 @@
+/* Sample setup config file */
+{
+  Host: "127.0.0.1",
+  Port: 4445,
+  PingInterval: 20,
+  Username: "101",
+  PBXContext: "mycontext",
+  Password: "mysecret",
+  FOP2Url: "http://192.168.1.10/fop2/?context=%CONTEXT%&exten=%USER%&pass=%PASS%",
+  GrabMinLength: 6,
+  ConnectTimeout: 10,
+  GlobalDialHotkey: "Control + F8",
+  DialCmd_File: "https://www.google.com/search?q=%PHONENUMBER%",
+  DialCmd_Args: "",
+  DialCmd_WorkDir: "",
+  DialCmd_MinLength: 6,
+  FOP2UserPortal: "https://192.168.1.10:10000/session_login.cgi?user=%CONTEXT%-%USER%&pass=%PASS%"
+}
