@@ -3,11 +3,11 @@
 [Setup]
 AppPublisher=KeenSystems
 AppPublisherURL=http://www.keensystems.eu
-AppVersion=0.4.0.0
+AppVersion=0.4.1.0
 AppName=Fop2DD
-AppVerName=Fop2DD 0.4.0
+AppVerName=Fop2DD 0.4.1
 AppCopyright=Copyright (C) 2013 KeenSystems
-VersionInfoVersion=0.4.0.0
+VersionInfoVersion=0.4.1.0
 DefaultDirName={pf}\KeenSystems\Fop2DD
 DefaultGroupName=KeenSystems\Fop2DD
 UninstallDisplayIcon={app}\Fop2DD.exe
@@ -43,7 +43,8 @@ Source: "bin\release\Fop2DD.exe";           DestDir: "{app}";    Components: mai
 Source: "bin\release\Fop2ClientLib.dll";    DestDir: "{app}";    Components: main;           Flags: replacesameversion
 Source: "bin\release\GlobalHotKey.dll";     DestDir: "{app}";    Components: main;           Flags: replacesameversion
 Source: "bin\release\Newtonsoft.Json.dll";  DestDir: "{app}";    Components: main;           Flags: replacesameversion
-Source: "bin\release\nl\*";                 DestDir: "{app}\nl"; Components: language\dutch; Flags: replacesameversion
+Source: "bin\release\NLog.dll";             DestDir: "{app}";    Components: main;           Flags: replacesameversion
+Source: "bin\release\NLog.config";          DestDir: "{app}";    Components: main;           Flags: onlyifdoesntexist
 
 [Icons]
 Name: "{group}\Fop2DD";         Filename: "{app}\Fop2DD.exe"

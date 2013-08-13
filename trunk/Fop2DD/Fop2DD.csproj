@@ -49,6 +49,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net40\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Remoting" />
@@ -75,6 +78,7 @@
     <Compile Include="Core\Logging\DDEventType.cs" />
     <Compile Include="Core\Logging\Loggers\DDNullLogger.cs" />
     <Compile Include="Core\Logging\DDLogManager.cs" />
+    <Compile Include="Core\Logging\Loggers\NLogLogger.cs" />
     <Compile Include="Core\SingleInstance\ApplicationInstanceManager.cs" />
     <Compile Include="Core\SingleInstance\InstanceProxy.cs" />
     <Compile Include="Core\Systray\DDBalloonClickedEventArgs.cs" />
@@ -144,6 +148,9 @@
       <LastGenOutput>Resources.nl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
