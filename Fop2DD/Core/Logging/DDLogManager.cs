@@ -11,8 +11,9 @@ namespace Fop2DD.Core.Logging
         }
 
         public static IDDLogger GetLogger(string name) {
-            //For now we simply always return a NullLogger
-            return new DDNullLogger();
+            //For now we simply always return an NLogLogger
+            //TODO: We should be able to use the configuration file to select which logger to use
+            return new NLogLogger(name);
         }
     }
 }
