@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fop2DD.Core.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -37,6 +38,7 @@ namespace Fop2DD.Core.Common
             }
             catch (Exception ex)
             {
+                DDLogManager.GetLogger(typeof(ShellExecutor)).LogException(ex);
                 //For now we just alert the user; maybe someday we'll use something more sophisticated than a messagebox
                 MessageBox.Show(string.Format("{0}\r\n[{1}]", ex.Message, ex.GetType().Name), Properties.Resources.shellexecutor_errorexecutecmd, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

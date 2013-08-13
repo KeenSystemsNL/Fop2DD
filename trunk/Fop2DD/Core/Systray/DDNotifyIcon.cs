@@ -1,6 +1,7 @@
 ﻿using Fop2ClientLib;
 using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
+using Fop2DD.Core.Logging;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace Fop2DD.Core.Systray
 
         public event BalloonClickedEventHandler BalloonClicked;
 
+        private IDDLogger logger = DDLogManager.GetLogger(typeof(DDNotifyIcon));
+
         public ContextMenuStrip ContextMenuStrip
         {
             get { return _notifyicon.ContextMenuStrip; }
@@ -34,7 +37,7 @@ namespace Fop2DD.Core.Systray
             _notifyicon.BalloonTipClosed += (s, e) => { _currentballoon = null; };
             _notifyicon.BalloonTipClicked += (s, e) =>
             {
-                if ((_currentballoon != null) && (BalloonClicked != null)) 
+                if ((_currentballoon != null) && (BalloonClicked != null))
                     BalloonClicked(this, new DDBalloonClickedEventArgs(_currentballoon));
             };
 
@@ -45,6 +48,9 @@ namespace Fop2DD.Core.Systray
 
         public void MessageReceived(object sender, MessageReceivedEventArgs e)
         {
+            logger.LogDebug("Message received:\nButton\t: {0}\nCommand\t:{1}\nData\t:{2}\nSlot\t:{3}", 
+                e.Message.Button, e.Message.Command, e.Message.Data, e.Message.Slot);
+
             //TODO: {0}@{1} (or id@context) should probably be some property/method on Fop2Client for easy usage
             if (e.Message.Button.Equals(string.Format("{0}@{1}", _client.Id, _client.Context), StringComparison.OrdinalIgnoreCase))
             {
@@ -66,7 +72,7 @@ namespace Fop2DD.Core.Systray
                                     string.Format(Properties.Resources.balloon_title),
                                     string.Format(string.Format(Properties.Resources.balloon_text, _lastclidname, _lastclidnum)),
                                     ToolTipIcon.Info
-                                    );
+                                );
 
                                 _currentballoon = new DDBalloonInfo(_lastclidname, _lastclidnum);
 
@@ -81,6 +87,8 @@ namespace Fop2DD.Core.Systray
 
         public void StateChanged(object sender, DDConnectionStateChangedEventArgs e)
         {
+            logger.LogDebug("State changed: {0}", e.State);
+
             NotifyInfo ni = null;
             switch (e.State)
             {
@@ -128,7 +136,7 @@ namespace Fop2DD.Core.Systray
                 new ToolStripMenuItem(Properties.Resources.menu_about, Properties.Resources.ico_information.ToBitmap(), onabout),
                 new ToolStripMenuItem(Properties.Resources.menu_exit, Properties.Resources.ico_cross.ToBitmap(), onexit),
             };
-            
+
             var m = new ContextMenuStrip();
             m.Items.AddRange(menuitems);
             return m;

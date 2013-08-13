@@ -70,6 +70,12 @@
     <Compile Include="Core\Common\ShellCommand.cs" />
     <Compile Include="Core\Common\Validators.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />
+    <Compile Include="Core\Logging\ExtensionMethods.cs" />
+    <Compile Include="Core\Logging\IDDlogger.cs" />
+    <Compile Include="Core\Logging\DDLogEntry.cs" />
+    <Compile Include="Core\Logging\DDEventType.cs" />
+    <Compile Include="Core\Logging\Loggers\DDNullLogger.cs" />
+    <Compile Include="Core\Logging\DDLogManager.cs" />
     <Compile Include="Core\SingleInstance\ApplicationInstanceManager.cs" />
     <Compile Include="Core\SingleInstance\InstanceProxy.cs" />
     <Compile Include="Core\Systray\DDBalloonClickedEventArgs.cs" />

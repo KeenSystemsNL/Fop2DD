@@ -1,4 +1,5 @@
 ﻿using Fop2DD.Core;
+using Fop2DD.Core.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace Fop2DD
             if (!ApplicationInstanceManager.CreateSingleInstance(Application.ProductName, SingleInstanceCallback))
                 return;
 
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             bool creatednew = false;
             var mux = new Mutex(true, "mux_" + Application.ProductName.ToLowerInvariant(), out creatednew);
 
@@ -43,6 +45,20 @@ namespace Fop2DD
 
             mux.ReleaseMutex();
             mux.Close();
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                var ex = e.ExceptionObject as Exception;
+                if (ex != null)
+                    DDLogManager.GetLogger(typeof(Program)).LogFatal(ex);
+            }
+            finally
+            {
+                Application.Exit();
+            }
         }
 
         private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
