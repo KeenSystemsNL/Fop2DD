@@ -18,7 +18,6 @@ namespace Fop2DD.Core.Connection
 
         public DDConnectionManager(IFop2Client client)
         {
-            _isauthenticated = false;
             _client = client;
 
             _registeredobjects = new List<IDDConnectionStateChangeNotifyable>();
@@ -36,6 +35,7 @@ namespace Fop2DD.Core.Connection
 
             logger.LogInfo("Connecting to {0}:{1}", connectioninfo.Fop2Endpoint.Host, connectioninfo.Fop2Endpoint.Port);
 
+            _isauthenticated = false;
             _connectioninfo = connectioninfo;
             _client.Connect(_connectioninfo.GetIPEndPoint(), _connectioninfo.ConnectionTimeout);
             _client.HeartbeatInterval = _connectioninfo.PingInterval;
@@ -54,7 +54,6 @@ namespace Fop2DD.Core.Connection
         {
             logger.LogInfo("Disconnecting");
 
-            _isauthenticated = false;   //Force authenticated to false to prevent reconnecting on the Disconnected event
             _client.Disconnect();
         }
 

@@ -1,5 +1,6 @@
 ﻿using NLog;
 using System;
+using System.Diagnostics;
 
 namespace Fop2DD.Core.Logging.Loggers
 {
@@ -14,6 +15,8 @@ namespace Fop2DD.Core.Logging.Loggers
 
         void IDDLogger.Log(DDLogEntry entry)
         {
+            if (entry.EventType == DDEventType.Debug)
+                Trace.WriteLine(entry.Message);
             _logger.Log(MapLogEntry(entry));
         }
 

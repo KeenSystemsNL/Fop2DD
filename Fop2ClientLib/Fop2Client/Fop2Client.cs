@@ -48,7 +48,12 @@ namespace Fop2ClientLib
         /// <summary>
         /// Occurs at the specified interval (<see cref="HeartbeatInterval"/>).
         /// </summary>
-        public event HeartbeatEventHandler Heartbeat;
+        public event HeartbeatSentEventHandler HeartbeatSent;
+
+        /// <summary>
+        /// Occurs when a heartbeat response is received (<see cref="HeartbeatInterval"/>).
+        /// </summary>
+        public event HeartbeatReceivedEventHandler HeartbeatReceived;
 
         /// <summary>
         /// Occurs when the client successfully authenticated.
@@ -71,6 +76,7 @@ namespace Fop2ClientLib
 
         //Timer used for heartbeat/keepalive (e.g. ping)
         private Timer _pingtimer;
+        private bool _receivedpong;
 
         //To ensure our URIparser is only registered once (for parsing strings like foo.com:1234 to IP endpoints)
         private static bool _uriparserregistered = false;
@@ -185,8 +191,17 @@ namespace Fop2ClientLib
         {
             //Initialize a heartbeat (ping) timer, default to 20 seconds
             _pingtimer = new Timer(20000);
-            _pingtimer.AutoReset = true;
-            _pingtimer.Elapsed += (s, ea) => { this.Send("1", "ping", string.Empty, string.Empty); };
+            _pingtimer.AutoReset = false;
+            _pingtimer.Elapsed += (s, ea) =>
+            {
+                if (this.IsConnected && this.IsAuthenticated)
+                {
+                    if (_receivedpong)
+                        this.SendPing();
+                    else
+                        this.Disconnect();
+                }
+            };
 
             //Initialize a receive buffer
             _receivebuffer = new StringBuilder(RCVSTRINGBUFFSIZE);
@@ -198,11 +213,17 @@ namespace Fop2ClientLib
 
             //Initialize new Async client and subscribe to events
             _client = new AsyncClient(encoding);
-            _client.ConnectionStateChanged += (s, e) => { if (this.ConnectionStateChanged != null) this.ConnectionStateChanged(this, e); };
+            _client.ConnectionStateChanged += (s, e) =>
+            {
+                if (e.ConnectionState == ConnectionState.Disconnected)
+                    this.ResetState();
+                if (this.ConnectionStateChanged != null)
+                    this.ConnectionStateChanged(this, e);
+            };
             _client.ConnectionError += (s, e) => { if (this.ConnectionError != null) this.ConnectionError(this, e); };  //Raise ConnectionError event to subscribers
             _client.DataSent += client_DataSent;
             _client.DataReceived += client_DataReceived;
-            
+
             //Register (temporary) URI parser
             //HACK: we're using a GenericUriParser to quickly parse a host:port IPEndpoint (see Connect(hostnameandport) overload) with a pretty uncommon scheme :P
             if (!_uriparserregistered)
@@ -213,6 +234,18 @@ namespace Fop2ClientLib
 
             //Initialize state
             this.ResetState();
+        }
+
+        /// <summary>
+        /// Sends a ping and starts a timer that will monitor the ping timeout
+        /// </summary>
+        private void SendPing()
+        {
+            _receivedpong = false;
+            this.Send("1", "ping", string.Empty, string.Empty);
+            _pingtimer.Start();
+            if (this.HeartbeatSent != null)
+                this.HeartbeatSent(this, new HeartbeatSentEventArgs());
         }
 
         /// <summary>
@@ -323,9 +356,10 @@ namespace Fop2ClientLib
 
                     break;
                 case "pong":
+                    _receivedpong = true;
                     //When we receive a pong we raise a heartbeat event (with decoded data)
-                    if (this.Heartbeat != null)
-                        this.Heartbeat(this, new HeartbeatEventArgs(this.DecodeBase64(parsedmessage.Data)));
+                    if (this.HeartbeatReceived != null)
+                        this.HeartbeatReceived(this, new HeartbeatReceivedEventArgs(this.DecodeBase64(parsedmessage.Data)));
 
                     break;
             }
@@ -392,7 +426,7 @@ namespace Fop2ClientLib
         private void CheckAuthResult(Fop2Message parsedmessage)
         {
             AuthenticationStatus status = AuthenticationStatus.Failed;
- 
+
             //We're checking already, do not check again
             _checkauthresult = false;
             //Check the actual result
@@ -401,7 +435,7 @@ namespace Fop2ClientLib
                 //Nope, authentication failed
                 this.ResetState();
 
-                
+
                 if (this.AuthenticationResultReceived != null)
                     this.AuthenticationResultReceived(this, new AuthenticationResultReceivedEventArgs(AuthenticationStatus.Failed));
             }
@@ -415,7 +449,7 @@ namespace Fop2ClientLib
                 }
 
                 //Start heartbeat
-                _pingtimer.Enabled = true;
+                this.SendPing();
 
                 status = AuthenticationStatus.Success;
             }
@@ -500,6 +534,8 @@ namespace Fop2ClientLib
         /// <remarks>All session state (<see cref="Context"/>, <see cref="Username"/> etc.) will be reset.</remarks>
         public void Disconnect()
         {
+            _pingtimer.Stop();
+            this.ResetState();
             _client.Disconnect();
         }
 
