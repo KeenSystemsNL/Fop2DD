@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2DD", "Fop2DD\Fop2DD.csproj", "{0A68BB4A-8A2F-4D34-A2B8-15DE6D194F73}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AFFD7B4F-0328-420B-A511-3A044201509D}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2ClientLib", "Fop2ClientLib\Fop2ClientLib.csproj", "{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D70FA601-B5B7-491A-A7D7-A3256D02F5EE}"
@@ -23,6 +16,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{7AE0B03F-C9DE-49D9-A60A-E367EF63DBBD}"
 	ProjectSection(SolutionItems) = preProject
 		Fop2DD\setup.iss = Fop2DD\setup.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AC1051FA-C419-4980-8582-79AF82A5C4B7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Global
