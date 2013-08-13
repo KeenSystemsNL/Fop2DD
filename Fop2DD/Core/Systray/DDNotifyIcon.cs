@@ -44,11 +44,17 @@ namespace Fop2DD.Core.Systray
             _client = client;
 
             _client.MessageReceived += MessageReceived;
+            _client.MessageSent += MessageSent;
+        }
+
+        private void MessageSent(object sender, MessageSentEventArgs e)
+        {
+            logger.LogDebug("Message sent:\n\t{0}", e.Message);
         }
 
         public void MessageReceived(object sender, MessageReceivedEventArgs e)
         {
-            logger.LogDebug("Message received:\nButton\t: {0}\nCommand\t:{1}\nData\t:{2}\nSlot\t:{3}", 
+            logger.LogDebug("Message received:\n\tButton\t: {0}\n\tCommand\t: {1}\n\tData\t: {2}\n\tSlot\t: {3}", 
                 e.Message.Button, e.Message.Command, e.Message.Data, e.Message.Slot);
 
             //TODO: {0}@{1} (or id@context) should probably be some property/method on Fop2Client for easy usage
