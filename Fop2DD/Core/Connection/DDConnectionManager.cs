@@ -1,4 +1,5 @@
 ﻿using Fop2ClientLib;
+using Fop2DD.Core.Logging;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,8 @@ namespace Fop2DD.Core.Connection
         private DDConnectionInfo _connectioninfo;
 
         private List<IDDConnectionStateChangeNotifyable> _registeredobjects;
+
+        private IDDLogger logger = DDLogManager.GetLogger(typeof(DDConnectionManager));
 
         public DDConnectionManager(IFop2Client client)
         {
@@ -30,6 +33,9 @@ namespace Fop2DD.Core.Connection
             if (connectioninfo == null)
                 throw new ArgumentNullException("connectioninfo");
 
+
+            logger.LogInfo("Connecting to {0}:{1}", connectioninfo.Fop2Endpoint.Host, connectioninfo.Fop2Endpoint.Port);
+
             _connectioninfo = connectioninfo;
             _client.Connect(_connectioninfo.GetIPEndPoint(), _connectioninfo.ConnectionTimeout);
             _client.HeartbeatInterval = _connectioninfo.PingInterval;
@@ -37,6 +43,8 @@ namespace Fop2DD.Core.Connection
 
         public void Reconnect(DDConnectionInfo connectioninfo)
         {
+            logger.LogInfo("Reconnecting");
+
             _connectioninfo = connectioninfo;
             _reconnect = true;
             this.Disconnect();
@@ -44,6 +52,8 @@ namespace Fop2DD.Core.Connection
 
         public void Disconnect()
         {
+            logger.LogInfo("Disconnecting");
+
             _isauthenticated = false;   //Force authenticated to false to prevent reconnecting on the Disconnected event
             _client.Disconnect();
         }

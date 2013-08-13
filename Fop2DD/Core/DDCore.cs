@@ -23,6 +23,7 @@ namespace Fop2DD.Core
         public DDCore()
         {
             _client = new Fop2FatClient();
+            
             _hotkeymanager = new DDHotkeyManager();
             _connectionmanager = new DDConnectionManager(_client);
 
@@ -73,8 +74,8 @@ namespace Fop2DD.Core
                 command.WorkingDirectory = s.DialCmd_WorkDir;
 
                 ShellExecutor.ExecuteCommand(command, new[] {
-                        new KeyValuePair<string, string>("%PHONENUMBER%", phonenumber)
-                    });
+                    new KeyValuePair<string, string>("%PHONENUMBER%", phonenumber)
+                });
             }
         }
 
@@ -163,7 +164,7 @@ namespace Fop2DD.Core
                 new DDCredential(s.PBXContext, s.Username, s.Password),
                 TimeSpan.FromSeconds(s.PingInterval),
                 TimeSpan.FromSeconds(s.ConnectTimeout)
-                );
+            );
         }
 
         #region IDisposable
