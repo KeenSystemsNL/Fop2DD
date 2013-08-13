@@ -32,11 +32,18 @@ namespace Fop2ClientLib
     public delegate void AuthenticationResultReceivedEventHandler(object sender, AuthenticationResultReceivedEventArgs e);
 
     /// <summary>
-    /// Represents the method that will handle the <see cref="IFop2Client.Heartbeat"/> event.
+    /// Represents the method that will handle the <see cref="IFop2Client.HeartbeatReceived"/> event.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
-    /// <param name="e">A <see cref="HeartbeatEventArgs"/> containing information about the heartbeat "reply" (e.g. "pong") received.</param>
-    public delegate void HeartbeatEventHandler(object sender, HeartbeatEventArgs e);
+    /// <param name="e">A <see cref="HeartbeatReceivedEventArgs"/> containing information about the heartbeat "reply" (e.g. "pong") received.</param>
+    public delegate void HeartbeatReceivedEventHandler(object sender, HeartbeatReceivedEventArgs e);
+
+    /// <summary>
+    /// Represents the method that will handle the <see cref="IFop2Client.HeartbeatSent"/> event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="HeartbeatSentEventArgs"/> containing information about the heartbeat sent (e.g. "ping").</param>
+    public delegate void HeartbeatSentEventHandler(object sender, HeartbeatSentEventArgs e);
 
     /// <summary>
     /// Represents the method that will handle the <see cref="IFop2Client.ConnectionError"/> event.
@@ -61,9 +68,14 @@ namespace Fop2ClientLib
         event ConnectionStateChangedEventHandler ConnectionStateChanged;
 
         /// <summary>
+        /// Occurs when a heartbeat response is received (<see cref="HeartbeatInterval"/>).
+        /// </summary>
+        event HeartbeatReceivedEventHandler HeartbeatReceived;
+
+        /// <summary>
         /// Occurs at the specified interval (<see cref="HeartbeatInterval"/>).
         /// </summary>
-        event HeartbeatEventHandler Heartbeat;
+        event HeartbeatSentEventHandler HeartbeatSent;
 
         /// <summary>
         /// Occurs when the client received a message from the host.

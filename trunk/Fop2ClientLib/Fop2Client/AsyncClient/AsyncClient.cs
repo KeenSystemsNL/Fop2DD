@@ -90,9 +90,8 @@ namespace Fop2ClientLib
                     _client = null;
                 }
                 catch { }
-
-                RaiseEvent(() => { if (this.ConnectionStateChanged != null) ConnectionStateChanged(this, new ConnectionStateChangedEventArgs(ConnectionState.Disconnected)); });
             }
+            RaiseEvent(() => { if (this.ConnectionStateChanged != null) ConnectionStateChanged(this, new ConnectionStateChangedEventArgs(ConnectionState.Disconnected)); });
         }
 
         private void EndConnect(IAsyncResult result)
