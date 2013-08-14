@@ -93,8 +93,6 @@ namespace Fop2DD.Core.Systray
 
         public void StateChanged(object sender, DDConnectionStateChangedEventArgs e)
         {
-            logger.LogDebug("State changed: {0}", e.State);
-
             NotifyInfo ni = null;
             switch (e.State)
             {

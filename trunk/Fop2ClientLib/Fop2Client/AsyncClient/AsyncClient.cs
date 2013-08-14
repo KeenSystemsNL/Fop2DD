@@ -175,19 +175,22 @@ namespace Fop2ClientLib
             var so = result.AsyncState as StateObject;
             try
             {
-                var networkStream = _client.GetStream();
-                int bytesread = networkStream.EndRead(result);
-
-                if (bytesread > 0)
+                if (_client != null && _client.Connected && _client.Client.Connected)
                 {
-                    string data = this.Encoding.GetString(so.Buffer, 0, bytesread);
-                    RaiseEvent(() => { if (this.DataReceived != null) DataReceived(this, new DataReceivedEventArgs(data)); });
+                    var networkStream = _client.GetStream();
+                    int bytesread = networkStream.EndRead(result);
 
-                    networkStream.BeginRead(so.Buffer, 0, so.Buffer.Length, EndRead, new StateObject(so.Buffer));
-                }
-                else
-                {
-                    this.Disconnect();
+                    if (bytesread > 0)
+                    {
+                        string data = this.Encoding.GetString(so.Buffer, 0, bytesread);
+                        RaiseEvent(() => { if (this.DataReceived != null) DataReceived(this, new DataReceivedEventArgs(data)); });
+
+                        networkStream.BeginRead(so.Buffer, 0, so.Buffer.Length, EndRead, new StateObject(so.Buffer));
+                    }
+                    else
+                    {
+                        this.Disconnect();
+                    }
                 }
             }
             catch (Exception ex)
