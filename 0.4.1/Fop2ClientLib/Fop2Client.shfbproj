@@ -29,7 +29,7 @@
     <FeedbackEMailLinkText>Rob Janssen</FeedbackEMailLinkText>
     <HelpTitle>FOP2 Client library %28Fop2ClientLib%29</HelpTitle>
     <ProductTitle>Fop2ClientLib</ProductTitle>
-    <HelpFileVersion>0.2.1.0</HelpFileVersion>
+    <HelpFileVersion>0.2.2.0</HelpFileVersion>
     <ProjectSummary>
     </ProjectSummary>
     <NamespaceSummaries>
@@ -43,6 +43,10 @@
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <PlugInNamespaces>ms.vsipcc+, ms.vsexpresscc+</PlugInNamespaces>
+    <CollectionTocStyle>Hierarchical</CollectionTocStyle>
+    <MSHelp2SdkLinkType>Msdn</MSHelp2SdkLinkType>
+    <IncludeStopWordList>True</IncludeStopWordList>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
