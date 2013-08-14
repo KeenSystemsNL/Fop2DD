@@ -59,6 +59,8 @@ namespace Fop2DD.Core.Connection
 
         public void StateChanged(object sender, DDConnectionStateChangedEventArgs e)
         {
+            logger.LogDebug("State changed: {0}", e.State);
+
             _isauthenticated = false;
             switch (e.State)
             {
