@@ -120,9 +120,9 @@ namespace Fop2ClientLib
                 RaiseEvent(() => { if (this.ConnectionError != null) ConnectionError(this, new ConnectionErrorEventArgs(ex)); });
                 return;
             }
-            catch (Exception ex)
+            catch   // (Exception ex)
             {
-                HandleException(ex);
+                this.Disconnect();
                 return;
             }
 
@@ -131,9 +131,9 @@ namespace Fop2ClientLib
                 so.Buffer = new byte[_buffersize];
                 networkStream.BeginRead(so.Buffer, 0, so.Buffer.Length, this.EndRead, new StateObject(so.Buffer));
             }
-            catch (Exception ex)
+            catch   // (Exception ex)
             {
-                HandleException(ex);
+                this.Disconnect();
             }
         }
 
@@ -147,9 +147,9 @@ namespace Fop2ClientLib
                     var data = this.Encoding.GetBytes(message);
                     networkStream.BeginWrite(data, 0, data.Length, this.EndWrite, new StateObject(data));
                 }
-                catch (Exception ex)
+                catch   // (Exception ex)
                 {
-                    HandleException(ex);
+                    this.Disconnect();
                 }
             }
         }
@@ -164,9 +164,9 @@ namespace Fop2ClientLib
 
                 RaiseEvent(() => { if (this.DataSent != null) DataSent(this, new DataSentEventArgs(this.Encoding.GetString(so.Buffer))); });
             }
-            catch (Exception ex)
+            catch   // (Exception ex)
             {
-                HandleException(ex);
+                this.Disconnect();
             }
         }
 
@@ -193,16 +193,10 @@ namespace Fop2ClientLib
                     }
                 }
             }
-            catch (Exception ex)
+            catch   // (Exception ex)
             {
-                HandleException(ex);
-            }
-        }
-
-        private void HandleException(Exception ex)
-        {
-            if (this.IsConnected)
                 this.Disconnect();
+            }
         }
 
         private void RaiseEvent(Action method)

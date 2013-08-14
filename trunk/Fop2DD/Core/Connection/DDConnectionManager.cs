@@ -54,6 +54,7 @@ namespace Fop2DD.Core.Connection
         {
             logger.LogInfo("Disconnecting");
 
+            _isauthenticated = false;
             _client.Disconnect();
         }
 
@@ -61,7 +62,6 @@ namespace Fop2DD.Core.Connection
         {
             logger.LogDebug("State changed: {0}", e.State);
 
-            _isauthenticated = false;
             switch (e.State)
             {
                 case DDConnectionState.Connected:
