@@ -199,7 +199,7 @@ namespace Fop2ClientLib
                     if (_receivedpong)
                         this.SendPing();
                     else
-                        this.Disconnect();
+                        this.DisconnectInternal();
                 }
             };
 
@@ -535,6 +535,11 @@ namespace Fop2ClientLib
         public void Disconnect()
         {
             _pingtimer.Stop();
+            this.DisconnectInternal();
+        }
+
+        private void DisconnectInternal()
+        {
             this.ResetState();
             _client.Disconnect();
         }
