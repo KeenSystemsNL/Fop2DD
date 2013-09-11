@@ -2,6 +2,7 @@
 using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
+using Fop2DD.Core.Logging;
 using Fop2DD.Core.Systray;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace Fop2DD.Core
 
         private ToolStripMenuItem _fop2webinterface;
         private ToolStripMenuItem _fop2userportal;
+
+        private IDDLogger logger = DDLogManager.GetLogger(typeof(DDCore));
 
         public DDCore()
         {
@@ -46,7 +49,7 @@ namespace Fop2DD.Core
         {
             var number = GetNumberFromArgs(args);
             if (number != null)
-                _client.Dial(number);
+                this.Dial(number);
         }
 
         private string GetNumberFromArgs(string[] args)
@@ -140,8 +143,14 @@ namespace Fop2DD.Core
             {
                 numbertodial = Filters.DigitsOnly(numbertodial);
                 if (!string.IsNullOrWhiteSpace(numbertodial))
-                    _client.Dial(numbertodial);
+                    this.Dial(numbertodial);
             }
+        }
+
+        public void Dial(string numberToDial)
+        {
+            logger.LogDebug("Dialing: {0}", numberToDial);
+            _client.Dial(numberToDial);
         }
 
         public void Start()
