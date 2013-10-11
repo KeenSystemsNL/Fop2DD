@@ -5,6 +5,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -51,6 +52,10 @@ namespace Fop2DD
                 else
                 {
                     //There's already an instance running
+
+                    //TODO: We need to get the running instance to run _core.DialFromCommandlineArgs(args) on it
+                    //OR
+                    //TODO: We need to notify the running instance via IPC (tcp? named pipes? other...?) to run _core.DialFromCommandlineArgs(args) FOR us...
                 }
             }
         }
@@ -68,12 +73,6 @@ namespace Fop2DD
                 Application.Exit();
             }
         }
-
-        //private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
-        //{
-        //    if (args == null || _core == null) return;
-        //    _core.DialFromCommandlineArgs(args.CommandLineArgs);
-        //}
 
         private static void ImportSettings(string path)
         {
