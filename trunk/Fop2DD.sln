@@ -11,10 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Fop2ClientLib\Fop2Client.shfbproj = Fop2ClientLib\Fop2Client.shfbproj
 		howto_release.txt = howto_release.txt
 		README.txt = README.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{7AE0B03F-C9DE-49D9-A60A-E367EF63DBBD}"
-	ProjectSection(SolutionItems) = preProject
 		Fop2DD\setup.iss = Fop2DD\setup.iss
 	EndProjectSection
 EndProject
@@ -54,8 +50,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7AE0B03F-C9DE-49D9-A60A-E367EF63DBBD} = {D70FA601-B5B7-491A-A7D7-A3256D02F5EE}
 	EndGlobalSection
 EndGlobal

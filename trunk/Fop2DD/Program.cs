@@ -14,6 +14,8 @@ namespace Fop2DD
     {
         private static DDCore _core;
 
+        private const string appid = "9F94F10A-CAEB-4DC5-B1F1-C6001C1B4D91";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -22,33 +24,35 @@ namespace Fop2DD
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            if (!SystemInformation.TerminalServerSession || args.Contains("/allowmultipleinstances"))
+            // http://odetocode.com/blogs/scott/archive/2004/08/20/the-misunderstood-mutex.aspx
+            using (var mux = new Mutex(false, appid))
             {
-                if (!ApplicationInstanceManager.CreateSingleInstance(Application.ProductName, SingleInstanceCallback))
-                    return;
+                //If we can acquire the mutex...
+                if (mux.WaitOne(0, false))
+                {
+                    //...we're the first instance running (in this session (think of terminal sessions!))
+
+                    //When a json file was passed and we can find the file try to import it as default settings
+                    var importsettingsfile = args.Where(a => a.EndsWith(".json", StringComparison.OrdinalIgnoreCase) && File.Exists(a)).FirstOrDefault();
+                    if (importsettingsfile != null)
+                        ImportSettings(importsettingsfile);
+
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    using (_core = new DDCore())
+                    {
+                        _core.Start();
+
+                        Application.Run();
+
+                        _core.Stop();
+                    }
+                }
+                else
+                {
+                    //There's already an instance running
+                }
             }
-
-            bool creatednew = false;
-            var mux = new Mutex(true, "mux_" + Application.ProductName.ToLowerInvariant(), out creatednew);
-
-            //When a json file was passed and we can find the file try to import it as default settings
-            var importsettingsfile = args.Where(a => a.EndsWith(".json", StringComparison.OrdinalIgnoreCase) && File.Exists(a)).FirstOrDefault();
-            if (importsettingsfile != null)
-                ImportSettings(importsettingsfile);
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            using (_core = new DDCore())
-            {
-                _core.Start();
-
-                Application.Run();
-
-                _core.Stop();
-            }
-
-            mux.ReleaseMutex();
-            mux.Close();
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -65,11 +69,11 @@ namespace Fop2DD
             }
         }
 
-        private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
-        {
-            if (args == null || _core == null) return;
-            _core.DialFromCommandlineArgs(args.CommandLineArgs);
-        }
+        //private static void SingleInstanceCallback(object sender, InstanceCallbackEventArgs args)
+        //{
+        //    if (args == null || _core == null) return;
+        //    _core.DialFromCommandlineArgs(args.CommandLineArgs);
+        //}
 
         private static void ImportSettings(string path)
         {
