@@ -24,7 +24,7 @@ DisableWelcomePage=yes
 SetupIconFile=icons\application.ico
 AllowUNCPath=no
 ;AppMutex must be in lowercase!
-AppMutex=mux_fop2dd
+AppMutex=9F94F10A-CAEB-4DC5-B1F1-C6001C1B4D91
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
