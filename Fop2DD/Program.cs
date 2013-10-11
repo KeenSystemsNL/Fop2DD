@@ -20,10 +20,14 @@ namespace Fop2DD
         [STAThread]
         static void Main(string[] args)
         {
-            if (!ApplicationInstanceManager.CreateSingleInstance(Application.ProductName, SingleInstanceCallback))
-                return;
-
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            if (!SystemInformation.TerminalServerSession || args.Contains("/allowmultipleinstances"))
+            {
+                if (!ApplicationInstanceManager.CreateSingleInstance(Application.ProductName, SingleInstanceCallback))
+                    return;
+            }
+
             bool creatednew = false;
             var mux = new Mutex(true, "mux_" + Application.ProductName.ToLowerInvariant(), out creatednew);
 
