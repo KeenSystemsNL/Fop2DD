@@ -2,6 +2,7 @@
 using Fop2DD.Core.Common;
 using Fop2DD.Core.Connection;
 using Fop2DD.Core.Hotkeys;
+using Fop2DD.Core.IPC;
 using Fop2DD.Core.Logging;
 using Fop2DD.Core.Systray;
 using System;
@@ -20,6 +21,7 @@ namespace Fop2DD.Core
 
         private ToolStripMenuItem _fop2webinterface;
         private ToolStripMenuItem _fop2userportal;
+        private DDPipeServer _pipeserver;
 
         private IDDLogger logger = DDLogManager.GetLogger(typeof(DDCore));
 
@@ -43,6 +45,23 @@ namespace Fop2DD.Core
             _hotkeymanager.DialRequest += event_DialRequest;
 
             _connectionmanager.RegisterListener(_notifyicon);
+
+            _pipeserver = new DDPipeServer();
+            _pipeserver.MessageReceived += (s, e) => {
+                this.DialFromCommandlineArgs(e.Data.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
+            };
+            _pipeserver.Listen(GetIPCPipeName());
+        }
+
+        public static void SendIPCPessage(string message)
+        {
+            DDPipeClient _client = new DDPipeClient();
+            _client.Send(message, GetIPCPipeName());
+        }
+
+        private static string GetIPCPipeName()
+        {
+            return Application.ProductName + "." + Environment.UserName;
         }
 
         public void DialFromCommandlineArgs(string[] args)

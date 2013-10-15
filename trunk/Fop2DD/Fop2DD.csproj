@@ -72,6 +72,9 @@
     <Compile Include="Core\Common\ShellCommand.cs" />
     <Compile Include="Core\Common\Validators.cs" />
     <Compile Include="Core\Connection\DDFop2Endpoint.cs" />
+    <Compile Include="Core\IPC\DDPipeClient.cs" />
+    <Compile Include="Core\IPC\DDPipeServer.cs" />
+    <Compile Include="Core\IPC\DDPipeMessageReceivedEventArgs.cs" />
     <Compile Include="Core\Logging\ExtensionMethods.cs" />
     <Compile Include="Core\Logging\IDDlogger.cs" />
     <Compile Include="Core\Logging\DDLogEntry.cs" />
