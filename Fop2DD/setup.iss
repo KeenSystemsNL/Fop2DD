@@ -3,11 +3,11 @@
 [Setup]
 AppPublisher=KeenSystems
 AppPublisherURL=http://www.keensystems.eu
-AppVersion=0.4.3.0
+AppVersion=0.5.0.0
 AppName=Fop2DD
-AppVerName=Fop2DD 0.4.3
+AppVerName=Fop2DD 0.5.0
 AppCopyright=Copyright (C) 2013 KeenSystems
-VersionInfoVersion=0.4.3.0
+VersionInfoVersion=0.5.0.0
 DefaultDirName={pf}\KeenSystems\Fop2DD
 DefaultGroupName=KeenSystems\Fop2DD
 UninstallDisplayIcon={app}\Fop2DD.exe

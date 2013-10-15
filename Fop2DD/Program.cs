@@ -1,4 +1,5 @@
 ﻿using Fop2DD.Core;
+using Fop2DD.Core.IPC;
 using Fop2DD.Core.Logging;
 using Newtonsoft.Json;
 using System;
@@ -51,11 +52,8 @@ namespace Fop2DD
                 }
                 else
                 {
-                    //There's already an instance running
-
-                    //TODO: We need to get the running instance to run _core.DialFromCommandlineArgs(args) on it
-                    //OR
-                    //TODO: We need to notify the running instance via IPC (tcp? named pipes? other...?) to run _core.DialFromCommandlineArgs(args) FOR us...
+                    //There's already an instance running; pass along our commandline args
+                    DDCore.SendIPCPessage(string.Join("|", args));
                 }
             }
         }
