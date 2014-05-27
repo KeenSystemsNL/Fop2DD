@@ -297,7 +297,7 @@ namespace Fop2ClientLib
         private Fop2Message ProcessMessage(string rawmessage)
         {
             //Decode JSON data to a Fop2 message
-            var parsedmessage = JsonConvert.DeserializeObject<Fop2Message>(rawmessage, _jsonserializersettings);
+            var parsedmessage = JsonConvert.DeserializeObject<Fop2Message>(FixIncorrectEscapeSequences(rawmessage), _jsonserializersettings);
 
             //Do we have to check an authentication-result?
             if (_checkauthresult)
@@ -366,6 +366,50 @@ namespace Fop2ClientLib
             //Return the 'decoded' message
             return parsedmessage;
         }
+
+        // Stupid FOP2 escapes comma's in it's JSON which results in:
+        //      { "name": "Hulk\, the" }
+        // as opposed to:
+        //      { "name": "Hulk, the" }
+        // Since the former is invalid JSON the JSON deserializer throws an exception. The method below ensures that
+        // escape sequences encountered in string values contain a valid character after the escape-char; if not the
+        // escape char (\) is ignored / skipped.
+        private static string FixIncorrectEscapeSequences(string value)
+        {
+            var r = new StringBuilder();
+            var instring = false;
+            var inescape = false;
+            var escapees = "\"\\/bfnrtu".ToCharArray();
+            var l = value.Length;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                char c = value[i];
+                switch (c)
+                {
+                    case '"':
+                        if (!inescape)
+                            instring = !instring;
+                        break;
+                    case '\\':
+                        if (!inescape && instring && (i + 1 < l))
+                        {
+                            inescape = true;
+                            if (!escapees.Contains(value[i + 1]))
+                            {
+                                continue;
+                            }
+                        }
+                        break;
+                    default:
+                        inescape = false;
+                        break;
+                }
+                r.Append(c);
+            }
+            return r.ToString();
+        }
+    
 
         /// <summary>
         /// Extracts the current ID (or "myposition", "position", "button id") from a zbuttons message

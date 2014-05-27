@@ -2,7 +2,8 @@
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Fop2ClientLib</id>
-    <version>0.2.2</version>
+    <title>Fop2ClientLib</title>
+    <version>0.2.3</version>
     <authors>RobIII</authors>
     <owners>KeenSystems, RobIII</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,14 +11,14 @@
     <projectUrl>https://fop2dd.codeplex.com</projectUrl>
     <iconUrl>http://riii.nl/fop2clientliblogo</iconUrl>
     <licenseUrl>https://fop2dd.codeplex.com/license</licenseUrl>
-    <releaseNotes>Updated to JSON.Net 5.0.6, HeartBeat event is now split into two events (HeartBeatSent and HeartBeatReceived), better handling of dropped connections.</releaseNotes>
+    <releaseNotes>Fix to handle invalid JSON from FOP2 server.</releaseNotes>
     <tags>FOP2 Flash Operator Panel</tags>
     <summary>
       .Net FOP2 client library providing event-based communication with a FOP2 server.
     </summary>
     <language>en-US</language>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="5.0.6" />
+      <dependency id="Newtonsoft.Json" version="6.0.3" />
     </dependencies>
   </metadata>
   <files>
