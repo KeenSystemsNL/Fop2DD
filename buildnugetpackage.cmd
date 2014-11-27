@@ -1,0 +1,1 @@
+.nuget\nuget pack Fop2ClientLib\Fop2Client.nuspec
