@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2DD", "Fop2DD\Fop2DD.csproj", "{0A68BB4A-8A2F-4D34-A2B8-15DE6D194F73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fop2ClientLib", "Fop2ClientLib\Fop2ClientLib.csproj", "{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}"
@@ -8,32 +10,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D70FA601-B5B7-491A-A7D7-A3256D02F5EE}"
 	ProjectSection(SolutionItems) = preProject
 		Fop2ClientLib\Fop2Client.nuspec = Fop2ClientLib\Fop2Client.nuspec
-		Fop2ClientLib\Fop2Client.shfbproj = Fop2ClientLib\Fop2Client.shfbproj
-		howto_release.txt = howto_release.txt
 		README.txt = README.txt
 		Fop2DD\setup.iss = Fop2DD\setup.iss
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AC1051FA-C419-4980-8582-79AF82A5C4B7}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Fop2ClientHelp", "Help\Fop2ClientHelp.shfbproj", "{397973CC-3354-442D-A526-A93CE83D062E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1} = {B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Fop2ClientLib\\Fop2ClientLib.csproj
-		SccProjectName1 = Fop2ClientLib
-		SccLocalPath1 = Fop2ClientLib
-		SccProjectUniqueName2 = Fop2DD\\Fop2DD.csproj
-		SccProjectName2 = Fop2DD
-		SccLocalPath2 = Fop2DD
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -47,6 +33,9 @@ Global
 		{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B595D6D7-5887-47A2-8515-CCC5A5ED7DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397973CC-3354-442D-A526-A93CE83D062E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397973CC-3354-442D-A526-A93CE83D062E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397973CC-3354-442D-A526-A93CE83D062E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

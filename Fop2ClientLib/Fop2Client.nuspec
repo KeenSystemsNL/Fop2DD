@@ -22,8 +22,8 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="\bin\Release\Fop2ClientLib.dll" target="lib\net35" />
-    <file src="\bin\Release\Fop2ClientLib.XML" target="lib\net35" />
-    <file src="\Help\Documentation.chm" target="" />
+    <file src="bin\Release\Fop2ClientLib.dll" target="lib\net35" />
+    <file src="bin\Release\Fop2ClientLib.XML" target="lib\net35" />
+    <file src="..\Help\Help\Documentation.chm" target="" />
   </files>
 </package>
