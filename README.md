@@ -12,4 +12,4 @@ The library is well-documented and Helpfile builder-compatible. A [Sandcastle He
 Although the basis for the library has been created and implemented, there is still a lot to be done and to be implemented. The architectural basis of the project will remain, mostly, the same but some deprecating, moving around etc. is still an option. The current status of the library is "pretty stable" but it is recommended you do not use this library (yet) for production purposes until it hits v1.0. Work is still in progress.
 
 ## Help welcome
-If you're interested in improving this project please contact us. Help is very much welcome and appreciated. Also, please feel free to report issues and join the discussions! More on how to join: [How to join FOP2DD project]
+If you're interested in improving this project please contact us. Help is very much welcome and appreciated. Also, please feel free to report issues and join the discussions! More on how to join: [How to join FOP2DD project](/KeenSystemsNL/Fop2DD/wiki/How-to-join-FOP2DD-project)
